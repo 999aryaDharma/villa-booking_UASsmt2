@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-blur {
+	transition: background-color 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+	transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+	transition: background-color 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+}
+.nav-blur.scrolled {
+	background-color: rgba(133, 129, 129, 0.6);
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+}
+
+.custom-underline {
+	position: relative;
+	transition: color 0.3s ease;
+	color: white;
+}
+.custom-underline::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: #ee7214;
+	left: 0;
+	bottom: -8px;
+	transform: scaleX(0);
+	transition: transform 0.3s ease;
+}
+
+.custom-underline:hover {
+	color: #ee7214; /* Text color on hover */
+}
+
+.custom-underline:hover::after {
+	transform: scaleX(1);
+}
+
+.custom-button {
+	border: 2px solid #ec7e2a; /* Green border */
+	color: #ec7e2a; /* Initial text color */
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+.custom-button:hover {
+	background-color: #ec7e2a; /* Dark green background on hover */
+	color: white; /* Text color on hover */
+}
+
+.nav-overlay {
+	pointer-events: none; /* Membuat elemen overlay tidak mengambil interaksi pointer */
+}
+
+.carousel-item {
+	position: absolute;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+}
+.carousel-item.active {
+	opacity: 1;
+}
