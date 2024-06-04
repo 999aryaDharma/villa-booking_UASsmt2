@@ -10,9 +10,13 @@ window.addEventListener("scroll", function () {
 
 const items = document.querySelectorAll(".carousel-item");
 let index = 0;
-
 setInterval(() => {
 	items[index].classList.remove("active");
 	index = (index + 1) % items.length;
 	items[index].classList.add("active");
 }, 3000);
+
+document.getElementById("hamburger-button").addEventListener("click", function () {
+	var mobileMenu = document.getElementById("mobile-menu");
+	mobileMenu.classList.toggle("hidden");
+});
