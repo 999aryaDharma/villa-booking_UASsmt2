@@ -13,6 +13,16 @@
 	backdrop-filter: blur(5px);
 }
 
+.custom-color1{
+	color: #527853;
+}
+.custom-color2{
+	color: #EE7214;
+}
+.custom-bg1{
+	background-color: #527853;
+}
+
 .custom-underline {
 	position: relative;
 	transition: color 0.3s ease;
