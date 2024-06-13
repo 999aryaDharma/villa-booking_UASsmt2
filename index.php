@@ -1,37 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Pemuda Inguh Villa</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<link href="dist/output.css" rel="stylesheet" />
-		<link href="src/input.css" rel="stylesheet" />
-		<style></style>
-	</head>
-	<body class="m-0 p-0">
-		<header>
-			<nav class="fixed top-0 left-0 w-full flex justify-between px-5 py-2 items-center border-b-1 border-transparent text-white nav-blur z-50">
-				<div>
-					<a href="#"><img src="images/logo.png" alt="Logo" class="h-12 bg-slate-200 px-2 rounded-md" /></a>
-				</div>
-				<div>
-					<ul class="flex gap-10 text-xl">
-						<li><a href="#room" class="custom-underline">Villas</a></li>
-						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-						<li><a href="#" class="custom-underline">Contact & Booking</a></li>
-						<li><a href="#" class="text-white bg-green-800 hover:bg-green-950 px-4 py-1.5 rounded-md">Sign in</a></li>
-					</ul>
-				</div>
-			</nav>
-			<div class="bg-cover bg-fixed bg-no-repeat bg-center min-h-screen nav-overlay" style="background-image: url('images/relax-area-resort.jpg')">
-				<div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-25">
-					<h1 class="text-4xl font-bold mb-4">Welcome to Our Villas</h1>
-					<p class="mb-4 text-xl mt-0"><i>Experience the best stay with us</i></p>
-					<a href="#" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto">Book Now</a>
-				</div>
-			</div>
-		</header>
+<?php
+	include_once "include/header.php";
+	require "function.php";
+
+	if (isset($_GET['login'])) {
+    $_SESSION['loggedIn'] = true;
+    $_SESSION['username'] = 'nama_customer'; // Gantilah dengan mekanisme login yang sesungguhnya
+    header("Location: index.php");
+    exit();
+	}
+
+	if (isset($_GET['logout'])) {
+		logoutUser();
+	}
+
+	$loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
+	$username = $loggedIn ? $_SESSION['username'] : '';
+?>
 		<main class="">
 			<!-- SECTION ABOUT -->
 			<div class="flex items-center p-5">
@@ -169,40 +153,36 @@
 					</div>
 				</div>
 			</div>
-			<!-- END Fasilitas 'what we offer' -->
+			<script>
+        // Mengambil status login dan username dari PHP
+        const loggedIn = <?php echo json_encode($loggedIn); ?>;
+        const username = <?php echo json_encode($username); ?>;
 
-			<!-- FOOTER -->
-			<div class="bg-green-800 text-white p-6 px-40">
-				<div class="max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-8">
-					<div>
-						<h3 class="font-bold mb-2 text-xl">Pemuda Inguh Villa</h3>
-						<p>Welcome to Pemuda Inguh Villas</p>
-					</div>
-					<div class="text-xl">
-						<h3 class="font-bold mb-2">Services</h3>
-						<ul>
-							<li class="mt-2">Map Direction</li>
-							<li class="mt-2">Accomodation Services</li>
-							<li class="mt-2">Great Experiences</li>
-							<li class="mt-2">Perfect Central Location</li>
-						</ul>
-					</div>
-					<div>
-						<h3 class="font-bold mb-2 text-xl">Follow Us</h3>
-						<div class="flex space-x-2">
-							<img src="https://placehold.co/24x24" alt="Instagram" class="w-6 h-6" />
-							<img src="https://placehold.co/24x24" alt="Twitter" class="w-6 h-6" />
-							<img src="https://placehold.co/24x24" alt="YouTube" class="w-6 h-6" />
-						</div>
-					</div>
-					<div class="text-xl">
-						<h3 class="font-bold mb-2">Visit Us</h3>
-						<p class="italic">Our Location</p>
-					</div>
-				</div>
-			</div>
-			<!-- END FOOTER -->
-		</main>
-		<script src="js/main.js"></script>
-	</body>
-</html>
+        // Fungsi untuk menangani autentikasi
+        function handleAuth() {
+            if (loggedIn) {
+                window.location.href = '?logout';
+            } else {
+                window.location.href = '?login';
+            }
+        }
+
+        // Fungsi untuk mengupdate tampilan tombol berdasarkan status login
+        function updateAuthButton() {
+            const authButton = document.getElementById('authButton');
+            if (loggedIn) {
+                authButton.innerText = `Logout`;
+                authButton.onclick = () => window.location.href = '?logout';
+            } else {
+                authButton.innerText = 'Sign In';
+                authButton.onclick = () => window.location.href = '?login';
+            }
+        }
+
+        // Panggil fungsi untuk mengupdate tampilan saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', updateAuthButton);
+    </script>
+			<!-- END Fasilitas 'what we offer' -->
+<?php
+include_once "include/footer.php";
+?>
