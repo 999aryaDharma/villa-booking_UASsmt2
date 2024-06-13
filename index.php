@@ -1,6 +1,6 @@
 <?php
 	include_once "include/header.php";
-	require "function.php";
+	// require "function.php";
 
 	if (isset($_GET['login'])) {
     $_SESSION['loggedIn'] = true;
