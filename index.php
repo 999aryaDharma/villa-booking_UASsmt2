@@ -1,20 +1,7 @@
 <?php
-	include_once "include/header.php";
-	require "function.php";
-
-	if (isset($_GET['login'])) {
-    $_SESSION['loggedIn'] = true;
-    $_SESSION['username'] = 'nama_customer'; // Gantilah dengan mekanisme login yang sesungguhnya
-    header("Location: index.php");
-    exit();
-	}
-
-	if (isset($_GET['logout'])) {
-		logoutUser();
-	}
-
-	$loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
-	$username = $loggedIn ? $_SESSION['username'] : '';
+	include "include/header.php";
+	// require "function.php";
+	
 ?>
 		<main class="">
 			<!-- SECTION ABOUT -->
@@ -85,10 +72,10 @@
 					<div class="carousel-item active">
 						<img class="w-full h-full object-cover" src="images/room1.jpg" alt="Slide 1" />
 					</div>
-					<div class="carousel-item next">
+					<div class="carousel-item">
 						<img class="w-full h-full object-cover" src="images/room2.jpg" alt="Slide 2" />
 					</div>
-					<div class="carousel-item next">
+					<div class="carousel-item">
 						<img class="w-full h-full object-cover" src="images/room3.jpg" alt="Slide 3" />
 					</div>
 				</div>
@@ -153,35 +140,7 @@
 					</div>
 				</div>
 			</div>
-			<script>
-        // Mengambil status login dan username dari PHP
-        const loggedIn = <?php echo json_encode($loggedIn); ?>;
-        const username = <?php echo json_encode($username); ?>;
-
-        // Fungsi untuk menangani autentikasi
-        function handleAuth() {
-            if (loggedIn) {
-                window.location.href = '?logout';
-            } else {
-                window.location.href = '?login';
-            }
-        }
-
-        // Fungsi untuk mengupdate tampilan tombol berdasarkan status login
-        function updateAuthButton() {
-            const authButton = document.getElementById('authButton');
-            if (loggedIn) {
-                authButton.innerText = `Logout`;
-                authButton.onclick = () => window.location.href = '?logout';
-            } else {
-                authButton.innerText = 'Sign In';
-                authButton.onclick = () => window.location.href = '?login';
-            }
-        }
-
-        // Panggil fungsi untuk mengupdate tampilan saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', updateAuthButton);
-    </script>
+			<script src="js/main.js"></script>
 			<!-- END Fasilitas 'what we offer' -->
 <?php
 include_once "include/footer.php";

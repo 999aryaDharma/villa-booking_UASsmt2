@@ -2,6 +2,8 @@
 
 require "config.php";
 
+$auth_user = null;
+
 function connect(){
   $conn = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
   if($conn->connect_errno != 0){
@@ -11,7 +13,7 @@ function connect(){
     file_put_contents("db-log.txt", $message, FILE_APPEND);
     return false;
   } else {
-    return $conn;
+      return $conn;
   }
 };
 
@@ -37,7 +39,6 @@ function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $
     }
   }
 
-
   #get email
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     return "Email is not valid";
@@ -51,7 +52,6 @@ function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $
   if ($data != NULL) {
     return "Email already exists, please use a different email";
   }
-
 
   #get username
   if (strlen($nama_customer) > 20) {
@@ -94,9 +94,9 @@ function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $
     if ($stmt->affected_rows != 1) {
       return "An error occurred while inserting into users. Please try again.";
     } else {
-      return "Success";
+      header("location: login.php");
     }
-  header("location: ../index.php");
+    exit();
   }
 };
 
@@ -122,46 +122,70 @@ function loginUser($nama_customer, $password) {
     if ($data == NULL) {
         return "Wrong Username or Password!";
     }
-
+    $stmt->close();
+    
     if (password_verify($password, $data['password']) == FALSE) {
         return "Wrong Username or Password!";
     }
 
     // Set session variables setelah login berhasil
-    $_SESSION['id'] = $data['id'];
-    $_SESSION['username'] = $data['username'];
-    $_SESSION['role'] = $data['role'];
+    $_SESSION['auth_id'] = $data['id'];
 
     // Mengarahkan pengguna berdasarkan peran mereka
-    if ($_SESSION['role'] == 1) {
-        header("Location: ../admin/admin-page.php");
+    if ($data['role'] == 1) {
+        header("Location: /admin/admin-page.php");
     } else {
-        header("Location: ../index.php");
+        header("Location: /index.php");
     }
     exit();
+
 }
 
-// Proses form login saat formulir disubmit
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nama_customer = $_POST["username"];
-    $password = $_POST["password"];
-    $error = loginUser($nama_customer, $password);
-    if ($error) {
-        echo $error; // Tampilkan pesan error jika ada
-    }
-// } else {
-//     header("Location: login.php");
-//     exit();
-};
+
 
 function logoutUser(){
-  session_destroy();
-  header("location: auth/login.php");
+  unset($_SESSION['auth_id']);
+  $auth_user = null;
+  header("location: /index.php");
   exit();
 };
 
+function getUserById($id){
+  $conn = connect();
+  $stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
+  $stmt->bind_param("i", $id);
+  $stmt->execute();
+  $stmt->bind_result($username);
+  $stmt->fetch();
+  $stmt->close();
+
+  return $username;
+
+  // $conn = connect();
+  // $sql = "SELECT * FROM users WHERE id = $id LIMIT 1";
+  // $result = mysqli_query($sql);
+  // if (mysqli_num_rows($result) > 0) {
+  //   while ($row = mysqli_fetch_assoc($result)) {
+  //     return $row;
+  //   }
+  // } 
+  // if (is_null($result)) {
+  //   return null;
+  // }
+};
+// if (is_null($id)) {
+//   return null;
+// }
+//   return [
+//     "id" => 1,
+//     "username" => "arya",
+//     "role" => 2
+//   ];
+
+
 
 ?>
+
 
 
 
