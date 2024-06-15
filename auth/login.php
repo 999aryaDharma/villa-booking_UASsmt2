@@ -1,18 +1,19 @@
 <?php
     require "../function.php";
     // Memeriksa jika pengguna sudah login, langsung arahkan ke halaman yang sesuai
+    // Proses form login saat formulir disubmit
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $nama_customer = $_POST["username"];
+        $password = $_POST["password"];
+        $error = loginUser($nama_customer, $password);
+        if ($error) {
+            echo $error; // Tampilkan pesan error jika ada
+        }
+    }
 
 	if (isset($_POST['submit'])) {
-        loginAdmin($_POST['username'], $_POST['password'], $_POST[$valid_users]);
+        // loginAdmin($_POST['username'], $_POST['password'], $_POST[$valid_users]);
 		$response = loginUser($_POST['username'], $_POST['password']);
-        if (isset($_SESSION['username'])) {
-            if ($_SESSION{'users'}['role'] == 1) {
-                header("location: admin-page.php");
-            } else {
-                header("location: ../index.php");
-            }
-            exit(); // Penting untuk keluar setelah mengarahkan header
-        }
 	}
    
 ?>
