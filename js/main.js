@@ -8,79 +8,73 @@ window.addEventListener("scroll", function () {
 	}
 });
 
-const items = document.querySelectorAll(".carousel-item");
-let index = 0;
-setInterval(() => {
-	items[index].classList.remove("active");
-	index = (index + 1) % items.length;
-	items[index].classList.add("active");
-}, 3000);
+document.addEventListener("DOMContentLoaded", function () {
+	const items = document.querySelectorAll(".carousel-item");
+	let index = 0;
 
-document.getElementById("hamburger-button").addEventListener("click", function () {
-	var mobileMenu = document.getElementById("mobile-menu");
-	mobileMenu.classList.toggle("hidden");
+	setInterval(() => {
+		items[index].classList.remove("active");
+		index = (index + 1) % items.length;
+		items[index].classList.add("active");
+	}, 3000);
 });
 
-
-
 // Fungsi untuk mendapatkan parameter dari URL
-function getURLParameter(name) {
-    return new URLSearchParams(window.location.search).get(name);
-}
+// function getURLParameter(name) {
+//     return new URLSearchParams(window.location.search).get(name);
+// }
 
 // Fungsi untuk mengupdate tampilan tombol berdasarkan status login
-function updateAuthButton() {
-    const authButton = document.getElementById('authButton');
-    const isLoggedIn = getURLParameter('loggedIn');
-    
-    if (isLoggedIn === 'true') {
-        const username = getURLParameter('username');
-        authButton.innerText = `Logout`;
-        authButton.onclick = logoutUser; // Mengubah fungsi tombol menjadi logout
-    } else {
-        authButton.innerText = 'Sign In';
-        authButton.onclick = loginUser; // Mengubah fungsi tombol menjadi login
-    }
-}
+// function updateAuthButton() {
+//     const authButton = document.getElementById('authButton');
+//     const isLoggedIn = getURLParameter('loggedIn');
+
+//     if (isLoggedIn === 'true') {
+//         const username = getURLParameter('username');
+//         authButton.innerText = `Logout`;
+//         authButton.onclick = logoutUser; // Mengubah fungsi tombol menjadi logout
+//     } else {
+//         authButton.innerText = 'Sign In';
+//         authButton.onclick = loginUser; // Mengubah fungsi tombol menjadi login
+//     }
+// }
 
 // Fungsi untuk login
-function loginUser() {
-    const username = 'username'; // Gantilah dengan mekanisme login yang sesungguhnya
-    window.location.search = `?loggedIn=true&username=${username}`;
-}
+// function loginUser() {
+//     const username = 'username'; // Gantilah dengan mekanisme login yang sesungguhnya
+//     window.location.search = `?loggedIn=true&username=${username}`;
+// }
 
-// Fungsi untuk logout
-function logoutUser() {
-    window.location.search = `?loggedIn=false`;
-}
+// // Fungsi untuk logout
+// function logoutUser() {
+//     window.location.search = `?loggedIn=false`;
+// }
 
 // Panggil fungsi untuk mengupdate tampilan saat halaman dimuat
 
 // Fungsi untuk menangani autentikasi
-function handleAuth() {
-    if (loggedIn) {
-        window.location.href = '?logout';
-    } else {
-        window.location.href = '?login';
-    }
-}
+// function handleAuth() {
+//     if (loggedIn) {
+//         window.location.href = '?logout';
+//     } else {
+//         window.location.href = '?login';
+//     }
+// }
 
 // Fungsi untuk mengupdate tampilan tombol berdasarkan status login
-function updateAuthButton() {
-    const authButton = document.getElementById('authButton');
-    if (loggedIn) {
-        authButton.innerText = `Logout`;
-        authButton.onclick = () => window.location.href = '?logout';
-    } else {
-        authButton.innerText = 'Sign In';
-        authButton.onclick = () => window.location.href = '?login';
-    }
-}
+// function updateAuthButton() {
+//     const authButton = document.getElementById('authButton');
+//     if (loggedIn) {
+//         authButton.innerText = `Logout`;
+//         authButton.onclick = () => window.location.href = '?logout';
+//     } else {
+//         authButton.innerText = 'Sign In';
+//         authButton.onclick = () => window.location.href = '?login';
+//     }
+// }
 
-// Panggil fungsi untuk mengupdate tampilan saat halaman dimuat
-document.addEventListener('DOMContentLoaded', updateAuthButton);
-
-
+// // Panggil fungsi untuk mengupdate tampilan saat halaman dimuat
+// document.addEventListener('DOMContentLoaded', updateAuthButton);
 
 // // Fungsi untuk mengupdate tampilan tombol berdasarkan status login
 // function updateLoginStatus() {
