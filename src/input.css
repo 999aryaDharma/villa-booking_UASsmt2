@@ -70,3 +70,10 @@
 .carousel-item.active {
 	opacity: 1;
 }
+
+
+.custom-grid-colums{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	gap: 1.5rem;
+}
