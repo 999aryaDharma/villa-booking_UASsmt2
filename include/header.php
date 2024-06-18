@@ -28,9 +28,9 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 						<li><a href="auth/register.php" class="custom-underline">Register</a></li>
 						<li>
 						<?php if (!is_null($auth_user)) : ?>
-							<a href="auth/logout.php" class="custom-underline">Log Out</a>
+							<a href="/auth/logout.php" class="custom-underline">Log Out</a>
 						<?php else : ?>
-							<a href="auth/login.php" class="custom-underline">Sign In</a>
+							<a href="/auth/login.php" class="custom-underline">Sign In</a>
 						<?php endif ?>
 						
 						</li>
