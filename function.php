@@ -134,7 +134,7 @@ function loginUser($nama_customer, $password) {
 
     // Mengarahkan pengguna berdasarkan peran mereka
     if ($data['role'] == 1) {
-        header("Location: /admin/admin-page.php");
+        header("Location: /admin-panel/admins/admin-page.php");
     } else {
         header("Location: /index.php");
     }

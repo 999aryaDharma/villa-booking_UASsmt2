@@ -1,5 +1,5 @@
 <?php
-  require "../function.php";
+  require "../../function.php";
 
   // Memeriksa apakah pengguna sudah login
   if (!isset($_SESSION['auth_id'])) {
@@ -32,6 +32,6 @@
   <title>Admin</title>
 </head>
 <body>
-  
+  <h1>Krisna Pepek</h1>
 </body>
 </html>

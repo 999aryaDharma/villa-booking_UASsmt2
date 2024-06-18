@@ -1,26 +1,7 @@
 <?php
-<<<<<<< HEAD
 	include "include/header.php";
 	// require "function.php";
 	
-=======
-	include_once "include/header.php";
-	// require "function.php";
-
-	if (isset($_GET['login'])) {
-    $_SESSION['loggedIn'] = true;
-    $_SESSION['username'] = 'nama_customer'; // Gantilah dengan mekanisme login yang sesungguhnya
-    header("Location: index.php");
-    exit();
-	}
-
-	if (isset($_GET['logout'])) {
-		logoutUser();
-	}
-
-	$loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
-	$username = $loggedIn ? $_SESSION['username'] : '';
->>>>>>> 9062fb1bed451f27c07337274c908033cfc93f5c
 ?>
 		<main class="">
 			<!-- SECTION ABOUT -->
