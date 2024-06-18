@@ -130,6 +130,7 @@ function loginUser($nama_customer, $password) {
 
     // Set session variables setelah login berhasil
     $_SESSION['auth_id'] = $data['id'];
+    $_SESSION['role'] = $data['role'];
 
     // Mengarahkan pengguna berdasarkan peran mereka
     if ($data['role'] == 1) {
