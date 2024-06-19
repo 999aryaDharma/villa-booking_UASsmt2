@@ -1,5 +1,5 @@
 <?php
-  require "../../function.php";
+  // require "../../function.php";
   include_once "../layout/header.php";
 
   // Memeriksa apakah pengguna sudah login
