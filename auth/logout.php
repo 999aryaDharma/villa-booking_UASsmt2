@@ -1,8 +1,6 @@
 <?php
+require_once "../function.php";
 session_start();
-
-unset($_SESSION['auth_id']);
-
-header("Location: /login.php");
-die();
-
+session_unset(); // Menghapus semua variabel sesi
+session_destroy();
+logoutUser();

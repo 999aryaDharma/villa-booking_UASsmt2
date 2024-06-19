@@ -1,10 +1,8 @@
 <?php
     require "../function.php";
-    require "../koneksi.php";
     // var_dump($_POST);
     if(isset($_POST['submit'])) {
       $response = registerUser($_POST['nama_customer'], $_POST['alamat'], $_POST['email'], $_POST['no_telepon'], $_POST['password'], $_POST['confirm-password']);
-      header("location: login.php");
     }
     
 ?>
@@ -76,7 +74,7 @@
                             }
                         ?>
                         <div>
-                            <button type="submit" class="w-full text-sm font-medium rounded-md px-3 py-2 custom-button" name="submit" href="login.php">Sign Up</button>
+                            <button type="submit" class="w-full text-sm font-medium rounded-md px-3 py-2 custom-button" name="submit" value="register">Sign Up</button>
                         </div>
                         <div class="text-center">
                             <p class="text-slate-500 text-sm mt-3">Already have an account? <a href="login.php" class="custom-color1 hover:text-emerald-400 text-sm">Login Here</a></p>
