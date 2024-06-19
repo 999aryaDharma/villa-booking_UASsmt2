@@ -21,6 +21,8 @@ if (isset($_GET['logout'])) {
 
 $loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
 $username = $loggedIn ? $_SESSION['username'] : '';
+
+$auth_user = getUserById($_SESSION['auth_id'] ?? null);
 ?>
 
 <!DOCTYPE html>
@@ -39,19 +41,27 @@ $username = $loggedIn ? $_SESSION['username'] : '';
 <body class="m-0 p-0 font-serif">
     <!-- Header -->
     <header class="">
-        <nav class=" fixed top-0 left-0 w-full flex justify-between px-5 py-2 items-center border-b-1 border-transparent text-white nav-blur z-50">
-            <div>
-                <a href="#"><img src="images/logo.png" alt="Logo" class="h-12 bg-slate-200 px-2 rounded-md" /></a>
-            </div>
-            <div>
-                <ul class="flex gap-10 text-xl">
-                    <li><a href="#room" class="custom-underline">Villas</a></li>
-                    <li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-                    <li><a href="#" class="custom-underline">Contact & Booking</a></li>
-                    <li><a id="authButton" onclick="handleAuth()"><?php echo $loggedIn ? 'Logout' : 'Sign In'; ?></a></li>
-                </ul>
-            </div>
-        </nav>
+        <nav class="fixed top-0 left-0 w-full flex justify-between px-5 py-2 items-center border-b-1 border-transparent text-white nav-blur z-50">
+				<div>
+					<a href="index.php"><img src="images/logo.png" alt="Logo" class="h-12 bg-slate-200 px-2 rounded-md" /></a>
+				</div>
+				<div>
+					<ul class="flex gap-10 text-xl">
+						<li><a href="#room" class="custom-underline">Villas</a></li>
+						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
+						<li><a href="#" class="custom-underline">Contact & Booking</a></li>
+						<li><a href="auth/register.php" class="custom-underline">Register</a></li>
+						<li>
+						<?php if (!is_null($auth_user)) : ?>
+							<a href="/auth/logout.php" class="custom-underline">Log Out</a>
+						<?php else : ?>
+							<a href="/auth/login.php" class="custom-underline">Sign In</a>
+						<?php endif ?>
+						
+						</li>
+					</ul>
+				</div>
+			</nav>
         <!-- Header End -->
 
         <!-- About Us -->

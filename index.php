@@ -10,7 +10,7 @@
 				<div class="md:w-1/2 px-20">
 					<h2 class="text-3xl font-bold mb-2">About Us</h2>
 					<p class="my-4 text-lg">Villa kami menawarkan suasana yang tenang dan pemandangan yang indah, yang bisa membuat anda bersantai bersama keluarga, teman-teman, atau pasangan</p>
-					<a href="#" class="inline-block custom-button px-6 py-2 rounded-md text-center">Read More</a>
+					<a href="about-us.php" class="inline-block custom-button px-6 py-2 rounded-md text-center">Read More</a>
 				</div>
 				<div class="md:w-1/2 max-w-xl p-14">
 					<img src="images/swimming-pool-resort.jpg" alt="Villa Image" class="max-w-xl min-h-60 rounded bg-cover" />
@@ -40,12 +40,12 @@
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal">
 									<h3 class="text-lg font-bold">Room 1's details</h3>
 									<p class="py-4">ROOM 1.</p>
-									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
-									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
-									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">kontol.</p>
+									<p class="py-4">kontol.</p>
+									<p class="py-4">kontol.</p>
 								</label>
 							</label>
 						</div>
@@ -71,7 +71,7 @@
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal1">
 									<h3 class="text-lg font-bold">Room 2's details</h3>
 									<p class="py-4">ROOM 2.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
@@ -102,7 +102,7 @@
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal2">
 									<h3 class="text-lg font-bold">Room 3's details</h3>
 									<p class="py-4">ROOM 3.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
@@ -133,7 +133,7 @@
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal3">
 									<h3 class="text-lg font-bold">Room 4's details</h3>
 									<p class="py-4">ROOM 4.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>

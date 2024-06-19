@@ -134,15 +134,13 @@ function loginUser($nama_customer, $password) {
 
     // Mengarahkan pengguna berdasarkan peran mereka
     if ($data['role'] == 1) {
-        header("Location: /admin-panel/admins/admin-page.php");
+        header("Location: /admin-panel/style/index.php");
     } else {
         header("Location: /index.php");
     }
     exit();
 
 }
-
-
 
 function logoutUser(){
   unset($_SESSION['auth_id']);
