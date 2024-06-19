@@ -1,6 +1,7 @@
 <?php
 	include "include/header.php";
 	// require "function.php";
+
 	
 ?>
 		<main class="">
@@ -61,11 +62,11 @@
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
 						<div>
 							<div>
-								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+								<label for="tw-modal1" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
 							</div>
 							<!-- ini adalah hidden toggle -->
-							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
-							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							<input type="checkbox" id="tw-modal1" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal1" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
@@ -92,11 +93,11 @@
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
 						<div>
 							<div>
-								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+								<label for="tw-modal2" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
 							</div>
 							<!-- ini adalah hidden toggle -->
-							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
-							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							<input type="checkbox" id="tw-modal2" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal2" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
@@ -123,11 +124,11 @@
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
 						<div>
 							<div>
-								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+								<label for="tw-modal3" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
 							</div>
 							<!-- ini adalah hidden toggle -->
-							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
-							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							<input type="checkbox" id="tw-modal3" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal3" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">

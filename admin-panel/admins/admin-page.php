@@ -1,5 +1,5 @@
 <?php
-  require "../../function.php";
+require "../../function.php";
 
   // Memeriksa apakah pengguna sudah login
   if (!isset($_SESSION['auth_id'])) {
