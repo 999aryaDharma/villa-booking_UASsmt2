@@ -1,8 +1,56 @@
 <?php
-	include "include/header.php";
-	// require "function.php";
-	
+require_once "koneksi.php";
+session_start();
+if (!isset($_SESSION['auth_id'])) {
+    header("Location:/login.php");
+};
+
+$query = "SELECT username FROM belajar_login WHERE id = {$_SESSION['auth_id']}";
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $username = $row['username'];
+} else {
+    $username = "Tidak ditemukan"; 
+};
+
 ?>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pemuda Inguh Villa</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link href="dist/output.css" rel="stylesheet" />
+		<link href="src/input.css" rel="stylesheet" />
+		<style></style>
+	</head>
+	<body class="m-0 p-0">
+
+		<header>
+			<nav class="fixed top-0 left-0 w-full flex justify-between px-5 py-2 items-center border-b-1 border-transparent text-white nav-blur z-50">
+				<div>
+					<a href="#"><img src="images/logo.png" alt="Logo" class="h-12 bg-slate-200 px-2 rounded-md bg-transparent" /></a>
+				</div>
+				<div>
+					<ul class="flex gap-10 text-xl">
+						<li><a href="#room" class="custom-underline">Villas</a></li>
+						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
+						<li><a href="#" class="custom-underline">Contact & Booking</a></li>
+						<li><a href="logout.php" class="text-white bg-red-800 hover:bg-red-950 px-4 py-1.5 rounded-md">Log-out</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="bg-cover bg-fixed bg-no-repeat bg-center min-h-screen nav-overlay" style="background-image: url('images/relax-area-resort.jpg')">
+				<div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-25">
+					<h1 class="text-4xl font-bold mb-4">Welcome to Our Villas</h1>
+					<p class="mb-4 text-xl mt-0"><i>Experience the best stay with us</i></p>
+					<a href="#" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto">Book Now</a>
+				</div>
+			</div>
+		</header>
 		<main class="">
 			<!-- SECTION ABOUT -->
 			<div class="flex items-center p-5">
@@ -30,7 +78,7 @@
 						<!-- start -->
 						<div>
 							<div>
-								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+								<label for="tw-modal" class="cursor-pointer rounded bg-black px-8 py-4 text-white active:bg-slate-400">View details</label>
 							</div>
 							<!-- ini adalah hidden toggle -->
 							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
@@ -39,16 +87,14 @@
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
 									<h3 class="text-lg font-bold">Room 1's details</h3>
-									<p class="py-4">ROOM 1.</p>
-									<p class="py-4">kontol.</p>
-									<p class="py-4">kontol.</p>
-									<p class="py-4">kontol.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 								</label>
 							</label>
 						</div>
 						<!-- end -->
+
 					</div>
 				</div>
 				<div class="max-w-2xl dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
@@ -59,20 +105,21 @@
 						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
 						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
+						<!-- start -->
 						<div>
 							<div>
-								<label for="tw-modal1" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
 							</div>
 							<!-- ini adalah hidden toggle -->
-							<input type="checkbox" id="tw-modal1" class="peer fixed-appearance-none opacity-0">
-							<label for="tw-modal1" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal1">
-									<h3 class="text-lg font-bold">Room 2's details</h3>
-									<p class="py-4">ROOM 2.</p>
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">ROOM 1.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
@@ -90,20 +137,21 @@
 						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
 						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
+						<!-- start -->
 						<div>
 							<div>
-								<label for="tw-modal2" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
 							</div>
 							<!-- ini adalah hidden toggle -->
-							<input type="checkbox" id="tw-modal2" class="peer fixed-appearance-none opacity-0">
-							<label for="tw-modal2" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal2">
-									<h3 class="text-lg font-bold">Room 3's details</h3>
-									<p class="py-4">ROOM 3.</p>
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">ROOM 1.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
@@ -121,20 +169,21 @@
 						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
 						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
+						<!-- start -->
 						<div>
 							<div>
-								<label for="tw-modal3" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
 							</div>
 							<!-- ini adalah hidden toggle -->
-							<input type="checkbox" id="tw-modal3" class="peer fixed-appearance-none opacity-0">
-							<label for="tw-modal3" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal3">
-									<h3 class="text-lg font-bold">Room 4's details</h3>
-									<p class="py-4">ROOM 4.</p>
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">ROOM 1.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
@@ -153,10 +202,10 @@
 					<div class="carousel-item active">
 						<img class="w-full h-full object-cover" src="images/room1.jpg" alt="Slide 1" />
 					</div>
-					<div class="carousel-item">
+					<div class="carousel-item next">
 						<img class="w-full h-full object-cover" src="images/room2.jpg" alt="Slide 2" />
 					</div>
-					<div class="carousel-item">
+					<div class="carousel-item next">
 						<img class="w-full h-full object-cover" src="images/room3.jpg" alt="Slide 3" />
 					</div>
 				</div>
@@ -221,8 +270,40 @@
 					</div>
 				</div>
 			</div>
-			<script src="js/main.js"></script>
 			<!-- END Fasilitas 'what we offer' -->
-<?php
-include_once "include/footer.php";
-?>
+
+			<!-- FOOTER -->
+			<div class="bg-green-800 text-white p-6 px-40">
+				<div class="max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-8">
+					<div>
+						<h3 class="font-bold mb-2 text-xl">Pemuda Inguh Villa</h3>
+						<p>Welcome to Pemuda Inguh Villas</p>
+					</div>
+					<div class="text-xl">
+						<h3 class="font-bold mb-2">Services</h3>
+						<ul>
+							<li class="mt-2">Map Direction</li>
+							<li class="mt-2">Accomodation Services</li>
+							<li class="mt-2">Great Experiences</li>
+							<li class="mt-2">Perfect Central Location</li>
+						</ul>
+					</div>
+					<div>
+						<h3 class="font-bold mb-2 text-xl">Follow Us</h3>
+						<div class="flex space-x-2">
+							<img src="https://placehold.co/24x24" alt="Instagram" class="w-6 h-6" />
+							<img src="https://placehold.co/24x24" alt="Twitter" class="w-6 h-6" />
+							<img src="https://placehold.co/24x24" alt="YouTube" class="w-6 h-6" />
+						</div>
+					</div>
+					<div class="text-xl">
+						<h3 class="font-bold mb-2">Visit Us</h3>
+						<p class="italic">Our Location</p>
+					</div>
+				</div>
+			</div>
+			<!-- END FOOTER -->
+		</main>
+		<script src="js/main.js"></script>
+	</body>
+</html>
