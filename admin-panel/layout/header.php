@@ -1,4 +1,6 @@
 <?php
+require_once "../../function.php";
+$auth_user = getUserById($_SESSION['auth_id'] ?? null);
 require "../../function.php";
 
   // Memeriksa apakah pengguna sudah login
@@ -20,6 +22,7 @@ require "../../function.php";
   // Kode halaman admin di sini...
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
