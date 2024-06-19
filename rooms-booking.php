@@ -1,3 +1,14 @@
+<?php 
+require_once "function.php";
+if (!isset($_SESSION['auth_id'])) {
+    header("Location: /auth/register.php");
+    exit();
+} 
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>

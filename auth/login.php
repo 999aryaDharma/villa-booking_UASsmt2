@@ -1,5 +1,8 @@
 <?php
     require "../function.php";
+    if (isset($_SESSION['login'])) {
+        header("Location: index.php");
+    }
     // Memeriksa jika pengguna sudah login, langsung arahkan ke halaman yang sesuai
     // Proses form login saat formulir disubmit
     if ($_SERVER["REQUEST_METHOD"] === "POST") {

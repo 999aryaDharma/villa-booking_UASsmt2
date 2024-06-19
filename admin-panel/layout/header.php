@@ -1,6 +1,24 @@
 <?php
-require_once "../../function.php";
-$auth_user = getUserById($_SESSION['auth_id'] ?? null);
+require "../../function.php";
+
+  // Memeriksa apakah pengguna sudah login
+  if (!isset($_SESSION['auth_id'])) {
+    header("location: /auth/login.php");
+    exit();
+  }
+
+  if (!isset($_SESSION['role'])) {
+    echo "Access Denied. You do not have permission to access this page.";
+    exit();
+  }
+
+  // Memeriksa apakah pengguna memiliki peran admin
+  if ($_SESSION ['role'] !== 1) {
+    echo "Access Denied. You do not have permission to access this page.";
+    exit();
+  }
+  // Kode halaman admin di sini...
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,21 +56,17 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
                     </li>
                 <?php else : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Home
-                        <span class="sr-only">(current)</span>
-                        </a>
+                        <a class="nav-link" href="">Home</a>
                     </li>
                 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?= $auth_user ?>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Logout</a>
+                    <li class="nav-item dropdown float-left overflow-hidden">
+                        <a class="nav-link  dropdown-toggle flex" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?= $auth_user ?><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
+                        <div class="dropdown-menu hidden absolute bg-white p-2.5 shadow-xl border w-35" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item float-none text-black flex text-sm" href="../../auth/logout.php"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-logout"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" /></svg> Log Out</a>
+                        </div>
                     </li>
                 <?php endif; ?>   
-                    <li class="flex"><svg  class="pl-1" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 11l-3 3l-3 -3" /><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0 -18z" /></svg>
-                    </li>
                 </ul>
             </div>
         </nav>
