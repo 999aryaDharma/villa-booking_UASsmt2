@@ -75,7 +75,26 @@ if ($result) {
 						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
 						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
-						<a href="#" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View Details</a>
+						<!-- start -->
+						<div>
+							<div>
+								<label for="tw-modal" class="cursor-pointer rounded bg-black px-8 py-4 text-white active:bg-slate-400">View details</label>
+							</div>
+							<!-- ini adalah hidden toggle -->
+							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
+							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
+							peer-checked:[&>*]:scale-100 ">
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
+
 					</div>
 				</div>
 				<div class="max-w-2xl dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
@@ -86,7 +105,28 @@ if ($result) {
 						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
 						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
-						<a href="#" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View Details</a>
+						<!-- start -->
+						<div>
+							<div>
+								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+							</div>
+							<!-- ini adalah hidden toggle -->
+							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
+							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
+							peer-checked:[&>*]:scale-100 ">
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">ROOM 1.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
 					</div>
 				</div>
 				<div class="max-w-2xl dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
@@ -97,7 +137,28 @@ if ($result) {
 						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
 						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
-						<a href="#" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View Details</a>
+						<!-- start -->
+						<div>
+							<div>
+								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+							</div>
+							<!-- ini adalah hidden toggle -->
+							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
+							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
+							peer-checked:[&>*]:scale-100 ">
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">ROOM 1.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
 					</div>
 				</div>
 				<div class="max-w-2xl bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
@@ -108,7 +169,28 @@ if ($result) {
 						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
 						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
 						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
-						<a href="#" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View Details</a>
+						<!-- start -->
+						<div>
+							<div>
+								<label for="tw-modal" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+							</div>
+							<!-- ini adalah hidden toggle -->
+							<input type="checkbox" id="tw-modal" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
+							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
+							peer-checked:[&>*]:scale-100 ">
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">ROOM 1.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
 					</div>
 				</div>
 			</div>
