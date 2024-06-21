@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 require "../../function.php";
 
   // Memeriksa apakah pengguna sudah login
@@ -24,10 +23,6 @@ require "../../function.php";
   }
   // Kode halaman admin di sini...
 
-=======
-require_once "../../function.php";
-$auth_user = getUserById($_SESSION['auth_id'] ?? null);
->>>>>>> e080be2f030866b86ec82d400488bd35be56c155
 ?>
 
 <!DOCTYPE html>
