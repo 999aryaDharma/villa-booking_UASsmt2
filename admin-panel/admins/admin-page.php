@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 require "../../function.php";
 
   // // Memeriksa apakah pengguna sudah login
@@ -7,18 +6,6 @@ require "../../function.php";
   //   header("location: /auth/login.php");
   //   exit();
   // }
-=======
-  // require_once "function-admin.php";
-  include_once "../layout/header.php";
-  
-  $id = $_GET['id'];
-    
-  // Memeriksa apakah pengguna sudah login
-  if (!isset($_SESSION['auth_id'])) {
-    header("location: /auth/login.php");
-    exit();
-  }
->>>>>>> fitur-admin/create_update_delete
 
   // if (!isset($_SESSION['role'])) {
   //   echo "Access Denied. You do not have permission to access this page.";
