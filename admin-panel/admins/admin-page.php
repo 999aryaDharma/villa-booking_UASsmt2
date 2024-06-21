@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 require "../../function.php";
 
   // // Memeriksa apakah pengguna sudah login
@@ -6,6 +7,18 @@ require "../../function.php";
   //   header("location: /auth/login.php");
   //   exit();
   // }
+=======
+  // require_once "function-admin.php";
+  include_once "../layout/header.php";
+  
+  $id = $_GET['id'];
+    
+  // Memeriksa apakah pengguna sudah login
+  if (!isset($_SESSION['auth_id'])) {
+    header("location: /auth/login.php");
+    exit();
+  }
+>>>>>>> fitur-admin/create_update_delete
 
   // if (!isset($_SESSION['role'])) {
   //   echo "Access Denied. You do not have permission to access this page.";
@@ -40,16 +53,16 @@ require "../../function.php";
         </thead>
         <tbody>
           <?php if (!empty($rows)): ?>
-            <?php foreach ($rows as $admin) : ?>
+            <?php foreach ($rows as $admin => $value) : ?>
               <tr>
-                  <td class="border-2 border-inherit p-3 text-left"> <?= $admin->id ?> </td>
-                  <td class="border-2 border-inherit p-3"><?= $admin->username ?></td>
-                  <td class="border-2 border-inherit p-3"><?= $admin->email ?></td>
+                  <td class="border-2 border-inherit p-3 text-left"> <?= $value->id ?> </td>
+                  <td class="border-2 border-inherit p-3"><?= $value->username ?></td>
+                  <td class="border-2 border-inherit p-3"><?= $value->email ?></td>
                   <td class="border-2 border-inherit w-24">
-                    <a href="edit-admins.php?id=<?= htmlspecialchars($admin->id_customer) ?>" class="flex justify-center btn bg-yellow-400 hover:bg-orange-600 px-6 py-2 rounded-md text-center text-white">Edit</a>
+                    <a href="<?= "edit-admins.php?id={$value->id}" ?>" class="flex justify-center btn bg-yellow-400 hover:bg-orange-600 px-6 py-2 rounded-md text-center text-white">Edit</a>
                   </td>
                   <td class="border-2 border-inherit w-24">  
-                    <a href="delete-admins.php?id=<?= htmlspecialchars($admin->id_customer) ?>" class="flex justify-center btn bg-red-600 hover:bg-red-800 px-6 py-2 rounded-md text-center text-white ">Delete</a>
+                    <button type="submit" name="submit"><a href="<?= "delete-admins.php?id={$value->id}" ?>" class="flex justify-center btn bg-red-600 hover:bg-red-800 px-6 py-2 rounded-md text-center text-white ">Delete</a></button>
                   </td> 
               </tr>
             <?php endforeach ?>

@@ -1,5 +1,10 @@
 <?php
+<<<<<<< HEAD
 require "../../function.php";
+=======
+require_once "../../function.php";
+$auth_user = getUserById($_SESSION['auth_id'] ?? null);
+>>>>>>> fitur-admin/create_update_delete
 
   // Memeriksa apakah pengguna sudah login
   if (!isset($_SESSION['auth_id'])) {
