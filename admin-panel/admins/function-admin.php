@@ -17,52 +17,6 @@ function getAllData (){
   return $data;
 }
 
-// function editAdmin($data){
-//     $conn = connect();
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         // Ambil data dari POST
-//         $id = $data['id'];
-//         $username = $data['username'];
-//         $email = $data['email'];
-
-//         echo "ID yang diterima: " . ($id) . "<br>";
-
-//         // Validasi input untuk keamanan
-//         if (!is_numeric($id)) {
-//             die("ID tidak valid.");
-//         }
-
-//         if (empty($username) || empty($email)) {
-//             die("Username dan email tidak boleh kosong.");
-//         }
-
-//         // Escape string untuk mencegah SQL injection
-//         $id = mysqli_real_escape_string($conn, $id);
-//         $username = mysqli_real_escape_string($conn, $username);
-//         $email = mysqli_real_escape_string($conn, $email);
-
-//         // Query untuk mengupdate data
-//         $sql = "UPDATE users 
-//                 JOIN customer ON users.id_customer = customer.id_customer
-//                 SET users.username = '$username', 
-//                     customer.email = '$email',
-//                     users.updated_at = NOW()
-//                 WHERE users.id = '$id'";
-
-//         // Debugging: Tampilkan query yang dihasilkan
-//         echo "Generated SQL query: $sql<br>";
-
-//         // Eksekusi query update
-//         if (mysqli_query($conn, $sql)) {
-//             return mysqli_affected_rows($conn);
-//         } else {
-//             echo "Error: " . mysqli_error($conn);
-//             return 0;
-//         }
-//     }
-//     return 0;
-// }
-
 function hapusAdmin($conn, $id) {
     $conn = connect();
     // Lakukan query untuk menghapus data dengan ID tertentu
@@ -109,11 +63,7 @@ function editAdmin($data){
   $id = $data['id'];
   $username = $data['username'];
   $email = $data['email'];
-  // // Ambil data dari formulir
-  // $id = $_POST['id'];
-  // $username = $_POST['username'];
-  // $email = $_POST['email'];
-  
+
   // Query untuk mengupdate data
   $sql = "UPDATE users 
           JOIN customer ON users.id_customer = customer.id_customer
@@ -126,4 +76,5 @@ function editAdmin($data){
 
     return mysqli_affected_rows($conn);
   }
+  
 ?>
