@@ -1,11 +1,13 @@
 <?php
 include_once "../layout/header.php";
 
-  // // Memeriksa apakah pengguna sudah login
-  // if (!isset($_SESSION['auth_id'])) {
-  //   header("location: /auth/login.php");
-  //   exit();
-  // }
+require "../../function.php";
+
+  // Memeriksa apakah pengguna sudah login
+  if (!isset($_SESSION['auth_id'])) {
+    header("location: /auth/login.php");
+    exit();
+  }
 
   // if (!isset($_SESSION['role'])) {
   //   echo "Access Denied. You do not have permission to access this page.";

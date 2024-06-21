@@ -1,5 +1,5 @@
 <?php
-  include "../layout/header.php";
+require "../../function.php";
 
   // // Memeriksa apakah pengguna sudah login
   // if (!isset($_SESSION['auth_id'])) {
@@ -12,33 +12,16 @@
   //   exit();
   // }
 
-  // // Memeriksa apakah pengguna memiliki peran admin
-  // if ($_SESSION ['role'] !== 1) {
-  //   echo "Access Denied. You do not have permission to access this page.";
-  //   exit();
-  // }
-  
-  // Asumsikan $conn adalah objek koneksi mysqli yang sudah terhubung
-  $conn = connect();
-  // Buat query
-  $query = "SELECT users.username, customer.email, users.id 
-            FROM users 
-            JOIN customer ON users.id_customer = customer.id_customer
-            WHERE users.role = 1 ";
-
-  // Eksekusi query
-  $result = $conn->query($query);
-
-  // Periksa apakah ada hasil
-  $rows = [];
-  if ($result && $result->num_rows > 0) {
-      // Ambil semua baris hasil query sebagai objek
-      while ($row = $result->fetch_object()) {
-          $rows[] = $row;
-      }
+  // Memeriksa apakah pengguna memiliki peran admin
+  if ($_SESSION ['role'] !== 1) {
+    echo "Access Denied. You do not have permission to access this page.";
+    exit();
   }
-?>
+  // Kode halaman admin di sini...
 
+  include_once "../layout/header.php";
+
+?>
 
 <main class="pl-56 pt-24 pr-9">
 
