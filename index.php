@@ -1,7 +1,7 @@
 <?php
 	include "include/header.php";
 	// require "function.php";
-
+	
 	
 ?>
 		<main class="">
@@ -38,14 +38,14 @@
 							<label for="tw-modal" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
-							peer-checked:[&>*]:scale-100 ">
+							peer-checked:[&>*]:scale-100 z-50">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
 									<h3 class="text-lg font-bold">Room 1's details</h3>
 									<p class="py-4">ROOM 1.</p>
-									<p class="py-4">kontol.</p>
-									<p class="py-4">kontol.</p>
-									<p class="py-4">kontol.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
 								</label>
 							</label>
 						</div>
@@ -69,9 +69,9 @@
 							<label for="tw-modal1" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
-							peer-checked:[&>*]:scale-100 ">
+							peer-checked:[&>*]:scale-100 z-50">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal1">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
 									<h3 class="text-lg font-bold">Room 2's details</h3>
 									<p class="py-4">ROOM 2.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
@@ -100,9 +100,9 @@
 							<label for="tw-modal2" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
-							peer-checked:[&>*]:scale-100 ">
+							peer-checked:[&>*]:scale-100 z-50">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal2">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
 									<h3 class="text-lg font-bold">Room 3's details</h3>
 									<p class="py-4">ROOM 3.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
@@ -131,9 +131,9 @@
 							<label for="tw-modal3" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
-							peer-checked:[&>*]:scale-100 ">
+							peer-checked:[&>*]:scale-100 z-50">
 								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
-								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal3">
+								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="">
 									<h3 class="text-lg font-bold">Room 4's details</h3>
 									<p class="py-4">ROOM 4.</p>
 									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>

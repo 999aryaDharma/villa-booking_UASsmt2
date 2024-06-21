@@ -1,6 +1,23 @@
 <?php
 require_once "function.php";
 $auth_user = getUserById($_SESSION['auth_id'] ?? null);
+
+//   // Memeriksa apakah pengguna sudah login
+//   if (!isset($_SESSION['auth_id'])) {
+//     header("location: /auth/login.php");
+//     exit();
+//   }
+
+//   if (!isset($_SESSION['role'])) {
+//     echo "Access Denied. You do not have permission to access this page.";
+//     exit();
+//   }
+
+//   // Memeriksa apakah pengguna memiliki peran admin
+//   if ($_SESSION ['role'] !== 1) {
+//     echo "Access Denied. You do not have permission to access this page.";
+//     exit();
+//   }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +41,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 					<ul class="flex gap-10 text-xl">
 						<li><a href="#room" class="custom-underline">Villas</a></li>
 						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-						<li><a href="#" class="custom-underline">Contact & Booking</a></li>
+						<li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
 						<li><a href="auth/register.php" class="custom-underline">Register</a></li>
 						<li>
 						<?php if (!is_null($auth_user)) : ?>
