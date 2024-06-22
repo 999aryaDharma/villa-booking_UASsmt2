@@ -51,7 +51,6 @@
         </div>
         <div>
                 <?php
-                    $conn = connect();
                     $sql = "SELECT users.username, customer.email, users.id
                             FROM users 
                             JOIN customer ON customer.id_customer = users.id_customer

@@ -93,7 +93,7 @@ function editAdmin($data){
   }
   
 
-function registerAdmin($conn, $nama_customer, $email, $password, $confirm_password){
+function registerAdmin($nama_customer, $email, $password, $confirm_password){
   global $conn;
   $args = func_get_args();
 

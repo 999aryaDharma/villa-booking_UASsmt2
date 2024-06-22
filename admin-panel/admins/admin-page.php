@@ -65,7 +65,7 @@ include_once "../layout/header.php";
                     <a href="<?= "edit-admins.php?id={$value->id}" ?>" class="flex justify-center btn bg-yellow-400 hover:bg-orange-600 px-6 py-2 rounded-md text-center text-white">Edit</a>
                   </td>
                   <td class="border-2 border-inherit w-24">  
-                    <button type="submit" name="submit"><a href="<?= "delete-admins.php?id={$value->id}" ?>" class="flex justify-center btn bg-red-600 hover:bg-red-800 px-6 py-2 rounded-md text-center text-white ">Delete</a></button>
+                    <button type="submit" onclick="return confirm('Are you sure want delete this admin?');" name="submit"><a href="<?= "delete-admins.php?id={$value->id}" ?>" class="flex justify-center btn bg-red-600 hover:bg-red-800 px-6 py-2 rounded-md text-center text-white ">Delete</a></button>
                   </td> 
               </tr>
             <?php endforeach ?>
