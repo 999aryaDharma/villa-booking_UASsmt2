@@ -48,7 +48,8 @@
   <table class="border-collapse border-2 border-inherit shadow-xl w-full">
         <thead>
             <tr> 
-                <th colspan="5" class="text-left border-y-2 border-inherit py-3 pl-3">Admins</th>            
+                <th colspan="3" class="text-left border-y-2 border-inherit py-3 pl-3">Admins</th>        
+                <th colspan="2" class="border-y-2 border-inherit py-3"><a href="create-admins.php" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto text-white">Add Admin</a></th>    
             </tr>
             <tr>
                 <th class="border-2 border-inherit px-3 py-1 text-left">#</th>

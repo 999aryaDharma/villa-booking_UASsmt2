@@ -1,5 +1,19 @@
 <?php
-require_once "../../function.php";
+// require_once "../../function.php";
+require "../../config.php";
+
+function connect(){
+  $conn = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+  if($conn->connect_errno != 0){
+    $error = $conn->$connect_error;
+    $error_date = date("F j, Y, g:i a");
+    $message = "{$error} | {$error_date} \r\n";
+    file_put_contents("db-log.txt", $message, FILE_APPEND);
+    return false;
+  } else {
+      return $conn;
+  }
+};
 
 function getAllData (){
   $conn = connect();
@@ -77,4 +91,99 @@ function editAdmin($data){
     return mysqli_affected_rows($conn);
   }
   
+
+function registerUser($nama_customer, $email, $password, $confirm_password){
+  $conn = connect();
+  $args = func_get_args();
+
+  #hilangkan spasi lebih
+  $args = array_map(function($value){
+    return trim($value);
+  }, $args);
+
+  foreach ($args as $value) {
+    if (empty($value)) {
+      return "All fields are required";
+    }
+  }
+
+  foreach ($args as  $value) {
+    if(preg_match("/([<|>])/", $value)){
+      return "<> characters are not allowed";
+    }
+  }
+
+  #get email
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    return "Email is not valid";
+  }
+  $stmt = $conn->prepare("SELECT email FROM customer WHERE email = ?");
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $data = $result->fetch_assoc();
+  // echo "Email Check Result: " . var_export($data, true) . "<br>";
+  if ($data != NULL) {
+    return "Email already exists, please use a different email";
+  }
+
+  #get username
+  if (strlen($nama_customer) > 20) {
+    echo "Username is too long";
+    return;
+  }
+  $stmt = $conn->prepare("SELECT nama_customer FROM customer WHERE nama_customer = ?");
+  $stmt->bind_param("s", $nama_customer);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $data = $result->fetch_assoc();
+  if ($data != NULL) {
+    return "Username already exists, please use a different username";
+  }
+
+  #get password
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+  $stmt = $conn->prepare("INSERT INTO customer(nama_customer, email, created_at, updated_at) VALUES(?,?, NOW(), NOW())");
+  $stmt->bind_param("ss", $nama_customer, $email,);
+  $stmt->execute();
+
+  if (strlen($password) > 50) {
+    return "Password is too long";
+  }
+  if ($password != $confirm_password) {
+    return "Password don't match";
+  }
+
+  if ($stmt->affected_rows != 1) {
+    return "An error occurred while inserting into customers. Please try again.";
+  } else {
+    $id_customer = $stmt->insert_id;
+
+    $stmt = $conn->prepare("INSERT INTO users (id_customer, username, password, role, created_at, updated_at) VALUES (?, ?, ?, 1, NOW(), NOW())");
+    $stmt->bind_param("iss", $id_customer, $nama_customer, $hashed_password);
+    $stmt->execute();
+
+    if ($stmt->affected_rows != 1) {
+      return "An error occurred while inserting into users. Please try again.";
+    } else {
+      header("location: admin-page.php");
+    }
+    exit();
+  }
+};
+
+function getUserById($id){
+  $conn = connect();
+  $stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
+  $stmt->bind_param("i", $id);
+  $stmt->execute();
+  $stmt->bind_result($username);
+  $stmt->fetch();
+  $stmt->close();
+
+  return $username;
+}
+
+
 ?>
