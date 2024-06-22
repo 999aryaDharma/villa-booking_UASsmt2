@@ -1,13 +1,29 @@
 <?php
 include_once "../layout/header.php";
+<<<<<<< HEAD
+
+//   // Memeriksa apakah pengguna sudah login
+//   if (!isset($_SESSION['auth_id'])) {
+//     header("location: /auth/login.php");
+//     exit();
+//   }
+=======
 $id = $_GET['id'];
+>>>>>>> fitur-admin/create_update_delete
 
-  // Memeriksa apakah pengguna sudah login
-  if (!isset($_SESSION['auth_id'])) {
-    header("location: /auth/login.php");
-    exit();
-  }
+//   if (!isset($_SESSION['role'])) {
+//     echo "Access Denied. You do not have permission to access this page.";
+//     exit();
+//   }
 
+<<<<<<< HEAD
+//   // Memeriksa apakah pengguna memiliki peran admin
+//   if ($_SESSION ['role'] !== 1) {
+//     echo "Access Denied. You do not have permission to access this page.";
+//     exit();
+//   }
+  // Kode halaman admin di sini...
+=======
   if (!isset($_SESSION['role'])) {
     echo "Access Denied. You do not have permission to access this page.";
     exit();
@@ -20,6 +36,7 @@ $id = $_GET['id'];
   }
   $conn = connect();
 
+>>>>>>> fitur-admin/create_update_delete
 
 ?>
 

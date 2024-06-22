@@ -38,34 +38,34 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
     <script src="../js/main.js"></script>
 </head>
 
-<body class="m-0 p-0 font-serif">
+<body class="m-0 p-0">
     <!-- Header -->
     <header class="">
         <nav class="fixed top-0 left-0 w-full flex justify-between px-5 py-2 items-center border-b-1 border-transparent text-white nav-blur z-50">
-				<div>
-					<a href="index.php"><img src="images/logo.png" alt="Logo" class="h-12 bg-slate-200 px-2 rounded-md" /></a>
-				</div>
-				<div>
-					<ul class="flex gap-10 text-xl">
-						<li><a href="#room" class="custom-underline">Villas</a></li>
-						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-						<li><a href="#" class="custom-underline">Contact & Booking</a></li>
-						<li><a href="auth/register.php" class="custom-underline">Register</a></li>
-						<li>
-						<?php if (!is_null($auth_user)) : ?>
-							<a href="/auth/logout.php" class="custom-underline">Log Out</a>
-						<?php else : ?>
-							<a href="/auth/login.php" class="custom-underline">Sign In</a>
-						<?php endif ?>
-						
-						</li>
-					</ul>
-				</div>
-			</nav>
+            <div>
+                <a href="index.php"><img src="images/logo.png" alt="Logo" class="h-12 bg-slate-200 px-2 rounded-md" /></a>
+            </div>
+            <div>
+                <ul class="flex gap-10 text-xl">
+                    <li><a href="#room" class="custom-underline">Villas</a></li>
+                    <li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
+                    <li><a href="#" class="custom-underline">Contact & Booking</a></li>
+                    <li><a href="auth/register.php" class="custom-underline">Register</a></li>
+                    <li>
+                        <?php if (!is_null($auth_user)) : ?>
+                            <a href="/auth/logout.php" class="custom-underline">Log Out</a>
+                        <?php else : ?>
+                            <a href="/auth/login.php" class="custom-underline">Sign In</a>
+                        <?php endif ?>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <!-- Header End -->
 
         <!-- About Us -->
-        <div class="py-40 px-40 flex justify-center items-center text-center text-white bg-cover bg-fixed bg-no-repeat bg-center min-h-screen nav-overlay" style="background-image: url('images/blur-bg.png')">
+        <div class="font-serif py-40 px-40 flex justify-center items-center text-center text-white bg-cover bg-fixed bg-no-repeat bg-center min-h-screen nav-overlay" style="background-image: url('images/blur-bg.png')">
             <div class="object-center mx-20 lg:mx-auto">
                 <div class="min-w-xl max-w-5xl">
                     <h2 class="text-3xl font-bold mb-2">- About Us -</h2>
@@ -80,47 +80,62 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
     </header>
 
     <!-- The Scenery  -->
-    <div class="text-3xl font-bold my-40 text-center">
-        <h2>- The Scenery -</h2>
-    </div>
-
-    <div class="flex items-center mb-16 justify-start pl-20 w-7xl">
-        <div class=" md:w-1/2">
-            <img src="images/pegunungan-hijau.jpg" alt="Pemandangan-Hijau-image" class="drop-shadow-2xl rounded bg-cover" />
+    <div class="font-serif">
+        <div class="text-3xl font-bold my-40 text-center">
+            <h2>- The Scenery -</h2>
         </div>
-        <div class="md:w-1/2 p-5 mr-12 text-left">
-            <h2 class="text-2xl font-bold mb-2">Pemandangan Hijau</h2>
-            <p class="my-4 text-lg italic">
-                Villa kami menawarkan pemandangan alam yang luar biasa dari setiap sudutnya.
-                Dari balkon kamar tidur hingga teras kolam renang.
-                Anda akan disuguhi pemandangan perbukitan hijau yang memanjakan mata.
+
+        <div class="flex items-center mb-16 justify-start pl-20 w-7xl">
+            <div class=" md:w-1/2">
+                <img src="images/pegunungan-hijau.jpg" alt="Pemandangan-Hijau-image" class="drop-shadow-2xl rounded bg-cover" />
+            </div>
+            <div class="md:w-1/2 pl-8 mr-12 text-left">
+                <h2 class="text-2xl font-bold mb-2">Pemandangan Hijau</h2>
+                <p class="my-4 text-lg italic">
+                    Villa kami menawarkan pemandangan alam yang luar biasa dari setiap sudutnya.
+                    Dari balkon kamar tidur hingga teras kolam renang.
+                    Anda akan disuguhi pemandangan perbukitan hijau yang memanjakan mata.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-end pr-20 pt-40 mb-16 w-7xl">
+            <div class=" md:w-1/2 pr-8 ml-12 text-right">
+                <h2 class="text-2xl font-bold mb-2">Hutan Tropis</h2>
+                <p class="my-4 text-lg italic">
+                    Hutan tropis di sekitar villa menambah keindahan alam dengan pepohonan rindang dan bunga-bunga berwarna-warni yang bermekaran sepanjang tahun.
+                    Suara burung berkicau dan gemericik air dari kolam membuat suasana semakin damai dan relaks.
+                </p>
+            </div>
+            <div class="md:w-1/2">
+                <img src="images/hutan-tropis.jpg" alt="Hutan-tropis-image" class="drop-shadow-2xl rounded bg-cover" />
+            </div>
+        </div>
+
+        <div class="flex items-center pt-40 mb-16 justify-start pl-20 w-7xl">
+            <div class=" md:w-1/2">
+                <img src="images/zany-jadraque-ZCRtfop2hZY-unsplash.jpg" alt="Pemandangan-Sunset-image" class="drop-shadow-2xl rounded bg-cover" />
+            </div>
+            <div class="md:w-1/2 pl-8 mr-12 text-left">
+                <h2 class="text-2xl font-bold mb-2">Pemandangan Sunset</h2>
+                <p class="my-4 text-lg italic">
+                    Menikmati matahari terbenam adalah pengalaman yang tak boleh dilewatkan. 
+                    Ketika matahari mulai terbenam, langit berubah menjadi kanvas spektakuler dengan gradasi warna oranye, merah, dan ungu, menciptakan suasana magis dan romantis.
+                </p>
+            </div>
+        </div>
+
+        <div class="text-3xl  pt-40 text-center">
+            <h2 class="font-bold">- The Night View -</h2>
+            <p class="text-lg mx-28 mt-5">
+                Pada malam hari, langit berbintang yang jernih menawarkan pengalaman menatap bintang yang sempurna, jauh dari polusi cahaya kota.
+                Suara alam yang tenang serta udara segar pegunungan menambah kesan magis pada malam hari,
+                membuat Anda merasa benar-benar terhubung dengan alam semesta.
             </p>
         </div>
-    </div>
-
-    <div class="flex items-center justify-end pr-20 pt-40 w-7xl">
-        <div class=" md:w-1/2 p-5 ml-12 text-right">
-            <h2 class="text-2xl font-bold mb-2">Hutan Tropis</h2>
-            <p class="my-4 text-lg italic">
-                Hutan tropis di sekitar villa menambah keindahan alam dengan pepohonan rindang dan bunga-bunga berwarna-warni yang bermekaran sepanjang tahun.
-                Suara burung berkicau dan gemericik air dari kolam membuat suasana semakin damai dan relaks.
-            </p>
+        <div class="flex justify-center">
+            <img src="images/pemandangan-malam.jpg" alt="Hutan-tropis-image" class="max-w-5xl drop-shadow-2xl rounded bg-cover mb-16 mt-12 object-center" />
         </div>
-        <div class="md:w-1/2">
-            <img src="images/hutan-tropis.jpg" alt="Hutan-tropis-image" class="drop-shadow-2xl rounded bg-cover" />
-        </div>
-    </div>
-
-    <div class="text-3xl  pt-40 text-center">
-        <h2 class="font-bold">- The Night View -</h2>
-        <p class="text-lg mx-28 mt-5">
-            Pada malam hari, langit berbintang yang jernih menawarkan pengalaman menatap bintang yang sempurna, jauh dari polusi cahaya kota.
-            Suara alam yang tenang serta udara segar pegunungan menambah kesan magis pada malam hari,
-            membuat Anda merasa benar-benar terhubung dengan alam semesta.
-        </p>
-    </div>
-    <div class="flex justify-center">
-        <img src="images/pemandangan-malam.jpg" alt="Hutan-tropis-image" class="max-w-5xl drop-shadow-2xl rounded bg-cover mb-16 mt-12 object-center" />
     </div>
     <!-- The Scenery  End -->
     <!-- About Us End -->

@@ -1,5 +1,6 @@
 <?php
 include_once "../layout/header.php";
+
 require_once "../admins/function-admin.php";
 
 // require "../../function.php";
@@ -34,7 +35,6 @@ require_once "../admins/function-admin.php";
         // Mengambil nilai jumlah baris dari hasil query
         $totalAdmin = $row['total_admins'];
     }
-
 ?>
 
 <main class="pl-56 pt-24 pr-9">

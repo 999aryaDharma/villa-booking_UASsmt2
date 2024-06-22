@@ -1,4 +1,5 @@
 <?php
+
 require_once "../admins/function-admin.php";
 $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 
@@ -9,13 +10,17 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
   }
 
   if (!isset($_SESSION['role'])) {
-    echo "Access Denied. You do not have permission to access this page.";
+    echo "<script>";
+    echo "alert('Access Denied. You do not have permission to access this page.')";
+    echo "</script>";
     exit();
   }
 
   // Memeriksa apakah pengguna memiliki peran admin
   if ($_SESSION ['role'] !== 1) {
-    echo "Access Denied. You do not have permission to access this page.";
+    echo "<script>";
+    echo "alert('Access Denied. You do not have permission to access this page.')";
+    echo "</script>";
     exit();
   }
   // Kode halaman admin di sini...
@@ -54,9 +59,13 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
                 <?php if(!isset($_SESSION['auth_id'])) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="../../auth/login.php">login
-                        </a>
-                    </li>
-                <?php else : ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="../../../index.php">
+                                    </a>
+                                </li>   
                     <li class="nav-item">
                         <a class="nav-link" href="">Home</a>
                     </li>
@@ -68,7 +77,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
                             <a class="dropdown-item float-none text-black flex text-sm" href="../../auth/logout.php"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-logout"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" /></svg> Log Out</a>
                         </div>
                     </li>
-                <?php endif; ?>   
+                <?php endif; ?>
                 </ul>
             </div>
         </nav>
