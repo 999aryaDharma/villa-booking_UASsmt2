@@ -1,7 +1,7 @@
 <?php
-include "include/header.php";
-// require "function.php";
-
+	include "include/header.php";
+	// require "function.php";
+	
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -44,187 +44,114 @@ include "include/header.php";
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
-						<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
 								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal">
-							<h2 class="text-xl font-bold">Room 1's details</h2>
-							<p>Dengan Fasilitas kelas atas</p>
-							<!-- Swiper -->
-							<div class="swiper mySwiper w-2xl mb-5 flex justify-center item-center">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-								</div>
-								<div class="swiper-button-next"></div>
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-pagination"></div>
-							</div>
-							<a href="#" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center text-white pointer-events-auto">Book Now</a>
-
-						</label>
-					</label>
-				</div>
-				<!-- end -->
-			</div>
-		</div>
-		<div class="max-w-2xl dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
-			<img class="w-2/3 h-auto object-cover" src="images/room2.jpg" alt="Hotel Image" />
-			<div class="w-1/3 p-6 text-center font-mono font-thin">
-				<h2 class="text-xl font-bold">Suite Room</h2>
-				<p class="text-md mt-3">Max: <span class="font-semibold">3 Persons</span></p>
-				<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
-				<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
-				<p class="text-md">Bed: <span class="font-semibold">1</span></p>
-				<div>
-					<div>
-						<label for="tw-modal1" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+									<h3 class="text-lg font-bold">Room 1's details</h3>
+									<p class="py-4">ROOM 1.</p>
+									<p class="py-4">kontol.</p>
+									<p class="py-4">kontol.</p>
+									<p class="py-4">kontol.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
 					</div>
-					<!-- ini adalah hidden toggle -->
-					<input type="checkbox" id="tw-modal1" class="peer fixed-appearance-none opacity-0">
-					<label for="tw-modal1" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+				</div>
+				<div class="max-w-2xl dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
+					<img class="w-2/3 h-auto object-cover" src="images/room2.jpg" alt="Hotel Image" />
+					<div class="w-1/3 p-6 text-center font-mono font-thin">
+						<h2 class="text-xl font-bold">Suite Room</h2>
+						<p class="text-md mt-3">Max: <span class="font-semibold">3 Persons</span></p>
+						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
+						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
+						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
+						<div>
+							<div>
+								<label for="tw-modal1" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+							</div>
+							<!-- ini adalah hidden toggle -->
+							<input type="checkbox" id="tw-modal1" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal1" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
-						<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
 								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal1">
-							<h2 class="text-xl font-bold">Room 2's details</h2>
-							<p>Dengan Fasilitas kelas atas</p>
-							<!-- Swiper -->
-							<div class="swiper mySwiper w-2xl mb-5 flex justify-center item-center">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-								</div>
-								<div class="swiper-button-next"></div>
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-pagination"></div>
-							</div>
-							<a href="#" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center text-white pointer-events-auto">Book Now</a>
-						</label>
-					</label>
-				</div>
-				<!-- end -->
-			</div>
-		</div>
-		<div class="max-w-2xl dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
-			<img class="w-2/3 h-auto object-cover" src="images/room3.jpg" alt="Hotel Image" />
-			<div class="w-1/3 p-6 text-center font-mono font-thin">
-				<h2 class="text-xl font-bold">Suite Room</h2>
-				<p class="text-md mt-3">Max: <span class="font-semibold">3 Persons</span></p>
-				<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
-				<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
-				<p class="text-md">Bed: <span class="font-semibold">1</span></p>
-				<div>
-					<div>
-						<label for="tw-modal2" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+									<h3 class="text-lg font-bold">Room 2's details</h3>
+									<p class="py-4">ROOM 2.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
 					</div>
-					<!-- ini adalah hidden toggle -->
-					<input type="checkbox" id="tw-modal2" class="peer fixed-appearance-none opacity-0">
-					<label for="tw-modal2" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+				</div>
+				<div class="max-w-2xl dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
+					<img class="w-2/3 h-auto object-cover" src="images/room3.jpg" alt="Hotel Image" />
+					<div class="w-1/3 p-6 text-center font-mono font-thin">
+						<h2 class="text-xl font-bold">Suite Room</h2>
+						<p class="text-md mt-3">Max: <span class="font-semibold">3 Persons</span></p>
+						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
+						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
+						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
+						<div>
+							<div>
+								<label for="tw-modal2" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+							</div>
+							<!-- ini adalah hidden toggle -->
+							<input type="checkbox" id="tw-modal2" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal2" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
-						<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
 								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal2">
-							<h2 class="text-xl font-bold">Room 3's details</h2>
-							<p>Dengan Fasilitas kelas atas</p>
-							<!-- Swiper -->
-							<div class="swiper mySwiper w-2xl mb-5 flex justify-center item-center">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-								</div>
-								<div class="swiper-button-next"></div>
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-pagination"></div>
-							</div>
-							<a href="#" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center text-white pointer-events-auto">Book Now</a>
-						</label>
-					</label>
-				</div>
-				<!-- end -->
-			</div>
-		</div>
-		<div class="max-w-2xl bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
-			<img class="w-2/3 h-auto object-cover" src="images/photorealistic-wooden-house-interior-with-timber-decor-furnishings (1).jpg" alt="Hotel Image" />
-			<div class="w-1/3 p-6 text-center font-mono font-thin">
-				<h2 class="text-xl font-bold">Suite Room</h2>
-				<p class="text-md mt-3">Max: <span class="font-semibold">3 Persons</span></p>
-				<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
-				<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
-				<p class="text-md">Bed: <span class="font-semibold">1</span></p>
-				<div>
-					<div>
-						<label for="tw-modal3" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+									<h3 class="text-lg font-bold">Room 3's details</h3>
+									<p class="py-4">ROOM 3.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
 					</div>
-					<!-- ini adalah hidden toggle -->
-					<input type="checkbox" id="tw-modal3" class="peer fixed-appearance-none opacity-0">
-					<label for="tw-modal3" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
+				</div>
+				<div class="max-w-2xl bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex">
+					<img class="w-2/3 h-auto object-cover" src="images/photorealistic-wooden-house-interior-with-timber-decor-furnishings (1).jpg" alt="Hotel Image" />
+					<div class="w-1/3 p-6 text-center font-mono font-thin">
+						<h2 class="text-xl font-bold">Suite Room</h2>
+						<p class="text-md mt-3">Max: <span class="font-semibold">3 Persons</span></p>
+						<p class="text-md">Size: <span class="font-semibold">45 m2</span></p>
+						<p class="text-md">View: <span class="font-semibold">Sea View</span></p>
+						<p class="text-md">Bed: <span class="font-semibold">1</span></p>
+						<div>
+							<div>
+								<label for="tw-modal3" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View details</label>
+							</div>
+							<!-- ini adalah hidden toggle -->
+							<input type="checkbox" id="tw-modal3" class="peer fixed-appearance-none opacity-0">
+							<label for="tw-modal3" class="pointer-events-none invisible fixed inset-0 flex cursor-pointer 
 							items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 
 							transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100
 							peer-checked:[&>*]:scale-100 ">
-						<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
+								<label class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto 
 								overscroll-contain rounded-md bg-white p-6 text-black shadow-2xl transition" for="tw-modal3">
-							<h2 class="text-xl font-bold">Room 4's details</h2>
-							<p>Dengan Fasilitas kelas atas</p>
-							<!-- Swiper -->
-							<div class="swiper mySwiper w-2xl mb-5 flex justify-center item-center">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room1.jpg" />
-									</div>
-									<div class="swiper-slide">
-										<img src="images/room2.jpg" />
-									</div>
-								</div>
-								<div class="swiper-button-next"></div>
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-pagination"></div>
-							</div>
-							<a href="#" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center text-white pointer-events-auto">Book Now</a>
-						</label>
-					</label>
+									<h3 class="text-lg font-bold">Room 4's details</h3>
+									<p class="py-4">ROOM 4.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+									<p class="py-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, assumenda.</p>
+								</label>
+							</label>
+						</div>
+						<!-- end -->
+					</div>
 				</div>
-				<!-- end -->
 			</div>
-		</div>
-	</div>
-	<!-- END ROOM CARDS -->
+			<!-- END ROOM CARDS -->
 
 	<!-- Fasilitas 'what we offer' -->
 	<div class="flex flex-col md:flex-row mt-12" id="fasilitas">

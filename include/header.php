@@ -1,6 +1,23 @@
 <?php
 require_once "function.php";
 $auth_user = getUserById($_SESSION['auth_id'] ?? null);
+
+//   // Memeriksa apakah pengguna sudah login
+//   if (!isset($_SESSION['auth_id'])) {
+//     header("location: /auth/login.php");
+//     exit();
+//   }
+
+//   if (!isset($_SESSION['role'])) {
+//     echo "Access Denied. You do not have permission to access this page.";
+//     exit();
+//   }
+
+//   // Memeriksa apakah pengguna memiliki peran admin
+//   if ($_SESSION ['role'] !== 1) {
+//     echo "Access Denied. You do not have permission to access this page.";
+//     exit();
+//   }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +41,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 					<ul class="flex gap-10 text-xl">
 						<li><a href="#room" class="custom-underline">Villas</a></li>
 						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-						<li><a href="#" class="custom-underline">Contact & Booking</a></li>
+						<li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
 						<li><a href="auth/register.php" class="custom-underline">Register</a></li>
 						<li>
 						<?php if (!is_null($auth_user)) : ?>
@@ -41,7 +58,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 				<div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-25">
 					<h1 class="text-4xl font-bold mb-4">Welcome <?= $auth_user ?? " " ?> to Our Villas</h1>
 					<p class="mb-4 text-xl mt-0"><i>Experience the best stay with us</i></p>
-					<a href="#" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto">Book Now</a>
+					<a href="rooms-booking.php" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto">Book Now</a>
 				</div>
 			</div>
 		</header>
