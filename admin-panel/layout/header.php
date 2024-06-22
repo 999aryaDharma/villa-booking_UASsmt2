@@ -1,5 +1,7 @@
 <?php
-require "../../function.php";
+
+require_once "../admins/function-admin.php";
+$auth_user = getUserById($_SESSION['auth_id'] ?? null);
 
   // Memeriksa apakah pengguna sudah login
   if (!isset($_SESSION['auth_id'])) {
