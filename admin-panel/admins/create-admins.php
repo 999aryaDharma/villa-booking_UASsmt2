@@ -3,7 +3,7 @@
   require_once "function-admin.php";
 
   if(isset($_POST['submit'])) {
-      $response = registerUser($_POST['nama_customer'], $_POST['email'], $_POST['password'], $_POST['confirm-password']);
+      $response = registerAdmin($_POST['nama_customer'], $_POST['email'], $_POST['password'], $_POST['confirm-password']);
     }
 
 ?>

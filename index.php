@@ -1,7 +1,7 @@
 <?php
 	include "include/header.php";
 	// require "function.php";
-	
+	$auth_user = getUserById($_SESSION['auth_id'] ?? null);
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -234,20 +234,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 	<!-- Initialize Swiper -->
-	<script>
-		var swiper = new Swiper(".mySwiper", {
-			spaceBetween: 30,
-			effect: "fade",
-			navigation: {
-				nextEl: ".swiper-button-next",
-				prevEl: ".swiper-button-prev",
-			},
-			pagination: {
-				el: ".swiper-pagination",
-				clickable: true,
-			},
-		});
-	</script>
 
 	<?php
 	include_once "include/footer.php";

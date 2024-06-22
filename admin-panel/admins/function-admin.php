@@ -1,22 +1,22 @@
 <?php
+require "../../koneksi.php";
 // require_once "../../function.php";
-require "../../config.php";
 
-function connect(){
-  $conn = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
-  if($conn->connect_errno != 0){
-    $error = $conn->$connect_error;
-    $error_date = date("F j, Y, g:i a");
-    $message = "{$error} | {$error_date} \r\n";
-    file_put_contents("db-log.txt", $message, FILE_APPEND);
-    return false;
-  } else {
-      return $conn;
-  }
-};
+// function connect(){
+//   $conn = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+//   if($conn->connect_errno != 0){
+//     $error = $conn->$connect_error;
+//     $error_date = date("F j, Y, g:i a");
+//     $message = "{$error} | {$error_date} \r\n";
+//     file_put_contents("db-log.txt", $message, FILE_APPEND);
+//     return false;
+//   } else {
+//       return $conn;
+//   }
+// };
 
-function getAllData (){
-  $conn = connect();
+function getAllData ($conn){
+  
   $sql = "SELECT * FROM users JOIN customer ON customer.id_customer = users.id_customer";
   $result = mysqli_query($conn, $sql);
 
@@ -27,12 +27,13 @@ function getAllData (){
       $data[] = $row;
     }
   }
+  
 
   return $data;
 }
 
 function hapusAdmin($conn, $id) {
-    $conn = connect();
+    global $conn;
     // Lakukan query untuk menghapus data dengan ID tertentu
     // Hapus dari tabel `users`
     $sql1 = "DELETE FROM users WHERE id = '$id'";
@@ -73,7 +74,7 @@ function hapusAdmin($conn, $id) {
 }
 
 function editAdmin($data){
-  $conn = connect ();
+  global $conn;
   $id = $data['id'];
   $username = $data['username'];
   $email = $data['email'];
@@ -92,8 +93,8 @@ function editAdmin($data){
   }
   
 
-function registerUser($nama_customer, $email, $password, $confirm_password){
-  $conn = connect();
+function registerAdmin($conn, $nama_customer, $email, $password, $confirm_password){
+  global $conn;
   $args = func_get_args();
 
   #hilangkan spasi lebih
@@ -173,8 +174,8 @@ function registerUser($nama_customer, $email, $password, $confirm_password){
   }
 };
 
-function getUserById($id){
-  $conn = connect();
+function getAdminById($conn, $id){
+  
   $stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
   $stmt->bind_param("i", $id);
   $stmt->execute();

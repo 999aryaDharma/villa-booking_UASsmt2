@@ -1,5 +1,6 @@
 <?php
-
+// require "koneksi.php";
+require_once "../../function.php";
 require_once "../admins/function-admin.php";
 $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 

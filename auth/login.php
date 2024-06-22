@@ -1,4 +1,5 @@
 <?php
+    // require "../koneksi.php";
     require "../function.php";
     if (isset($_SESSION['auth_id'])) {
         header("Location: ../index.php");

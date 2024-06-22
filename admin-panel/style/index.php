@@ -1,7 +1,7 @@
 <?php
 include_once "../layout/header.php";
 
-require_once "../admins/function-admin.php";
+// require_once "../admins/function-admin.php";
 
 // require "../../function.php";
 
@@ -21,7 +21,6 @@ require_once "../admins/function-admin.php";
     echo "Access Denied. You do not have permission to access this page.";
     exit();
   }
-  $conn = connect();
   $sql = "SELECT COUNT(*) AS total_admins
         FROM users 
         WHERE role = 1";

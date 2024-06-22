@@ -1,5 +1,6 @@
 <?php
-require "../../function.php";
+// require "function-admin.php";
+include_once "../layout/header.php";
 
   // // Memeriksa apakah pengguna sudah login
   // if (!isset($_SESSION['auth_id'])) {
@@ -17,9 +18,23 @@ require "../../function.php";
     echo "Access Denied. You do not have permission to access this page.";
     exit();
   }
-  // Kode halaman admin di sini...
+  $query = "SELECT users.username, customer.email, users.id 
+            FROM users 
+            JOIN customer ON users.id_customer = customer.id_customer
+            WHERE users.role = 1 ";
 
-  include_once "../layout/header.php";
+   $result = $conn->query($query);
+
+  // Periksa apakah ada hasil
+  $rows = [];
+  if ($result && $result->num_rows > 0) {
+      // Ambil semua baris hasil query sebagai objek
+      while ($row = $result->fetch_object()) {
+          $rows[] = $row;
+      }
+  }
+
+  
 
 ?>
 
@@ -41,7 +56,7 @@ require "../../function.php";
         </thead>
         <tbody>
           <?php if (!empty($rows)): ?>
-            <?php foreach ($rows as $admin => $value) : ?>
+            <?php foreach ($rows as $key => $value) : ?>
               <tr>
                   <td class="border-2 border-inherit p-3 text-left"> <?= $value->id ?> </td>
                   <td class="border-2 border-inherit p-3"><?= $value->username ?></td>

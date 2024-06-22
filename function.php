@@ -1,25 +1,41 @@
 <?php
 
-require "config.php";
+require "koneksi.php";
+session_start();
 
 $auth_user = null;
 
-function connect(){
-  $conn = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
-  if($conn->connect_errno != 0){
-    $error = $conn->$connect_error;
-    $error_date = date("F j, Y, g:i a");
-    $message = "{$error} | {$error_date} \r\n";
-    file_put_contents("db-log.txt", $message, FILE_APPEND);
-    return false;
-  } else {
-      return $conn;
-  }
-};
+// function connect(){
+//   $conn = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+//   if($conn->connect_errno != 0){
+//     $error = $conn->$connect_error;
+//     $error_date = date("F j, Y, g:i a");
+//     $message = "{$error} | {$error_date} \r\n";
+//     file_put_contents("db-log.txt", $message, FILE_APPEND);
+//     return false;
+//   } else {
+//       return $conn;
+//   }
+// };
+// function getAllData ($conn){
+  
+//   $sql = "SELECT * FROM users JOIN customer ON customer.id_customer = users.id_customer";
+//   $result = mysqli_query($conn, $sql);
+
+//   $data = [];
+
+//   if (mysqli_num_rows($result) > 0) {
+//     while ($row = mysqli_fetch_assoc($result)) {
+//       $data[] = $row;
+//     }
+//   }
+
+//   return $data;
+// }
 
 
 function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $confirm_password){
-  $conn = connect();
+  global $conn;
   $args = func_get_args();
 
   #hilangkan spasi lebih
@@ -102,7 +118,8 @@ function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $
 
 
 function loginUser($nama_customer, $password) {
-    $conn = connect();
+
+    global $conn;
     $nama_customer = trim($nama_customer);
     $password = trim($password);
 
@@ -150,7 +167,7 @@ function logoutUser(){
 };
 
 function getUserById($id){
-  $conn = connect();
+  global $conn;
   $stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
   $stmt->bind_param("i", $id);
   $stmt->execute();
@@ -160,18 +177,8 @@ function getUserById($id){
 
   return $username;
 
-  // $conn = connect();
-  // $sql = "SELECT * FROM users WHERE id = $id LIMIT 1";
-  // $result = mysqli_query($sql);
-  // if (mysqli_num_rows($result) > 0) {
-  //   while ($row = mysqli_fetch_assoc($result)) {
-  //     return $row;
-  //   }
-  // } 
-  // if (is_null($result)) {
-  //   return null;
-  // }
 };
+
 // if (is_null($id)) {
 //   return null;
 // }
