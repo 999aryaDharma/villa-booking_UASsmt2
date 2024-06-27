@@ -188,44 +188,6 @@ function getUserById($id){
 //     "role" => 2
 //   ];
 
-// //workspace hanum
-// function createData($data){
-//   $roomname = htmlspecialchars($data["roomname"]);
-//   $price = htmlspecialchars($data["price"]);
-//   $numperson = htmlspecialchars($data["numperson"]);
-//   $size = htmlspecialchars($data["size"]);
-//   $view = htmlspecialchars($data["view"]);
-//   $numbed = htmlspecialchars($data["numbed"]);
-//   $statsvalue = htmlspecialchars($data["statsvalue"]);
-//   $status = htmlspecialchars($data["status"]);
-
-//   $query = "INSERT into ";
-// };
-// function uploadImage() {
-//   $namaGambar = $_FILES['gambar']['name'];
-//   $ukuranGambar = $_FILES['gambar']['size'];
-//   $tmpGambar = $_FILES['gambar']['tmp_name'];
-//   $errorGambar = $_FILES['gambar']['error'];
-
-//   if ( $error === 4) {
-//     echo "<script> 
-//       alert('Data can't be empty!')
-//     </script>";
-//     return false;
-//   }
-//   $imageExtValid = ['jpeg','jpg','png'];
-//   $imageExt = explode('.', $namaGambar);
-//   $imageExt = strtolower(end($imageExt));
-
-//   if(in_array($imageExt,$imageExtValid)) {
-//     echo "<script> 
-//       alert('Data must be jpeg, jpg, png!')
-//     </script>";
-//     return false;
-//   }
-
-//   move_uploaded_file($tmpGambar);
-// };
 
 ?>
 

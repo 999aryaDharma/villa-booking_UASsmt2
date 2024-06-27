@@ -185,6 +185,4 @@ function getAdminById($conn, $id){
 
   return $username;
 }
-
-
 ?>

@@ -39,18 +39,25 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 					<a href="#"><img src="images/logo.png" alt="Logo" class="h-12 bg-slate-200 px-2 rounded-md" /></a>
 				</div>
 				<div>
-					<ul class="flex gap-10 text-xl">
+					<?php if(!isset($auth_user)) : ?>
+						<ul class="flex gap-10	 text-xl">
+					<?php else : ?>
+						<ul class="flex gap-4	 text-xl">
+					<?php endif ?>
 						<li><a href="#room" class="custom-underline">Villas</a></li>
 						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
 						<li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
-						<li><a href="auth/register.php" class="custom-underline">Register</a></li>
+						<li>
+						<?php if(!isset($auth_user)) : ?>
+							<a href="auth/register.php" class="custom-underline">Register</a>
+						<?php endif ?>
+						</li>
 						<li>
 						<?php if (!is_null($auth_user)) : ?>
 							<a href="/auth/logout.php" class="custom-underline">Log Out</a>
 						<?php else : ?>
 							<a href="/auth/login.php" class="custom-underline">Sign In</a>
 						<?php endif ?>
-						
 						</li>
 					</ul>
 				</div>
