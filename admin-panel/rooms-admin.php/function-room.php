@@ -264,9 +264,6 @@ function editRoom($data) {
         // Ensure price is treated as a float
         $price = $price;
     }
-    
-
-
     // Begin transaction
     mysqli_begin_transaction($conn);
 

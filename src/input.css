@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.card-color {
+	background-color: #f8f6f2;
+}
 .nav-blur {
 	transition: background-color 0.3s ease, -webkit-backdrop-filter 0.3s ease;
 	transition: background-color 0.3s ease, backdrop-filter 0.3s ease;

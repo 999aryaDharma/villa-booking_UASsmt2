@@ -111,9 +111,10 @@ function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $
       return "An error occurred while inserting into users. Please try again.";
     } else {
       header("location: login.php");
+      die();
     }
-    exit();
   }
+  mysqli_close($conn);
 };
 
 
@@ -178,6 +179,27 @@ function getUserById($id){
   return $username;
 
 };
+
+
+function getAllRoom(){
+    global $conn;
+    $sql = "SELECT room.id_room, room.nama, room.harga, room.num_beds, room.deskripsi, room.status, GROUP_CONCAT(room_foto.foto) AS foto, GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas
+        FROM room
+        INNER JOIN room_foto ON room.id_room = room_foto.id_room
+        INNER JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
+        INNER JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
+        GROUP BY room.id_room";
+
+		$stmt = $conn->prepare($sql);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$rooms = [];
+		while ($row = $result->fetch_assoc()) {
+				$row['photos'] = explode(',', $row['foto']);
+				$rooms[] = $row;
+		}
+}
+
 
 // if (is_null($id)) {
 //   return null;

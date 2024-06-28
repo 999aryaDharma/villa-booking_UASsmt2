@@ -1,0 +1,95 @@
+function editRoom($data) {
+    global $conn;
+
+    $id_room = $data["id_room"];
+    $roomname = htmlspecialchars($data["room-name"]);
+    $price = htmlspecialchars($data["room-price"]);
+    $view = htmlspecialchars($data["room-view"]);
+    $numbed = htmlspecialchars($data["num-beds"]);
+    $status = htmlspecialchars($data["status"]);
+    $fasilitas = isset($_POST['fasilitas']) ? $_POST['fasilitas'] : [];
+    $images = uploadImage();
+
+    if (empty($price)) {
+        $query_get_price = "SELECT harga FROM room WHERE id_room = ?";
+        $stmt_get_price = mysqli_prepare($conn, $query_get_price);
+        mysqli_stmt_bind_param($stmt_get_price, 'i', $id_room);
+        mysqli_stmt_execute($stmt_get_price);
+        mysqli_stmt_bind_result($stmt_get_price, $current_price);
+        mysqli_stmt_fetch($stmt_get_price);
+        mysqli_stmt_close($stmt_get_price);
+    
+        // Assign the retrieved price to $price
+        $price = $current_price;
+    } else {
+        // Ensure price is treated as a float
+        $price = $price;
+    }
+    // Begin transaction
+    mysqli_begin_transaction($conn);
+
+    try {
+        // Check if there's an image to delete
+        $query_get_image = "SELECT foto FROM room_foto WHERE id_room = ?";
+        $stmt_get_image = mysqli_prepare($conn, $query_get_image);
+        mysqli_stmt_bind_param($stmt_get_image, 'i', $id_room);
+        mysqli_stmt_execute($stmt_get_image);
+        mysqli_stmt_bind_result($stmt_get_image, $current_image);
+        mysqli_stmt_fetch($stmt_get_image);
+        mysqli_stmt_close($stmt_get_image);
+
+        // Delete old image if exists
+        if ($current_image && $images) {
+            unlink('images/' . $current_image);
+        }
+
+        // Update room details
+        $query_update_room = "UPDATE room SET nama = ?, harga = ?, num_beds = ?, deskripsi = ?, status = ?, updated_at = NOW() WHERE id_room = ?";
+        $stmt_update_room = mysqli_prepare($conn, $query_update_room);
+        mysqli_stmt_bind_param($stmt_update_room, 'sdissi', $roomname, $price, $numbed, $view, $status, $id_room);
+
+        if (!mysqli_stmt_execute($stmt_update_room)) {
+            throw new Exception("Error updating room: " . mysqli_error($conn));
+        }
+
+        // Update room photo if a new image is uploaded
+        if ($images) {
+            $query_update_photo = "UPDATE room_foto SET foto = ?, updated_at = NOW() WHERE id_room = ?";
+            $stmt_update_photo = mysqli_prepare($conn, $query_update_photo);
+            mysqli_stmt_bind_param($stmt_update_photo, 'si', $images, $id_room);
+
+            if (!mysqli_stmt_execute($stmt_update_photo)) {
+                throw new Exception("Error updating photo: " . mysqli_error($conn));
+            }
+        }
+
+        // Update room facilities
+        $query_delete_fasilitas = "DELETE FROM room_fasilitas WHERE id_room = ?";
+        $stmt_delete_fasilitas = mysqli_prepare($conn, $query_delete_fasilitas);
+        mysqli_stmt_bind_param($stmt_delete_fasilitas, 'i', $id_room);
+        if (!mysqli_stmt_execute($stmt_delete_fasilitas)) {
+            throw new Exception("Error deleting room facilities: " . mysqli_error($conn));
+        }
+
+        foreach ($fasilitas as $fasilitas_id) {
+            $query_insert_fasilitas = "INSERT INTO room_fasilitas (id_room, id_fasilitas) VALUES (?, ?)";
+            $stmt_insert_fasilitas = mysqli_prepare($conn, $query_insert_fasilitas);
+            mysqli_stmt_bind_param($stmt_insert_fasilitas, 'ii', $id_room, $fasilitas_id);
+            if (!mysqli_stmt_execute($stmt_insert_fasilitas)) {
+                throw new Exception("Error inserting room facilities: " . mysqli_error($conn));
+            }
+        }
+
+        // Commit transaction
+        mysqli_commit($conn);
+
+        echo "Data berhasil diubah!";
+        return true;
+    } catch (Exception $e) {
+        // Rollback transaction on error
+        mysqli_rollback($conn);
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
+}
+?>

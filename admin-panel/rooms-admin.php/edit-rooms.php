@@ -22,12 +22,6 @@ if (isset($_POST['submit'])) {
 
 // untuk mengambil id
 $id = $_GET['id'];
-$edit = showRoom("SELECT room.id_room, room.nama, room.harga, room.num_beds, room.deskripsi, room.status, room_foto.foto, GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas
-                FROM room
-                INNER JOIN room_foto ON room.id_room = room_foto.id_room
-                INNER JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
-                INNER JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
-                WHERE room.id_room = '$id'")[0];
 
 // untuk menampilkan pilihan fasilitas yang sudah tercenntang
 $selected_fasilitas = [];
@@ -49,6 +43,13 @@ if ($result_selected_status && mysqli_num_rows($result_selected_status) > 0) {
     $row = mysqli_fetch_assoc($result_selected_status);
     $status = $row['status'];
 }
+
+$edit = showRoom("SELECT room.id_room, room.nama, room.harga, room.num_beds, room.deskripsi, room.status,room_foto.foto, GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas
+                FROM room
+                INNER JOIN room_foto ON room.id_room = room_foto.id_room
+                INNER JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
+                INNER JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
+                WHERE room.id_room = '$id'")[0];
 ?>
 
 <main class="pl-56 pt-24 pr-9">
