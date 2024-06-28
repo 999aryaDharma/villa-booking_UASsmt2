@@ -93,3 +93,25 @@ function editRoom($data) {
     }
 }
 ?>
+
+global $conn;
+  $sql = "SELECT room.id_room, room.nama, room.harga, room.num_beds, room.deskripsi, room.status, 
+               GROUP_CONCAT(room_foto.foto) AS foto, 
+               GROUP_CONCAT(fasilitas.nama_fasilitas) AS nama_fasilitas,
+               GROUP_CONCAT(fasilitas.deskripsi) AS deskripsi_fasilitas
+					FROM room
+					LEFT JOIN room_foto ON room.id_room = room_foto.id_room
+					LEFT JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
+					LEFT JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
+					GROUP BY room.id_room";
+
+		$stmt = $conn->prepare($sql);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$rooms = [];
+		while ($row = $result->fetch_assoc()) {
+				$row['photos'] = explode(',', $row['foto']);
+				$row['nama_fasilitas'] = explode(',', $row['nama_fasilitas']);
+				$row['deskripsi_fasilitas'] = explode(',', $row['deskripsi_fasilitas']);
+				$rooms[] = $row;
+		}

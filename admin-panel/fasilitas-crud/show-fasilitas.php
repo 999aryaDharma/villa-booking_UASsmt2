@@ -12,7 +12,7 @@ $data = getDataFasilitas();
         <thead>
             <tr>
                 <th colspan="2" class="text-left border-y-2 border-inherit py-3 pl-3">Rooms</th>
-                <th colspan="2" class="absolute right-0 mr-3 pr-3 my-1"><a href="create-fasilitas.php" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 mr-8 rounded-md text-center pointer-events-auto text-white">Add Facilities</a></th>
+                <th colspan="2" class="flex justify-end"><a href="create-fasilitas.php" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 mr-8 rounded-md text-center pointer-events-auto text-white">Add Facilities</a></th>
             </tr>
             <tr>
                 <th class="border-2 border-inherit px-3 py-1 text-left">#</th>

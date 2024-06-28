@@ -42,7 +42,7 @@ if ($_SESSION['role'] !== 1) {
 
 <body>
     <aside>
-        <div class="fixed pt-20 bg-slate-400 h-full w-48 pl-7">
+        <div class="fixed pt-20 bg-slate-400 h-full w-48 pl-7 z-50">
             <ul>
                 <li class="hover:text-white"><a class="flex my-2" href="../style/index.php"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
