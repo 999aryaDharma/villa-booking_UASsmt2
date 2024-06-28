@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 <main class="pl-56 pt-24 pr-9">
     <div class="border-2 border-inherit shadow-xl w-full p-5">
         <div>
-            <h1 class="font-bold pb-4">Create Rooms</h1>
+            <h1 class="font-bold pb-4">Create Facilities</h1>
         </div>
 
         <div>

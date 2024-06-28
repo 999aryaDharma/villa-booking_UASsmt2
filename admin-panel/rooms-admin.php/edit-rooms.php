@@ -23,6 +23,7 @@ if (isset($_POST['submit'])) {
 // untuk mengambil id
 $id = $_GET['id'];
 
+
 // untuk menampilkan pilihan fasilitas yang sudah tercenntang
 $selected_fasilitas = [];
 $id_room = $_GET['id']; // id_room yang sedang diedit
@@ -35,7 +36,6 @@ if ($result_selected_fasilitas) {
 }
 
 // untuk menampilkan status room yang sudah terpilih sebelumnya
-$id_room = $_GET['id']; // id_room yang sedang diedit
 $query_selected_status = "SELECT status FROM room WHERE id_room = '$id_room'";
 $result_selected_status = mysqli_query($conn, $query_selected_status);
 $status = '';
@@ -50,8 +50,8 @@ $edit = showRoom("SELECT room.id_room, room.nama, room.harga, room.num_beds, roo
                 INNER JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
                 INNER JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
                 WHERE room.id_room = '$id'")[0];
-?>
 
+?>
 <main class="pl-56 pt-24 pr-9">
     <div class="border-2 border-inherit shadow-xl w-full p-5">
         <div>
