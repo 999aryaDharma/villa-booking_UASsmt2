@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
             <h2 class="text-xl font-semiboldbold mt-1">Facilities</h2>
             <ul class="mt-4 list-disc list-inside space-y-1">
             <?php
-                $query = "SELECT fasilitas.nama_fasilitas
+                $query = "SELECT fasilitas.nama_fasilitas,fasilitas.deskripsi
                 FROM room_fasilitas
                 JOIN fasilitas ON room_fasilitas.id_fasilitas = fasilitas.id_fasilitas
                 WHERE room_fasilitas.id_room = ?";
@@ -105,6 +105,7 @@ if (isset($_GET['id'])) {
                 $facilities = [];
                 while ($row = $result->fetch_assoc()) {
                     $facilities[] = $row['nama_fasilitas'];
+                    $facilities[] = $row['deskripsi'];
                 }
             ?>
             <?php
