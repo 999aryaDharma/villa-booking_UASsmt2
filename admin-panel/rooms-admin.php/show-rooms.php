@@ -21,7 +21,7 @@ $rooms = getRooms();
                 <th class="border-2 border-inherit px-3 py-1 text-left">Name</th>
                 <th class="border-2 border-inherit px-3 py-1 text-left">Price</th>
                 <th class="border-2 border-inherit px-3 py-1 text-left">Num of Beds</th>
-                <th class="border-2 border-inherit px-3 py-1 text-left">View</th>
+                <th class="border-2 border-inherit px-3 py-1 text-left">Deskripsi</th>
                 <th class="border-2 border-inherit px-3 py-1 text-left">Status</th>
                 <th class="border-2 border-inherit px-3 py-1 text-left">Room Facility</th>
                 <th class="border-2 border-inherit px-3 py-1 text-left">Room Image</th>
@@ -62,7 +62,7 @@ $rooms = getRooms();
                     ?>
                 </td>
                 <td class="border-2 border-inherit p-3">
-                    <a href="edit-rooms.php?id=<?= $row["id_room"]; ?>" class="inline-block btn bg-yellow-400 hover:bg-orange-600 px-6 py-2 rounded-md text-center pointer-events-auto text-white">Edit</a>
+                    <a href="edit-rooms.php?id=<?= $row['id_room']; ?>" class="inline-block btn bg-yellow-400 hover:bg-orange-600 px-6 py-2 rounded-md text-center pointer-events-auto text-white">Edit</a>
                 </td>
                 <td class="border-2 border-inherit p-3">
                     <a href="delete-rooms.php?id=<?= $row["id_room"]; ?>" class="inline-block btn bg-red-600 hover:bg-red-800 px-6 py-2 rounded-md text-center pointer-events-auto text-white" onclick="return confirm('Yakin ingin menghapus data?');">Delete</a>
