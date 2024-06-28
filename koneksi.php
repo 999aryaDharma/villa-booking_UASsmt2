@@ -10,5 +10,5 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
 if (!$conn) {
-  die("Gagagl konek ke database: " . mysqli_connect_error());
+  die("Gagal konek ke database: " . mysqli_connect_error());
 }
