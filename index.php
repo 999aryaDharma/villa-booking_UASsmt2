@@ -38,7 +38,7 @@ $fasilitas = showRoom("SELECT * FROM fasilitas");
 		<div class="md:w-1/2 px-20">
 			<h2 class="text-3xl font-bold mb-2">About Us</h2>
 			<p class="my-4 text-lg">Villa kami menawarkan suasana yang tenang dan pemandangan yang indah, yang bisa membuat anda bersantai bersama keluarga, teman-teman, atau pasangan</p>
-			<a href="#" class="inline-block custom-button px-6 py-2 rounded-md text-center">Read More</a>
+			<a href="about-us.php" class="inline-block custom-button px-6 py-2 rounded-md text-center">Read More</a>
 		</div>
 		<div class="md:w-1/2 max-w-xl p-14">
 			<img src="images/swimming-pool-resort.jpg" alt="Villa Image" class="max-w-xl min-h-60 rounded bg-cover" />

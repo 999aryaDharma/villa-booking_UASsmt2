@@ -36,6 +36,10 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
     <link href="dist/output.css" rel="stylesheet" />
     <link href="src/input.css" rel="stylesheet" />
     <script src="../js/main.js"></script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
 </head>
 
 <body class="m-0 p-0">
@@ -70,9 +74,9 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
                 <div class="min-w-xl max-w-5xl">
                     <h2 class="text-3xl font-bold mb-2">- About Us -</h2>
                     <p class="my-4 text-2xl italic leading-loose tracking-widest">
-                        Villa Kami dirancang dengan gaya arsitektur klasik yang elegan.
-                        Dengan luas yang cukup untuk menampung keluarga besar atau rombongan teman.
-                        Balkon yang ditawarkan, memungkinkan anda menikmati pemandangan sekitar secara leluasa.
+                        Our villa is designed with elegant classical architecture. 
+                        It offers ample space to accommodate a large family or a group of friends comfortably. 
+                        The spacious balconies provide the perfect setting to freely enjoy the beautiful surrounding views and soak in the serene atmosphere.
                     </p>
                 </div>
             </div>
@@ -85,56 +89,55 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
             <h2>- The Scenery -</h2>
         </div>
 
-        <div class="flex items-center mb-16 justify-start pl-20 w-7xl">
-            <div class=" md:w-1/2">
+        <div class="flex items-center mb-16 justify-start pl-20 pr-36 w-7xl">
+            <div class=" md:w-2/6" data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-offset="300">
                 <img src="images/pegunungan-hijau.jpg" alt="Pemandangan-Hijau-image" class="drop-shadow-2xl rounded bg-cover" />
             </div>
-            <div class="md:w-1/2 pl-8 mr-12 text-left">
+            <div class="md:w-2/3 pl-16 mr-12 text-left" data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-offset="300" data-aos-delay="300">
                 <h2 class="text-2xl font-bold mb-2">Pemandangan Hijau</h2>
                 <p class="my-4 text-lg italic">
-                    Villa kami menawarkan pemandangan alam yang luar biasa dari setiap sudutnya.
-                    Dari balkon kamar tidur hingga teras kolam renang.
-                    Anda akan disuguhi pemandangan perbukitan hijau yang memanjakan mata.
+                    Our villa offers stunning natural views from every angle. From the bedroom balcony to the pool terrace, you will be treated to the sight of lush green hills. 
+                    Enjoy the peaceful ambiance and immerse yourself in nature's beauty during your stay.
                 </p>
             </div>
         </div>
 
-        <div class="flex items-center justify-end pr-20 pt-40 mb-16 w-7xl">
-            <div class=" md:w-1/2 pr-8 ml-12 text-right">
+        <div class="flex items-center justify-end pr-20 pl-36 mt-36 mb-16 w-7xl">
+            <div class=" md:w-2/3 pr-16 ml-12 text-right" data-aos="fade-left" data-aos-easing="ease-in-sine" data-aos-offset="300" data-aos-delay="300">
                 <h2 class="text-2xl font-bold mb-2">Hutan Tropis</h2>
                 <p class="my-4 text-lg italic">
-                    Hutan tropis di sekitar villa menambah keindahan alam dengan pepohonan rindang dan bunga-bunga berwarna-warni yang bermekaran sepanjang tahun.
-                    Suara burung berkicau dan gemericik air dari kolam membuat suasana semakin damai dan relaks.
+                    The tropical forest surrounding the villa enhances the natural beauty with its lush trees and colorful flowers blooming year-round. 
+                    The sound of chirping birds and the gentle trickle of water from the pond add to the peaceful and relaxing atmosphere.
                 </p>
             </div>
-            <div class="md:w-1/2">
+            <div class="md:w-2/6" data-aos="fade-left" data-aos-easing="ease-in-sine" data-aos-offset="300">
                 <img src="images/hutan-tropis.jpg" alt="Hutan-tropis-image" class="drop-shadow-2xl rounded bg-cover" />
             </div>
         </div>
 
-        <div class="flex items-center pt-40 mb-16 justify-start pl-20 w-7xl">
-            <div class=" md:w-1/2">
+        <div class="flex items-center mt-36 mb-16 justify-start pl-20 pr-36 w-7xl">
+            <div class=" md:w-2/6" data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-offset="300">
                 <img src="images/zany-jadraque-ZCRtfop2hZY-unsplash.jpg" alt="Pemandangan-Sunset-image" class="drop-shadow-2xl rounded bg-cover" />
             </div>
-            <div class="md:w-1/2 pl-8 mr-12 text-left">
+            <div class="md:w-2/3 pl-16 mr-12 text-left" data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-offset="300" data-aos-delay="300">
                 <h2 class="text-2xl font-bold mb-2">Pemandangan Sunset</h2>
                 <p class="my-4 text-lg italic">
-                    Menikmati matahari terbenam adalah pengalaman yang tak boleh dilewatkan. 
-                    Ketika matahari mulai terbenam, langit berubah menjadi kanvas spektakuler dengan gradasi warna oranye, merah, dan ungu, menciptakan suasana magis dan romantis.
+                    Watching the sunset is an experience not to be missed. 
+                    As the sun begins to set, the sky transforms into a spectacular canvas with gradients of orange, red, and purple, creating a magical and romantic atmosphere.
                 </p>
             </div>
         </div>
 
-        <div class="text-3xl  pt-40 text-center">
+        <div class="text-3xl mt-36 text-center" data-aos="fade-up" data-aos-easing="ease-in-sine" data-aos-offset="300" data-aos-delay="300">
             <h2 class="font-bold">- The Night View -</h2>
             <p class="text-lg mx-28 mt-5">
-                Pada malam hari, langit berbintang yang jernih menawarkan pengalaman menatap bintang yang sempurna, jauh dari polusi cahaya kota.
-                Suara alam yang tenang serta udara segar pegunungan menambah kesan magis pada malam hari,
-                membuat Anda merasa benar-benar terhubung dengan alam semesta.
+                At night, the clear starry sky offers a perfect stargazing experience, far from the city's light pollution. 
+                The tranquil sounds of nature and the fresh mountain air enhance the magical ambiance, making the nights truly special. 
+                As you gaze at the stars, you feel a deep sense of connection with the universe, surrounded by the serene beauty of the natural world.
             </p>
         </div>
-        <div class="flex justify-center">
-            <img src="images/pemandangan-malam.jpg" alt="Hutan-tropis-image" class="max-w-5xl drop-shadow-2xl rounded bg-cover mb-16 mt-12 object-center" />
+        <div class="flex justify-center" data-aos="fade-up" data-aos-easing="ease-in-sine" data-aos-offset="300">
+            <img src="images/pemandangan-malam.jpg" alt="Hutan-tropis-image" class="max-w-3xl w-[70rem] h-72 drop-shadow-2xl rounded bg-cover mb-16 mt-12 object-center" />
         </div>
     </div>
     <!-- The Scenery  End -->
@@ -172,6 +175,12 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 
         // Panggil fungsi untuk mengupdate tampilan saat halaman dimuat
         document.addEventListener('DOMContentLoaded', updateAuthButton);
+    </script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
     </script>
 </body>
 
