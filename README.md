@@ -8,5 +8,7 @@ Proyek ini dibuat untuk memenuhi kebutuhan Ujian Akhir Semester (UAS) Mata Kulia
   <li>Admin: Admin dapat mengolah & melihat informasi kamar villa, mengolah & melihat pemesanan, mengolah & melihat fasilitas yang ada.</li>
   <li>Penggunaan Teknologi Modern: Menggunakan PHP Native untuk logika backend, Tailwind CSS untuk desain responsif dan menarik, serta Moment.js untuk mempermudah manipulasi waktu.</li>
 <ul>
+<br>
+<img style="width:50px; heigth:50px;" src="https://www.php.net/images/logos/new-php-logo.svg">
+<img style="width:100px; heigth:100px;" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg">
 
-[![Build Status](https://travis-ci.com/999aryaDharma/ProjectUAS_webPro.svg?branch=master)](https://travis-ci.com/999aryaDharma/ProjectUAS_webPro)
