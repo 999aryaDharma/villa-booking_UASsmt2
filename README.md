@@ -9,4 +9,4 @@ Proyek ini dibuat untuk memenuhi kebutuhan Ujian Akhir Semester (UAS) Mata Kulia
   <li>Penggunaan Teknologi Modern: Menggunakan PHP Native untuk logika backend, Tailwind CSS untuk desain responsif dan menarik, serta Moment.js untuk mempermudah manipulasi waktu.</li>
 <ul>
 
-[![Build Status](https://travis-ci.com/username/repository.svg?branch=master)](https://travis-ci.com/username/repository)
+[![Build Status](https://travis-ci.com/999aryaDharma/ProjectUAS_webPro.svg?branch=master)](https://travis-ci.com/999aryaDharma/ProjectUAS_webPro)
