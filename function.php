@@ -169,16 +169,15 @@ function logoutUser(){
 
 function getUserById($id){
   global $conn;
-  $stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
+  $stmt = $conn->prepare("SELECT id_customer, username FROM users WHERE id = ?");
   $stmt->bind_param("i", $id);
   $stmt->execute();
-  $stmt->bind_result($username);
+  $stmt->bind_result($id_customer, $username);
   $stmt->fetch();
   $stmt->close();
 
-  return $username;
-
-};
+  return array('id_customer' => $id_customer, 'username' => $username);
+}
 
 
 function getAllRoom(){
