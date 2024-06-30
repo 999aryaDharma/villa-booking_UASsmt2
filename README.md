@@ -10,5 +10,5 @@ Proyek ini dibuat untuk memenuhi kebutuhan Ujian Akhir Semester (UAS) Mata Kulia
 <ul>
 <br>
 <img style="width:50px; heigth:50px;" src="https://www.php.net/images/logos/new-php-logo.svg">
-<img style="width:130px; heigth:130px; margin-bottom:10px;" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg">
+<img style="width:130px; heigth:130px;" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg">
 
