@@ -48,7 +48,7 @@ if (isset($_POST["submit"])) {
                 </div>
                 <div class="space-y-2 m-2">
                     <label for="status" class="font-semibold">Status :</label><br>
-                    <select id="status" name="status" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select id="status" name="status" class="border-2 border-black border-solid px-2 py-1 block w-full mt-1 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         <option value="available" <?php echo (isset($status) && $status == 'Available') ? 'selected' : ''; ?> class="text-gray-900">Available</option>
                         <option value="booked" <?php echo (isset($status) && $status == 'Booked') ? 'selected' : ''; ?> class="text-gray-900">Booked</option>
                     </select>
