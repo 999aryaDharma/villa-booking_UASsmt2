@@ -56,6 +56,8 @@ $stmt->close();
     <script src="js/loader.js"></script>
     <title>Booking Detail</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </head>
 <body class="bg-gray-100 p-4">
 <!-- Loader -->
@@ -95,23 +97,51 @@ $stmt->close();
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 function cancelBooking(id_booking, id_room) {
-    $.ajax({
-        url: 'cancel_booking.php', // Mengarahkan ke file cancel_booking.php untuk membatalkan booking
-        type: 'POST',
-        data: {
-            action: 'cancel_booking', // Aksi untuk pembatalan booking
-            id_booking: id_booking,
-            id_room: id_room
-        },
-        success: function(response) {
-            alert('Booking berhasil dibatalkan: ' + response);
-            location.reload(); // Refresh halaman setelah pembatalan berhasil
-        },
-        error: function(xhr, status, error) {
-            alert('Booking gagal dibatalkan: ' + error);
+    Swal.fire({
+        title: 'Cancel reservation?',
+        text: "Are you sure you want to cancel this booking?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Jika user mengklik "Yes", lakukan AJAX request untuk membatalkan booking
+            $.ajax({
+                url: 'cancel_booking.php',
+                type: 'POST',
+                data: {
+                    action: 'cancel_booking',
+                    id_booking: id_booking,
+                    id_room: id_room
+                },
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Booking successfully canceled!',
+                        text: 'Response: ' + response,
+                        timer: 2000, // Durasi pesan sukses
+                        showConfirmButton: false // Tidak menampilkan tombol OK
+                    }).then(function() {
+                        location.reload(); // Refresh halaman setelah pembatalan berhasil
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed to cancel booking!',
+                        text: 'Error: ' + error,
+                        timer: 3000, // Durasi pesan error
+                        showConfirmButton: true // Menampilkan tombol OK
+                    });
+                }
+            });
         }
     });
 }
 </script>
+
 </body>
 </html>
