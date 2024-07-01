@@ -53,7 +53,6 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
                 <ul class="flex gap-10 text-xl">
                     <li><a href="#room" class="custom-underline">Villas</a></li>
                     <li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-                    <li><a href="#" class="custom-underline">Contact & Booking</a></li>
                     <li><a href="auth/register.php" class="custom-underline">Register</a></li>
                     <li>
                         <?php if (!is_null($auth_user)) : ?>

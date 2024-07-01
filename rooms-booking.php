@@ -40,6 +40,7 @@ $_SESSION['harga_kamar'] = $harga_kamar;
     <link href="src/loader.css" rel="stylesheet" />
     <script src="js/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- Include SweetAlert2 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Booking</title>
 </head>
@@ -65,7 +66,7 @@ $_SESSION['harga_kamar'] = $harga_kamar;
                     <input type="date" id="checkOut" name="checkOut" placeholder="check-out" class="w-full p-2 border border-zinc-300 rounded bg-zinc-300" />
                 </div>
                 <h4 id="totalPrice">Total Harga: Rp 0</h4>
-                <button onclick="window.location.href='index.php#room';" type="submit" class="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 rounded">BOOK NOW</button>
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 rounded">BOOK NOW</button>
             </form>
         </div>
     </div>
@@ -89,7 +90,11 @@ $_SESSION['harga_kamar'] = $harga_kamar;
             
             if (checkInDate && checkOutDate) {
                 if (moment(checkOutDate).isBefore(moment(checkInDate))) {
-                    alert("Tanggal check-out harus setelah tanggal check-in");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Tanggal check-out harus setelah tanggal check-in'
+                    });
                     document.getElementById("checkOut").value = '';
                     return;
                 }
@@ -125,8 +130,9 @@ $_SESSION['harga_kamar'] = $harga_kamar;
             var checkInDate = document.getElementById("checkIn").value;
             var checkOutDate = document.getElementById("checkOut").value;
             var customerId = "<?= $auth_user['id_customer']; ?>";
-            var idRoom = <?= $id_room; ?>; 
-						var totalPrice = calculateBookingPrice(checkInDate, checkOutDate, pricePerRoom);
+            var idRoom = <?= $id_room; ?>;
+            var totalPrice = calculateBookingPrice(checkInDate, checkOutDate, pricePerRoom);
+            
             $.ajax({
                 url: 'proses_booking.php',
                 type: 'POST',
@@ -136,17 +142,29 @@ $_SESSION['harga_kamar'] = $harga_kamar;
                     id_room: idRoom,
                     check_in: checkInDate,
                     check_out: checkOutDate,
-										total_price: totalPrice // Mengirim total harga ke PHP
+                    total_price: totalPrice // Mengirim total harga ke PHP
                 },
                 success: function(response) {
-                    alert('Booking berhasil: ' + response);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Booking Berhasil!',
+                        text: response
+                    }).then((result) => {
+                        // Redirect atau tindakan lain setelah OK ditekan
+                        window.location.href = 'index.php#room';
+                    });
                 },
                 error: function(xhr, status, error) {
-                    alert('Booking gagal: ' + error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Booking gagal: ' + error
+                    });
                 }
             });
         }
 
+        // Dokumen siap
         $(document).ready(function() {
             // Set minimum date untuk check-in ke hari ini
             var today = moment().format('YYYY-MM-DD');

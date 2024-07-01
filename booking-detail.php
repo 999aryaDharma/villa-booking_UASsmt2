@@ -11,7 +11,7 @@ if (!$auth_id) {
 
 // Query untuk mengambil informasi customer dan riwayat booking customer
 $sql = "SELECT c.id_customer, c.nama_customer, c.email, c.alamat, c.no_telepon,
-               b.id_booking, b.check_in, b.check_out, b.total_harga, r.nama AS nama_kamar, r.id_room
+               b.id_booking, b.check_in, b.status, b.check_out, b.total_harga, r.nama AS nama_kamar, r.id_room
         FROM customer c
         JOIN users u ON c.id_customer = u.id_customer
         LEFT JOIN booking b ON c.id_customer = b.id_customer
@@ -29,12 +29,14 @@ while ($row = $result->fetch_assoc()) {
         $nama_customer = $row['nama_customer'];
         $email = $row['email'];
         $alamat = $row['alamat'];
+        $status = $row['status'];
         $no_telepon = $row['no_telepon'];
     }
 
     if ($row['id_booking']) {
         $booking = [
             'id_booking' => $row['id_booking'],
+            'status' => $row['status'],
             'check_in' => $row['check_in'],
             'check_out' => $row['check_out'],
             'total_harga' => $row['total_harga'],
@@ -78,11 +80,11 @@ $stmt->close();
     <?php if (!empty($bookings)) : ?>
         <?php foreach ($bookings as $booking) : ?>
             <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-                <p><strong>ID Booking:</strong> <?= htmlspecialchars($booking['id_booking']) ?></p>
-                <p><strong>Check-in Date:</strong> <?= htmlspecialchars($booking['check_in']) ?></p>
-                <p><strong>Check-out Date:</strong> <?= htmlspecialchars($booking['check_out']) ?></p>
-                <p><strong>Total Price:</strong> Rp <?= number_format($booking['total_harga'], 0, ',', '.') ?></p>
-                <p><strong>Nama Kamar:</strong> <?= htmlspecialchars($booking['nama_kamar']) ?></p>
+                <p><strong>Check-in Date :</strong> <?= htmlspecialchars($booking['check_in']) ?></p>
+                <p><strong>Check-out Date :</strong> <?= htmlspecialchars($booking['check_out']) ?></p>
+                <p><strong>Total Price :</strong> Rp <?= number_format($booking['total_harga'], 0, ',', '.') ?></p>
+                <p><strong>Nama Kamar :</strong> <?= htmlspecialchars($booking['nama_kamar']) ?></p>
+                <p><strong>Status :</strong> <?= htmlspecialchars($booking['status']) ?></p>
                 <!-- Tombol Cancel Booking -->
                 <button onclick="cancelBooking(<?= $booking['id_booking'] ?>, <?= $booking['id_room'] ?>)" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-4 inline-block">Cancel Booking</button>
             </div>
