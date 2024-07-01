@@ -42,7 +42,7 @@ if ($_SESSION['role'] !== 1) {
 
 <body>
     <aside>
-        <div class="fixed pt-20 bg-slate-400 h-full w-48 pl-7 z-50">
+        <div class="fixed pt-20 bg-slate-400 h-full w-48 pl-7">
             <ul>
                 <li class="hover:text-white"><a class="flex my-2" href="../style/index.php"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -102,7 +102,7 @@ if ($_SESSION['role'] !== 1) {
 
                         <li class="nav-item dropdown float-left overflow-hidden">
                             <a class="nav-link  dropdown-toggle flex" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?= $auth_user ?><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                                <?= $auth_user['username'] ?><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path d="M6 9l6 6l6 -6" />
                                 </svg>

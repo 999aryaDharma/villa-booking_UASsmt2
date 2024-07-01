@@ -10,34 +10,32 @@ if (isset($_GET['id'])) {
     $id_room = $_GET['id'];
 
     global $conn;
-    $sql = "SELECT room.id_room, room.nama, room.harga, room.num_beds, room.deskripsi, room.status, GROUP_CONCAT(room_foto.foto) AS foto, GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas
-            FROM room
-            INNER JOIN room_foto ON room.id_room = room_foto.id_room
-            INNER JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
-            INNER JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
-            WHERE room.id_room = ?
-            GROUP BY room.id_room
-            LIMIT 1";
+    $sql = "SELECT room.id_room, room.nama, room.harga, room.num_beds, room.deskripsi, room.status, GROUP_CONCAT(DISTINCT room_foto.foto) AS foto, GROUP_CONCAT(DISTINCT fasilitas.nama_fasilitas) AS fasilitas
+        FROM room
+        INNER JOIN room_foto ON room.id_room = room_foto.id_room
+        INNER JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
+        INNER JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
+        WHERE room.id_room = ?
+        GROUP BY room.id_room
+        LIMIT 1";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id_room);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $room = $result->fetch_assoc();
-    $photos = explode(',', $room['foto']);
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id_room);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    // if ($room) {
-    //     // Tampilkan detail room
-    //     echo "<h1>" . $room['nama'] . "</h1>";
-    //     echo "<p>Harga: " . $room['harga'] . "</p>";
-    //     echo "<p>Jumlah Tempat Tidur: " . $room['num_beds'] . "</p>";
-    //     echo "<p>Deskripsi: " . $room['deskripsi'] . "</p>";
-    //     echo "<p>Status: " . $room['status'] . "</p>";
-    //     echo "<p>Foto: " . $room['foto'] . "</p>";
-    //     echo "<p>Fasilitas: " . $room['fasilitas'] . "</p>";
-    // } else {
-    //     echo "Room not found.";
-    // }
+        if ($result->num_rows > 0) {
+            $room = $result->fetch_assoc();
+            $photos = explode(',', $room['foto']);
+            // Tampilkan informasi kamar dan foto-fotonya
+        } else {
+            // Handle jika kamar tidak ditemukan
+            echo "Kamar tidak ditemukan.";
+        }
+
+        $stmt->close();
+    $_SESSION['nama_kamar'] = $room['nama'];
+    $nama_kamar = $room['nama'];
 }
 ?>
 
@@ -50,9 +48,15 @@ if (isset($_GET['id'])) {
     <script src="https://cdn.tailwindcss.com"></script>
 	<link href="dist/output.css" rel="stylesheet" />
 	<link href="src/input.css" rel="stylesheet" />
+    <link href="src/loader.css" rel="stylesheet" />
+    <script src="js/loader.js"></script>
 	<script src="js/main.js"></script>
 </head>
 <body class="">
+    <!-- Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
     <nav class="fixed top-0 left-0 w-full flex justify-between px-5 py-2 items-center border-b-1 bg-neutral-400 text-white nav-blur z-50">
 			<div>
 				<a href="#"><img src="images/logo.png" alt="Logo" class="h-12 px-2 rounded-md" /></a>
@@ -83,10 +87,21 @@ if (isset($_GET['id'])) {
         <div class="w-1/2 relative">
         <?php foreach ($photos as $photo): ?>
         <?php endforeach; ?>
-        <img src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Room image" class="room-image rounded">
-        <span class="bg-green-500 text-white text-sm font-semibold px-2 py-1 rounded-full absolute top-4 left-4">Available</span>
+        <img src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Room image" class="room-image rounded-md max-w-2xl w-[36rem] h-96" loading="lazy">
+        <!-- Status Room -->
+        <span class="<?php
+        $status = trim($room['status']);
+        if ($status === 'Available') {
+            echo 'bg-green-500';
+        } else if ($status === 'Booked') {
+            echo 'bg-red-600';
+        }
+    ?> text-white text-sm font-semibold px-2 py-1 rounded-full absolute top-4 left-4">
+    <?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?>
+    </span>
+        <!-- End Status Room -->
         </div>
-        <div class="w-1/2  md:pl-6 mt-6 md:mt-0 ml-4">
+        <div class="w-2/3  md:pl-6 mt-6 md:mt-0">
             <h2 class="text-2xl font-bold"><?= $room['nama'] ?></h2>
             <p class="mt-2 text-muted-foreground"><?= $room['deskripsi'] ?></p>
             <hr class="mt-3">
@@ -105,7 +120,6 @@ if (isset($_GET['id'])) {
                 $facilities = [];
                 while ($row = $result->fetch_assoc()) {
                     $facilities[] = $row['nama_fasilitas'];
-                    $facilities[] = $row['deskripsi'];
                 }
             ?>
             <?php
@@ -118,12 +132,23 @@ if (isset($_GET['id'])) {
             }
             ?>
             </ul>
-            <button class="mt-4 px-4 py-2 bg-primary text-primary-foreground custom-button rounded-md absolute right-0 mr-16">Book Now</button>
+            <p class="absolute right-0 mr-16 mt-6">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
+            <?php
+            if ($status == 'Booked') {
+                echo "<button class='btn text-white bg-red-600 hover:bg-red-700 absolute right-0 mr-16 mt-14 py-1 px-3 rounded-md' disabled>Booked</button>";
+            } else {
+                echo "<a href='rooms-booking.php?id=" . urlencode($id_room) . "' class='absolute right-0 mr-16 mt-14 custom-button py-1 px-3 rounded-md'>Book Now</a>";
+            }
+            ?>
         </div>
     </div>
     </div>
-</body>
+    <footer class="fixed bottom-0 left-0 right-0 bg-card text-card-foreground py-4 border-t border-border bg-emerald-700">
+    <div class="container mx-auto text-center text-md text-white">
+        <p>
+        © Copyright Pemuda Inguh, Villas Resort Tegallalang, JL Pantai Gili Trawangan, Gili Indah, Pemenang, Kabupaten Gianyar, Gili Indah, Bali, Indonesia 83352
+        </p>
+    </div>
+    </footer>
+  </body>
 </html>
-<?php 
-include "include/footer.php"
-?>

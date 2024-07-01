@@ -106,14 +106,9 @@ if (empty($edit)) {
                 </div>
                 <div>
                     <label for="status" class="font-semibold">Status :</label><br>
-                    <select id="status" name="status" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        <?php if ($status == 'Available') : ?>
-                            <option value="Available" selected class="text-gray-900">Available</option>
-                            <option value="Booked" class="text-gray-900">Booked</option>
-                        <?php else : ?>
-                            <option value="Available" class="text-gray-900">Available</option>
-                            <option value="Booked" selected class="text-gray-900">Booked</option>
-                        <?php endif ?>
+                    <select id="status" name="status" class="border-2 border-black border-solid px-2 py-1 block w-full mt-1 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value="Available" class="text-gray-900" <?php if ($status == 'Available') echo 'selected'; ?>>Available</option>
+                        <option value="Booked" class="text-gray-900" <?php if ($status == 'Booked') echo 'selected'; ?>>Booked</option>
                     </select><br>
                 </div>
                 <div>
