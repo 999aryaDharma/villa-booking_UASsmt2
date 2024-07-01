@@ -32,13 +32,10 @@ while ($row = $result->fetch_assoc()) {
 }
 
 ?>
-<<<<<<< HEAD
+
 <main class="mt-14">
-=======
-<main class="">
 	<link href="src/loader.css" rel="stylesheet" />
-  <script src="js/loader.js"></script>
->>>>>>> refs/remotes/origin/master
+  	<script src="js/loader.js"></script>
 	<!-- SECTION ABOUT -->
 	
 
@@ -47,23 +44,23 @@ while ($row = $result->fetch_assoc()) {
 		<div class="relative h-56 overflow-hidden rounded-lg md:h-96">
 			<!-- Item 1 -->
 			<div class="hidden duration-700 ease-in-out" data-carousel-item>
-				<img src="admin-panel/rooms-admin.php/images/667e9e3d12646.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+				<img src="images/photorealistic-wooden-house-interior-with-timber-decor-furnishings (1).jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 			</div>
 			<!-- Item 2 -->
 			<div class="hidden duration-700 ease-in-out" data-carousel-item>
-				<img src="admin-panel/rooms-admin.php/images/667ea6a785f1f.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+				<img src="images/photorealistic-wooden-house-interior-with-timber-decor-furnishings.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 			</div>
 			<!-- Item 3 -->
 			<div class="hidden duration-700 ease-in-out" data-carousel-item>
-				<img src="admin-panel/rooms-admin.php/images/667ea62614e14.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+				<img src="images/room1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 			</div>
 			<!-- Item 4 -->
 			<div class="hidden duration-700 ease-in-out" data-carousel-item>
-				<img src="admin-panel/rooms-admin.php/images/667ea72154647.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+				<img src="images/room3.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 			</div>
 			<!-- Item 5 -->
 			<div class="hidden duration-700 ease-in-out" data-carousel-item>
-				<img src="admin-panel/rooms-admin.php/images/667ed10aa681e.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+				<img src="images/swimming-pool-resort.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 			</div>
 		</div>
 		<!-- Slider indicators -->
