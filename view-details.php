@@ -132,9 +132,13 @@ if (isset($_GET['id'])) {
             }
             ?>
             </ul>
-            <p class="absolute right-0 mr-16 mb-10">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
+            <p class="absolute right-0 mr-16 mt-6">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
             <?php
-            echo "<a href='rooms-booking.php?id=" . urlencode($id_room) . "' class='absolute right-0 mr-16 mt-8 custom-button py-1 px-3 rounded-md'>Book Now</a>";
+            if ($status == 'Booked') {
+                echo "<button class='btn text-white bg-red-600 hover:bg-red-700 absolute right-0 mr-16 mt-14 py-1 px-3 rounded-md' disabled>Booked</button>";
+            } else {
+                echo "<a href='rooms-booking.php?id=" . urlencode($id_room) . "' class='absolute right-0 mr-16 mt-14 custom-button py-1 px-3 rounded-md'>Book Now</a>";
+            }
             ?>
         </div>
     </div>
