@@ -31,6 +31,9 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 		<link href="dist/output.css" rel="stylesheet" />
 		<link href="src/input.css" rel="stylesheet" />
 		<script src="../js/main.js"></script>
+
+		<link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 	</head>
 	<body class="m-0 p-0">
 		<header>
@@ -66,7 +69,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 				<div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-25">
 					<h1 class="text-4xl font-bold mb-4">Welcome <?= $auth_user ?? " " ?> to Our Villas</h1>
 					<p class="mb-4 text-xl mt-0"><i>Experience the best stay with us</i></p>
-					<a href="rooms-booking.php" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto">Book Now</a>
+					<a href="about-us.php" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto">About Us</a>
 				</div>
 			</div>
 		</header>
