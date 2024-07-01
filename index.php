@@ -30,9 +30,11 @@ while ($row = $result->fetch_assoc()) {
 	$row['photos'] = explode(',', $row['foto']);
 	$rooms[] = $row;
 }
-$fasilitas = showRoom("SELECT * FROM fasilitas");
+
 ?>
 <main class="">
+	<link href="src/loader.css" rel="stylesheet" />
+  <script src="js/loader.js"></script>
 	<!-- SECTION ABOUT -->
 	<div class="flex items-center p-5">
 		<div class="md:w-1/2 px-20">
@@ -51,7 +53,7 @@ $fasilitas = showRoom("SELECT * FROM fasilitas");
 	<!-- ROOM CARDS -->
 	<div class="flex flex-wrap justify-center gap-14 pt-16" id="room">
 		<?php foreach ($rooms as $room) : ?>
-			<div class="max-w-2xl max-h-full dark:bg-zinc-800 rounded-lg shadow-2xl overflow-hidden flex">
+			<div class="max-w-2xl  max-h-80  dark:bg-zinc-800 rounded-lg shadow-2xl overflow-hidden flex">
 				<?php foreach ($room['photos'] as $photo) : ?>
 				<?php endforeach; ?>
 				<img class="w-2/3 h-auto object-cover" src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Hotel Image" />
@@ -71,7 +73,7 @@ $fasilitas = showRoom("SELECT * FROM fasilitas");
 	<!-- Fasilitas 'what we offer' -->
 	<div class="flex flex-col md:flex-row mt-12" id="fasilitas">
 		<div class="relative w-full max-w-xl ml-16 mr-14 max-h-min pt-16">
-			<div class="carousel-item active">
+			<div class="carousel-item active z-0">
 				<img class="w-full h-full object-cover" src="images/room1.jpg" alt="Slide 1" />
 			</div>
 			<div class="carousel-item">
@@ -85,12 +87,18 @@ $fasilitas = showRoom("SELECT * FROM fasilitas");
 			<h2 class="text-4xl font-bold mb-4">What we offer</h2>
 			<p class="text-zinc-600 mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 			<div class="space-y-6 grid grid-cols-2">
-				
+				<?php
+					$fasilitas = showRoom("SELECT * FROM fasilitas");
+				?>
 				<?php foreach ($fasilitas as $v) : ?>
 					<div class="flex items-start mt-6">
 						<div class="pr-8">
-							<h3 class="text-xl font-semibold"><?= $v['nama_fasilitas'] ?></h3>
-							<p class="text-zinc-600"><?= $v['deskripsi'] ?>
+						<ul>
+							<li>
+								<h3 class="text-xl font-semibold"><?= $v['nama_fasilitas'] ?></h3>
+								<p class="text-zinc-600"><?= $v['deskripsi'] ?>
+							</li>
+						</ul>
 						</div>
 					</div>
 				<?php endforeach ?>

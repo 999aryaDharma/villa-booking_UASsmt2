@@ -45,14 +45,6 @@ if ($result_selected_status && mysqli_num_rows($result_selected_status) > 0) {
     $status = $row['status'];
 }
 
-<<<<<<< HEAD
-$edit = showRoom("SELECT room.id_room, room.nama, room.harga, room.num_beds, room.deskripsi, room.status,room_foto.foto, GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas
-                FROM room
-                INNER JOIN room_foto ON room.id_room = room_foto.id_room
-                INNER JOIN room_fasilitas ON room.id_room = room_fasilitas.id_room
-                INNER JOIN fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
-                WHERE room.id_room = '$id'")[0];
-=======
 $edit = showRoom("SELECT
     room.id_room, 
     room.nama, 
@@ -83,7 +75,6 @@ if (empty($edit)) {
 
 // var_dump($edit);
 ?>
->>>>>>> a7f8be53f48fa273a76966e9576e2006c6f542ee
 
 ?>
 <main class="pl-56 pt-24 pr-9">
@@ -115,14 +106,9 @@ if (empty($edit)) {
                 </div>
                 <div>
                     <label for="status" class="font-semibold">Status :</label><br>
-                    <select id="status" name="status" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        <?php if ($status == 'Available') : ?>
-                            <option value="Available" selected class="text-gray-900">Available</option>
-                            <option value="Booked" class="text-gray-900">Booked</option>
-                        <?php else : ?>
-                            <option value="Available" class="text-gray-900">Available</option>
-                            <option value="Booked" selected class="text-gray-900">Booked</option>
-                        <?php endif ?>
+                    <select id="status" name="status" class="border-2 border-black border-solid px-2 py-1 block w-full mt-1 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value="Available" class="text-gray-900" <?php if ($status == 'Available') echo 'selected'; ?>>Available</option>
+                        <option value="Booked" class="text-gray-900" <?php if ($status == 'Booked') echo 'selected'; ?>>Booked</option>
                     </select><br>
                 </div>
                 <div>
