@@ -30,6 +30,7 @@ while ($row = $result->fetch_assoc()) {
 	$row['photos'] = explode(',', $row['foto']);
 	$rooms[] = $row;
 }
+$fasilitas = showRoom("SELECT * FROM fasilitas");
 
 ?>
 
@@ -121,10 +122,10 @@ while ($row = $result->fetch_assoc()) {
 				<img class="w-full h-full object-cover" src="images/room1.jpg" alt="Slide 1" />
 			</div>
 			<div class="carousel-item">
-				<img class="w-full h-full object-cover" src="images/room2.jpg" alt="Slide 2" />
+				<img class="w-full h-full object-cover" src="images/room2.jpg" alt="Slide 2" loading="lazy"/>
 			</div>
 			<div class="carousel-item">
-				<img class="w-full h-full object-cover" src="images/room3.jpg" alt="Slide 3" />
+				<img class="w-full h-full object-cover" src="images/room3.jpg" alt="Slide 3" loading="lazy" />
 			</div>
 		</div>
 		<div class="md:w-1/2 mb-28 pt-16 max-md:px-5">
@@ -150,6 +151,25 @@ while ($row = $result->fetch_assoc()) {
 		</div>
 	</div>
 	<script src="js/main.js"></script>
+	<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var lazyloadImages = document.querySelectorAll(".lazyload");
+        
+        function lazyload() {
+            lazyloadImages.forEach(function(img) {
+                if (img.getBoundingClientRect().top <= window.innerHeight && img.getBoundingClientRect().bottom >= 0 && getComputedStyle(img).display !== "none") {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazyload');
+                }
+            });
+        }
+        
+        lazyload();
+        
+        window.addEventListener("scroll", lazyload);
+        window.addEventListener("resize", lazyload);
+    });
+</script>
 	<!-- END Fasilitas 'what we offer' -->
 	<?php
 	include_once "include/footer.php";

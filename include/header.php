@@ -78,7 +78,6 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 						<?php endif ?>
 						<li><a href="#room" class="custom-underline">Villas</a></li>
 						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-						<li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
 						<li><a href="booking-detail.php" class="custom-underline">My Booking</a></li>
 						<li>
 							<?php if (!isset($auth_user['username'])) : ?>
@@ -117,7 +116,6 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 						<?php endif ?>
 						<li><a href="#room" class="custom-underline sidebar-border">Villas</a></li>
 						<li><a href="#fasilitas" class="custom-underline sidebar-border">Facilities</a></li>
-						<li><a href="rooms-booking.php" class="custom-underline sidebar-border">Contact & Booking</a></li>
 						<li><a href="booking-detail.php" class="custom-underline sidebar-border">My Booking</a></li>
 						<li>
 							<?php if (!isset($auth_user['username'])) : ?>

@@ -1,11 +1,39 @@
 <?php
 // require "koneksi.php";
 require "function.php";
+
 // $id = $_GET['id'];
 // // require "admin-panel/rooms-admin.php/function-room.php";
 // $id_room = $_SESSION['id_room'];
-$auth_user = getUserById($_SESSION['auth_id'] ?? null);
+// $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 // $rooms = getAllRoom($id);
+
+
+$auth_user = getUserById($_SESSION['auth_id'] ?? null);
+function showRoom($query)
+{
+	global $conn;
+	$result = mysqli_query($conn, $query);
+	$rooms = [];
+	while ($row = mysqli_fetch_assoc($result)) {
+		$rooms[] = $row;
+	}
+	return $rooms;
+}
+if ($auth_user) {
+    
+    $id_customer = $auth_user['id_customer']; 
+
+   
+    $sqli = showRoom("SELECT id_customer FROM customer WHERE id_customer='$id_customer'");
+    
+    foreach ($sqli as $row) {
+        // echo $row['id_customer'] . '<br>'; 
+    }
+} else {
+    echo "User tidak ditemukan atau tidak ada sesi auth_id."; 
+}
+
 if (isset($_GET['id'])) {
     $id_room = $_GET['id'];
 
@@ -52,7 +80,22 @@ if (isset($_GET['id'])) {
     <link href="src/loader.css" rel="stylesheet" />
     <link href="src/hamburger.css" rel="stylesheet" />
     <script src="js/loader.js"></script>
-    <script src="js/main.js"></script>
+	<script src="js/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+		<style>
+        p,h1,h2,h3,h4 {
+        font-family: "Inconsolata", monospace;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 100;
+        padding: 10px;
+        }
+    
+    </style>
 </head>
 <body class="m-0 p-0">
     <!-- Loader -->
@@ -85,7 +128,6 @@ if (isset($_GET['id'])) {
             <ul class="flex gap-10 text-xl">
                 <li><a href="#room" class="custom-underline">Villas</a></li>
                 <li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-                <li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
                 <li><a href="auth/register.php" class="custom-underline">Register</a></li>
                 <li>
                     <?php if (!is_null($auth_user)) : ?>
@@ -145,12 +187,14 @@ if (isset($_GET['id'])) {
             ?>
             <?php
             if (!empty($facilities)) {
+                echo "<ul class='md:grid md:grid-cols-4'>";
                 foreach ($facilities as $facility) {
-                    echo "<li>" . htmlspecialchars($facility) . "</li>";
+                    echo "<li class='flex items-center justify-left py-2'>" . htmlspecialchars($facility) . "</li>";
                 }
+                echo "</ul>";
             } else {
-                echo "<li>No facilities available.</li>";
-            }
+                echo "<ul class='flex justify-center'><li>No facilities available.</li></ul>";
+            } 
             ?>
             </ul>
             <p class="absolute right-0 md:mr-16 mr-5 mt-6">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
@@ -178,7 +222,6 @@ if (isset($_GET['id'])) {
                     <?php endif ?>
                     <li><a href="#room" class="custom-underline sidebar-border">Villas</a></li>
                     <li><a href="#fasilitas" class="custom-underline sidebar-border">Facilities</a></li>
-                    <li><a href="rooms-booking.php" class="custom-underline sidebar-border">Contact & Booking</a></li>
                     <li><a href="booking-detail.php" class="custom-underline sidebar-border">My Booking</a></li>
                     <li>
                         <?php if (!isset($auth_user['username'])) : ?>

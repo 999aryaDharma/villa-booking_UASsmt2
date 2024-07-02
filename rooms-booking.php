@@ -1,6 +1,15 @@
 <?php 
 require_once "function.php";
-
+function showRoom($query)
+{
+	global $conn;
+	$result = mysqli_query($conn, $query);
+	$rooms = [];
+	while ($row = mysqli_fetch_assoc($result)) {
+		$rooms[] = $row;
+	}
+	return $rooms;
+}
 if (isset($_GET['id'])) {
     $id_room = $_GET['id'];
 }
@@ -27,6 +36,10 @@ $stmt->fetch();
 $stmt->close();
 
 $_SESSION['harga_kamar'] = $harga_kamar;
+$sql = showRoom("SELECT r.id_room, r.nama,r.deskripsi,r.harga,r.num_beds,r.status,rf.foto FROM room r INNER JOIN room_foto rf
+ON r.id_room = rf.id_room
+WHERE r.id_room ='$id_room'");
+
 ?>
 
 <!DOCTYPE html>
@@ -35,40 +48,83 @@ $_SESSION['harga_kamar'] = $harga_kamar;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     <link href="dist/output.css" rel="stylesheet" />
     <link href="src/input.css" rel="stylesheet" />
     <link href="src/loader.css" rel="stylesheet" />
     <script src="js/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- Include SweetAlert2 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Booking</title>
+     
+    <style>
+        p,h1,h2,h3,h4 {
+        font-family: "Inconsolata", monospace;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 100;
+        padding: 10px;
+        }
+        body {
+            background-image: url("images/irina-iriser-2Y4dE8sdhlc-unsplash.jpg");
+            background-size: cover; /* Mengatur ukuran gambar untuk menutupi seluruh elemen */
+            background-position: center; /* Posisi gambar di tengah elemen */
+            background-repeat: no-repeat;   
+        }
+    </style>
 </head>
-<body>
-    <!-- Loader -->
-    <div id="loader">
-        <div class="spinner"></div>
-    </div>
-    <div class="relative min-h-screen bg-cover bg-center dark:bg-zinc-900 grid place-content-center" style="background-image: url('images/room1.jpg')">
-        <div class="absolute right-0 inset-0 bg-black opacity-50"></div>
-        
-        <div class="transform">
-            <h1 class="text-white text-2xl">Welcome <?= $auth_user['username'] ?? " " ?> to Pemuda Inguh Villas</h1>
-            <h2 class="text-zinc-400 text-4xl font-bold mt-4 text-center pb-10"><?= $nama_kamar ?> Room</h2>
-        </div>
+<?php foreach($sql as $v) : ?>
+<?php endforeach ?>
+<div class="bg-card dark:bg-card-foreground p-6 rounded-lg shadow-lg max-w-4xl mx-auto mt-10 ">
+  <div class="flex justify-between items-center mb-6 rounded-md bg-teal-50">
+    <!-- <button class="bg-white p-2 rounded-md shadow-md flex items-center"> -->
+        <a href="index.php"><img aria-hidden="true" alt="home-icon" src="images/logo.png" class="h-12 pl-5 rounded-md"/></a>
+    <!-- </button> -->
+  </div>
 
-        <div class="transform bg-white p-8 rounded-2xl shadow-lg max-w-sm  min-h-64">
-            <h3 class="text-2xl mb-4 font-thin">Book this room</h3>
-            <h2 class="mb-2" id="roomPrice">Harga Kamar: Rp <?= number_format($harga_kamar, 0, ',', '.'); ?></h2>
-            <form method="POST" class="space-y-4" onsubmit="bookNow(event)">
-                <div class="flex space-x-4">
-                    <input type="date" id="checkIn" name="checkIn" placeholder="check-in" class="w-full p-2 border border-zinc-300 rounded bg-zinc-300" />
-                    <input type="date" id="checkOut" name="checkOut" placeholder="check-out" class="w-full p-2 border border-zinc-300 rounded bg-zinc-300" />
-                </div>
-                <h4 id="totalPrice">Total Harga: Rp 0</h4>
-                <button onclick="window.location.href='index.php#room';" type="submit" class="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 rounded">BOOK NOW</button>
-            </form>
+  <div class=" dark:bg-card-foreground p-6 rounded-lg shadow-md bg-teal-50">
+    <h1 class="text-green-600 font-bold text-3xl mb-4 text-center"><?= $v['nama']?></h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <label class="block text-center mb-2"><strong>Select date to order</strong></label>
+        <form method="POST" class="space-y-4 shadow " onsubmit="bookNow(event)">
+          <div class="flex flex-col space-y-4">
+            <input type="date" id="checkIn" name="checkIn" class="w-full p-2 border border-gray-300 rounded bg-teal-50" />
+            <input type="date" id="checkOut" name="checkOut" class="w-full p-2 border border-gray-300 rounded bg-teal-50" />
+          </div>
+          <button type="submit" class="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 rounded mt-4">BOOK NOW</button>
+        </form>
+        
+        <h2 class="text-center mt-8">This room accommodates up to:</h2>
+        <div class="flex justify-center space-x-2 mt-2">
+          <?php for ($i = 0; $i < $v['num_beds']; $i++) : ?>
+            <img class="h-6 w-6" aria-hidden="true" alt="guests-icon" src="https://openui.fly.dev/openui/24x24.svg?text=👤"/>
+          <?php endfor; ?>
         </div>
+        <h3 class="text-center"><?= $v['num_beds']?></h3>
+        <p class="text-center">Guest's</p>
+        <div class="bg-green-200">
+            <h4 id="totalPrice" class="text-center mt-2">Total Harga: Rp 0</h4>
+        </div>
+      </div>
+
+      <div class="col-span-2">
+        <img class="w-full h-full object-cover rounded-md" src="admin-panel/rooms-admin.php/images/<?= $v['foto']?>" alt="Room image" />
+      </div>
     </div>
+  </div>
+</div>
+
+
+
+
+
     <script>
         var pricePerRoom = <?= $harga_kamar ?>; // Harga kamar dari server
 
@@ -89,7 +145,11 @@ $_SESSION['harga_kamar'] = $harga_kamar;
             
             if (checkInDate && checkOutDate) {
                 if (moment(checkOutDate).isBefore(moment(checkInDate))) {
-                    alert("Tanggal check-out harus setelah tanggal check-in");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Tanggal check-out harus setelah tanggal check-in'
+                    });
                     document.getElementById("checkOut").value = '';
                     return;
                 }
@@ -125,8 +185,9 @@ $_SESSION['harga_kamar'] = $harga_kamar;
             var checkInDate = document.getElementById("checkIn").value;
             var checkOutDate = document.getElementById("checkOut").value;
             var customerId = "<?= $auth_user['id_customer']; ?>";
-            var idRoom = <?= $id_room; ?>; 
-						var totalPrice = calculateBookingPrice(checkInDate, checkOutDate, pricePerRoom);
+            var idRoom = <?= $id_room; ?>;
+            var totalPrice = calculateBookingPrice(checkInDate, checkOutDate, pricePerRoom);
+            
             $.ajax({
                 url: 'proses_booking.php',
                 type: 'POST',
@@ -136,17 +197,29 @@ $_SESSION['harga_kamar'] = $harga_kamar;
                     id_room: idRoom,
                     check_in: checkInDate,
                     check_out: checkOutDate,
-										total_price: totalPrice // Mengirim total harga ke PHP
+                    total_price: totalPrice // Mengirim total harga ke PHP
                 },
                 success: function(response) {
-                    alert('Booking berhasil: ' + response);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Booking Berhasil!',
+                        text: response
+                    }).then((result) => {
+                        // Redirect atau tindakan lain setelah OK ditekan
+                        window.location.href = 'index.php#room';
+                    });
                 },
                 error: function(xhr, status, error) {
-                    alert('Booking gagal: ' + error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Booking gagal: ' + error
+                    });
                 }
             });
         }
 
+        // Dokumen siap
         $(document).ready(function() {
             // Set minimum date untuk check-in ke hari ini
             var today = moment().format('YYYY-MM-DD');
