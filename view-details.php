@@ -1,10 +1,10 @@
-<?php 
+<?php
 // require "koneksi.php";
 require "function.php";
 // $id = $_GET['id'];
 // // require "admin-panel/rooms-admin.php/function-room.php";
 // $id_room = $_SESSION['id_room'];
-$auth_user = getUserById($_SESSION['auth_id'] ?? null );
+$auth_user = getUserById($_SESSION['auth_id'] ?? null);
 // $rooms = getAllRoom($id);
 if (isset($_GET['id'])) {
     $id_room = $_GET['id'];
@@ -19,21 +19,21 @@ if (isset($_GET['id'])) {
         GROUP BY room.id_room
         LIMIT 1";
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id_room);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id_room);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            $room = $result->fetch_assoc();
-            $photos = explode(',', $room['foto']);
-            // Tampilkan informasi kamar dan foto-fotonya
-        } else {
-            // Handle jika kamar tidak ditemukan
-            echo "Kamar tidak ditemukan.";
-        }
+    if ($result->num_rows > 0) {
+        $room = $result->fetch_assoc();
+        $photos = explode(',', $room['foto']);
+        // Tampilkan informasi kamar dan foto-fotonya
+    } else {
+        // Handle jika kamar tidak ditemukan
+        echo "Kamar tidak ditemukan.";
+    }
 
-        $stmt->close();
+    $stmt->close();
     $_SESSION['nama_kamar'] = $room['nama'];
     $nama_kamar = $room['nama'];
 }
@@ -41,42 +41,62 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details Room</title>
     <script src="https://cdn.tailwindcss.com"></script>
-	<link href="dist/output.css" rel="stylesheet" />
-	<link href="src/input.css" rel="stylesheet" />
+    <link href="dist/output.css" rel="stylesheet" />
+    <link href="src/input.css" rel="stylesheet" />
     <link href="src/loader.css" rel="stylesheet" />
+    <link href="src/hamburger.css" rel="stylesheet" />
     <script src="js/loader.js"></script>
-	<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body class="m-0 p-0">
     <!-- Loader -->
     <div id="loader">
         <div class="spinner"></div>
     </div>
-    <nav class="fixed top-0 left-0 w-full flex justify-between px-5 py-2 items-center border-b-1 bg-neutral-400 text-white nav-blur z-50">
-			<div>
-				<a href="#"><img src="images/logo.png" alt="Logo" class="h-12 px-2 rounded-md" /></a>
-			</div>
-			<div>
-				<ul class="flex gap-10 text-xl">
-					<li><a href="#room" class="custom-underline">Villas</a></li>
-					<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-					<li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
-					<li><a href="auth/register.php" class="custom-underline">Register</a></li>
-					<li>
-					<?php if (!is_null($auth_user)) : ?>
-						<a href="/auth/logout.php" class="custom-underline">Log Out</a>
-					<?php else : ?>
-						<a href="/auth/login.php" class="custom-underline">Sign In</a>
-					<?php endif ?>			
-					</li>
-				</ul>
-			</div>
-		</nav>
+    <!-- Loader END -->
+
+    <!-- Button Humburger -->
+    <button id="hamburger" class="md:hidden hamburger-icon m-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 ham-icon text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 6l16 0" />
+            <path d="M4 12l16 0" />
+            <path d="M4 18l16 0" />
+        </svg>
+        <svg class="w-8 h-8 close-icon hidden text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </path>
+        </svg>
+    </button>
+    <!-- Button Humburger END -->
+
+    <!-- Navbar -->
+    <nav class="hidden md:flex md:items-center md:space-x-4 fixed top-0 left-0 w-full justify-between px-5 py-2 items-center border-b-1 bg-neutral-400 text-white nav-blur z-50">
+        <div>
+            <a href="#"><img src="images/logo_putih.png" alt="Logo" class="h-12 px-2 rounded-md" /></a>
+        </div>
+        <div>
+            <ul class="flex gap-10 text-xl">
+                <li><a href="#room" class="custom-underline">Villas</a></li>
+                <li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
+                <li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
+                <li><a href="auth/register.php" class="custom-underline">Register</a></li>
+                <li>
+                    <?php if (!is_null($auth_user)) : ?>
+                        <a href="/auth/logout.php" class="custom-underline">Log Out</a>
+                    <?php else : ?>
+                        <a href="/auth/login.php" class="custom-underline">Sign In</a>
+                    <?php endif ?>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="md:p-20 bg-card text-card-foreground mt-10 pt-20">
         <button onclick="window.location.href='index.php#room';" type="button" class="flex items-center justify-center px-3 mb-4 ml-5 text-sm custom-button rounded-lg">
             <svg class="w-8 h-8 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -112,14 +132,15 @@ if (isset($_GET['id'])) {
                 FROM room_fasilitas
                 JOIN fasilitas ON room_fasilitas.id_fasilitas = fasilitas.id_fasilitas
                 WHERE room_fasilitas.id_room = ?";
-        
-                $stmt = $conn->prepare($query);
-                $stmt->bind_param("i", $id_room);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $facilities = [];
-                while ($row = $result->fetch_assoc()) {
-                    $facilities[] = $row['nama_fasilitas'];
+
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("i", $id_room);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $facilities = [];
+                    while ($row = $result->fetch_assoc()) {
+                        $facilities[] = $row['nama_fasilitas'];
+                    
                 }
             ?>
             <?php
@@ -142,7 +163,41 @@ if (isset($_GET['id'])) {
             ?>
         </div>
     </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar text-white px-6 py-4">
+        <nav class="px-3">
+            <div>
+                <a href="#"><img src="images/logo_putih.png" alt="Logo" class="pl-3 h-12 rounded-md" /></a>
+            </div>
+
+            <div>
+                <?php if (!isset($auth_user)) : ?>
+                <?php else : ?>
+                    <ul class="batas text-xl space-y-4 pl-2 pt-3">
+                    <?php endif ?>
+                    <li><a href="#room" class="custom-underline">Villas</a></li>
+                    <li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
+                    <li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
+                    <li><a href="booking-detail.php" class="custom-underline">My Booking</a></li>
+                    <li>
+                        <?php if (!isset($auth_user['username'])) : ?>
+                            <a href="auth/register.php" class="custom-underline">Register</a>
+                        <?php endif ?>
+                    </li>
+                    <li>
+                        <?php if (!is_null($auth_user['username'])) : ?>
+                            <a href="/auth/logout.php" class="custom-underline">Log Out</a>
+                        <?php else : ?>
+                            <a href="/auth/login.php" class="custom-underline">Sign In</a>
+                        <?php endif ?>
+                    </li>
+                    </ul>
+            </div>
+        </nav>
     </div>
+    </div>
+    
     <footer class="max-md:mt-32 md:fixed bottom-0 left-0 right-0 bg-card text-card-foreground py-4 border-t border-border bg-emerald-700">
     <div class="container mx-auto text-center text-md text-white">
         <p>
@@ -150,5 +205,7 @@ if (isset($_GET['id'])) {
         </p>
     </div>
     </footer>
-  </body>
+    <script src="js/hamburger.js"></script>
+</body>
+
 </html>
