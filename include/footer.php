@@ -15,10 +15,10 @@
 		<div class="mx-auto text-center">
 			<!-- Logo and Description -->
 			<div class="mb-4 relative">
-				<img src="images/logo_putih.png" alt="Villa Logo" class="mx-auto w-24 h-24">
-				<h2 class="text-xl font-bold mb-2">Pemuda Inguh Villa</h2>
+				<img src="images/logo_putih.png" alt="Villa Logo" class="mx-auto w-14 h-14 md:w-24 md:h-24">
+				<h2 class="md:text-xl text-sm font-bold mb-2">Pemuda Inguh Villa</h2>
 			</div>
-			<div class="flex justify-center font-semibold space-x-6 mb-4">
+			<div class="flex justify-center font-semibold space-x-6 mb-4 max-md:text-xs">
 				<p class="mt-2">Map Direction</p>
 				<p class="mt-2">Accomodation Services</p>
 				<p class="mt-2">Great Experiences</p>
