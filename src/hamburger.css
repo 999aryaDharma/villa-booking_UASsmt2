@@ -40,11 +40,11 @@
      /* Tampilkan overlay saat sidebar aktif */
  }
 
- .sidebar nav ul li{
+ .sidebar-border{
     padding-bottom: 5px;
      border-bottom: 1px solid #d4d4d8;
-     /* Garis pembatas antar item */
  }
+  /* Garis pembatas antar item */
 
  .hamburger-icon {
     position: fixed;

@@ -97,7 +97,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 		</nav>
 		<div class="bg-cover bg-fixed bg-no-repeat bg-center min-h-screen nav-overlay" style="background-image: url('images/relax-area-resort.jpg')">
 			<div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-25">
-				<h1 class="text-4xl font-bold mb-4">Welcome <?= $auth_user['username'] ?? " " ?> to Our Villas</h1>
+				<h1 class="md:text-4xl text-2xl font-bold mb-4">Welcome <?= $auth_user['username'] ?? " " ?> to Our Villas</h1>
 				<p class="mb-4 text-xl mt-0"><i>Experience the best stay with us</i></p>
 				<a href="about-us.php" class="inline-block btn bg-orange-600 hover:bg-orange-800 px-6 py-2 rounded-md text-center pointer-events-auto">About Us</a>
 			</div>
@@ -105,30 +105,30 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 
 		<!-- Sidebar -->
 		<div id="sidebar" class="sidebar text-white px-6 py-4">
-			<nav class="px-3">
+			<nav class="">
 				<div>
-					<a href="#"><img src="images/logo_putih.png" alt="Logo" class="pl-3 h-12 rounded-md" /></a>
+					<a href="#"><img src="images/logo_putih.png" alt="Logo" class=" h-12 rounded-md" /></a>
 				</div>
 
 				<div>
 					<?php if (!isset($auth_user)) : ?>
 					<?php else : ?>
-						<ul class="batas text-xl space-y-4 pl-2 pt-3">
+						<ul class="batas text-xl space-y-4 pt-3">
 						<?php endif ?>
-						<li><a href="#room" class="custom-underline">Villas</a></li>
-						<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-						<li><a href="rooms-booking.php" class="custom-underline">Contact & Booking</a></li>
-						<li><a href="booking-detail.php" class="custom-underline">My Booking</a></li>
+						<li><a href="#room" class="custom-underline sidebar-border">Villas</a></li>
+						<li><a href="#fasilitas" class="custom-underline sidebar-border">Facilities</a></li>
+						<li><a href="rooms-booking.php" class="custom-underline sidebar-border">Contact & Booking</a></li>
+						<li><a href="booking-detail.php" class="custom-underline sidebar-border">My Booking</a></li>
 						<li>
 							<?php if (!isset($auth_user['username'])) : ?>
-								<a href="auth/register.php" class="custom-underline">Register</a>
+								<a href="auth/register.php" class="custom-underline sidebar-border">Register</a>
 							<?php endif ?>
 						</li>
 						<li>
 							<?php if (!is_null($auth_user['username'])) : ?>
-								<a href="/auth/logout.php" class="custom-underline">Log Out</a>
+								<a href="/auth/logout.php" class="custom-underline sidebar-border">Log Out</a>
 							<?php else : ?>
-								<a href="/auth/login.php" class="custom-underline">Sign In</a>
+								<a href="/auth/login.php" class="custom-underline sidebar-border">Sign In</a>
 							<?php endif ?>
 						</li>
 						</ul>
