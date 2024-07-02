@@ -57,7 +57,7 @@ $fasilitas = showRoom("SELECT * FROM fasilitas");
 			<div class="max-w-2xl  max-h-80  dark:bg-zinc-800 rounded-lg shadow-2xl overflow-hidden flex">
 				<?php foreach ($room['photos'] as $photo) : ?>
 				<?php endforeach; ?>
-				<img class="w-2/3 h-auto object-cover" src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Hotel Image" />
+				<img class="w-2/3 h-auto object-cover" src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Hotel Image" loading="lazy" />
 				<div class="w-1/2 p-6 text-center font-mono font-thin">
 					<h2 class="text-xl font-bold"><?= $room['nama'] ?></h2>
 					<p class="text-md mt-4">Bed: <span class="font-semibold"><?= $room['num_beds'] ?></span></p>
@@ -75,13 +75,13 @@ $fasilitas = showRoom("SELECT * FROM fasilitas");
 	<div class="flex flex-col md:flex-row mt-12" id="fasilitas">
 		<div class="relative w-full max-w-xl ml-16 mr-14 max-h-min pt-16">
 			<div class="carousel-item active z-0">
-				<img class="w-full h-full object-cover" src="images/room1.jpg" alt="Slide 1" />
+				<img class="w-full h-full object-cover" src="images/room1.jpg" alt="Slide 1" loading="lazy"/>
 			</div>
 			<div class="carousel-item">
-				<img class="w-full h-full object-cover" src="images/room2.jpg" alt="Slide 2" />
+				<img class="w-full h-full object-cover" src="images/room2.jpg" alt="Slide 2" loading="lazy"/>
 			</div>
 			<div class="carousel-item">
-				<img class="w-full h-full object-cover" src="images/room3.jpg" alt="Slide 3" />
+				<img class="w-full h-full object-cover" src="images/room3.jpg" alt="Slide 3" loading="lazy" />
 			</div>
 		</div>
 		<div class="md:w-1/2 mb-28 pt-16">
@@ -107,6 +107,25 @@ $fasilitas = showRoom("SELECT * FROM fasilitas");
 		</div>
 	</div>
 	<script src="js/main.js"></script>
+	<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var lazyloadImages = document.querySelectorAll(".lazyload");
+        
+        function lazyload() {
+            lazyloadImages.forEach(function(img) {
+                if (img.getBoundingClientRect().top <= window.innerHeight && img.getBoundingClientRect().bottom >= 0 && getComputedStyle(img).display !== "none") {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazyload');
+                }
+            });
+        }
+        
+        lazyload();
+        
+        window.addEventListener("scroll", lazyload);
+        window.addEventListener("resize", lazyload);
+    });
+</script>
 	<!-- END Fasilitas 'what we offer' -->
 	<?php
 	include_once "include/footer.php";

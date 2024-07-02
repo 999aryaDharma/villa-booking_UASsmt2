@@ -14,18 +14,17 @@ function showRoom($query)
 	return $rooms;
 }
 if ($auth_user) {
-    // Ambil id_customer dari user yang ditemukan
-    $id_customer = $auth_user['id_customer']; // Sesuaikan dengan kolom yang tepat dari hasil getUserById()
+    
+    $id_customer = $auth_user['id_customer']; 
 
-    // Lakukan query untuk mendapatkan id_customer
+   
     $sqli = showRoom("SELECT id_customer FROM customer WHERE id_customer='$id_customer'");
     
-    // Iterasi dan tampilkan hasilnya
     foreach ($sqli as $row) {
-        echo $row['id_customer'] . '<br>'; // Sesuaikan dengan kolom yang tepat dari tabel customer
+        echo $row['id_customer'] . '<br>'; 
     }
 } else {
-    echo "User tidak ditemukan atau tidak ada sesi auth_id."; // Atur pesan yang sesuai jika user tidak ditemukan
+    echo "User tidak ditemukan atau tidak ada sesi auth_id."; 
 }
 
 if (isset($_GET['id'])) {
