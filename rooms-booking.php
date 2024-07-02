@@ -98,7 +98,7 @@ WHERE r.id_room ='$id_room'");
             <input type="date" id="checkIn" name="checkIn" class="w-full p-2 border border-gray-300 rounded bg-teal-50" />
             <input type="date" id="checkOut" name="checkOut" class="w-full p-2 border border-gray-300 rounded bg-teal-50" />
           </div>
-          <button type="submit" class="w-full bg-green-500 hover:bg-orange-700 text-white py-2 rounded mt-4">BOOK NOW</button>
+          <button type="submit" class="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 rounded mt-4">BOOK NOW</button>
         </form>
         
         <h2 class="text-center mt-8">This room accommodates up to:</h2>

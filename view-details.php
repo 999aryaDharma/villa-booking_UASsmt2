@@ -1,11 +1,33 @@
 <?php 
 // require "koneksi.php";
 require "function.php";
-// $id = $_GET['id'];
-// // require "admin-panel/rooms-admin.php/function-room.php";
-// $id_room = $_SESSION['id_room'];
-$auth_user = getUserById($_SESSION['auth_id'] ?? null );
-// $rooms = getAllRoom($id);
+
+$auth_user = getUserById($_SESSION['auth_id'] ?? null);
+function showRoom($query)
+{
+	global $conn;
+	$result = mysqli_query($conn, $query);
+	$rooms = [];
+	while ($row = mysqli_fetch_assoc($result)) {
+		$rooms[] = $row;
+	}
+	return $rooms;
+}
+if ($auth_user) {
+    // Ambil id_customer dari user yang ditemukan
+    $id_customer = $auth_user['id_customer']; // Sesuaikan dengan kolom yang tepat dari hasil getUserById()
+
+    // Lakukan query untuk mendapatkan id_customer
+    $sqli = showRoom("SELECT id_customer FROM customer WHERE id_customer='$id_customer'");
+    
+    // Iterasi dan tampilkan hasilnya
+    foreach ($sqli as $row) {
+        echo $row['id_customer'] . '<br>'; // Sesuaikan dengan kolom yang tepat dari tabel customer
+    }
+} else {
+    echo "User tidak ditemukan atau tidak ada sesi auth_id."; // Atur pesan yang sesuai jika user tidak ditemukan
+}
+
 if (isset($_GET['id'])) {
     $id_room = $_GET['id'];
 
@@ -37,8 +59,6 @@ if (isset($_GET['id'])) {
     $_SESSION['nama_kamar'] = $room['nama'];
     $nama_kamar = $room['nama'];
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -92,11 +112,11 @@ if (isset($_GET['id'])) {
                     <?php endif ?>
                     </li>
 					<li>
-					<?php if(!is_null($auth_user)) : ?>
-						<a href="/auth/logout.php" class="custom-underline">Log Out</a>
-					<?php else : ?>
-						<a href="/auth/login.php" class="custom-underline">Sign In</a>
-					<?php endif ?>			
+                        <?php if(!empty($row['id_customer'])) : ?> 
+                            <a href="/auth/logout.php" class="custom-underline">Log Out</a>
+                        <?php else : ?>
+                            <a href="/auth/login.php" class="custom-underline">Sign In</a>
+                        <?php endif; ?>	
 					</li>
 				</ul>
 			</div>
