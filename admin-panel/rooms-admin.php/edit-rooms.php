@@ -46,31 +46,36 @@ if ($result_selected_status && mysqli_num_rows($result_selected_status) > 0) {
 }
 
 $edit = showRoom("SELECT
-    room.id_room, 
-    room.nama, 
-    room.harga, 
-    room.num_beds, 
-    room.deskripsi AS room_deskripsi, 
-    room.status, 
-    room_foto.foto, 
-    GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas,
-    GROUP_CONCAT(fasilitas.deskripsi) AS fasilitas_deskripsi
-FROM 
-    room
-INNER JOIN 
-    room_foto ON room.id_room = room_foto.id_room
-INNER JOIN 
-    room_fasilitas ON room.id_room = room_fasilitas.id_room
-INNER JOIN 
-    fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
-WHERE 
-    room.id_room = '$id'
-GROUP BY 
-    room.id_room")[0];
+        room.id_room, 
+        room.nama, 
+        room.harga, 
+        room.num_beds, 
+        room.deskripsi AS room_deskripsi, 
+        room.status, 
+        MIN(room_foto.foto) AS foto, 
+        GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas,
+        GROUP_CONCAT(fasilitas.deskripsi) AS fasilitas_deskripsi
+    FROM 
+        room
+    LEFT JOIN 
+        room_foto ON room.id_room = room_foto.id_room
+    LEFT JOIN 
+        room_fasilitas ON room.id_room = room_fasilitas.id_room
+    LEFT JOIN 
+        fasilitas ON fasilitas.id_fasilitas = room_fasilitas.id_fasilitas
+    WHERE 
+        room.id_room = '$id'
+    GROUP BY 
+        room.id_room, 
+        room.nama, 
+        room.harga, 
+        room.num_beds, 
+        room.deskripsi, 
+        room.status")[0];
 
-if (empty($edit)) {
-    die("No room found with id: $id");
-}
+    if (empty($edit)) {
+        die("No room found with id: $id");
+    }
 
 
 // var_dump($edit);

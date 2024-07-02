@@ -55,16 +55,16 @@
     </style>
 </head>
 <body class="bg-emerald-500 flex justify-center items-center h-screen bg-cover bg-fixed bg-no-repeat bg-center">
-    <div class="bg-white w-3/5 rounded-xl p-7 shadow-inner">
+    <div class="bg-white md:w-3/5 rounded-xl p-7 shadow-inner">
         <div class="flex items-center mb-3"> 
             <img src="images/logo.png" alt="" class="h-10">
             <h1 class="text-sm font-bold custom-color1">Pemuda Inguh</h1>
         </div>
         <div id="sign_in" class="flex">
-            <div id="image" class="w-3/5">
+            <div id="image" class="md:w-3/5 max-md:hidden">
                 <img src="images/swimming-pool-resort.jpg" alt="" class="h-72">
             </div>
-            <div class="w-3/5">
+            <div class="md:w-3/5">
                 <div class="ml-4">
                     <div class="mb-3">
                         <h1 class="text-2xl font-bold custom-color2">Sign In</h1>

@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
     <script src="js/loader.js"></script>
 	<script src="js/main.js"></script>
 </head>
-<body class="">
+<body class="m-0 p-0">
     <!-- Loader -->
     <div id="loader">
         <div class="spinner"></div>
@@ -77,17 +77,17 @@ if (isset($_GET['id'])) {
 				</ul>
 			</div>
 		</nav>
-    <div class="p-20 bg-card text-card-foreground mt-4 pt-20">
-        <button onclick="window.location.href='index.php#room';" type="button" class="flex items-center justify-center px-3 mb-4 text-sm custom-button rounded-lg">
+    <div class="md:p-20 bg-card text-card-foreground mt-10 pt-20">
+        <button onclick="window.location.href='index.php#room';" type="button" class="flex items-center justify-center px-3 mb-4 ml-5 text-sm custom-button rounded-lg">
             <svg class="w-8 h-8 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
             </svg>
         </button>
     <div class="flex flex-col md:flex-row">
-        <div class="w-1/2 relative">
+        <div class="md:w-1/2 relative max-md:px-5">
         <?php foreach ($photos as $photo): ?>
         <?php endforeach; ?>
-        <img src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Room image" class="room-image rounded-md max-w-2xl w-[36rem] h-96" loading="lazy">
+        <img src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Room image" class="room-image rounded-md md:max-w-2xl md:w-[36rem] md:h-96" loading="lazy">
         <!-- Status Room -->
         <span class="<?php
         $status = trim($room['status']);
@@ -96,12 +96,12 @@ if (isset($_GET['id'])) {
         } else if ($status === 'Booked') {
             echo 'bg-red-600';
         }
-    ?> text-white text-sm font-semibold px-2 py-1 rounded-full absolute top-4 left-4">
+    ?> text-white text-sm font-semibold px-2 py-1 rounded-full absolute top-4 left-4 max-md:ml-5">
     <?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?>
     </span>
         <!-- End Status Room -->
         </div>
-        <div class="w-2/3  md:pl-6 mt-6 md:mt-0">
+        <div class="md:w-2/3  md:pl-6 mt-6 md:mt-0 max-md:px-5">
             <h2 class="text-2xl font-bold"><?= $room['nama'] ?></h2>
             <p class="mt-2 text-muted-foreground"><?= $room['deskripsi'] ?></p>
             <hr class="mt-3">
@@ -132,18 +132,18 @@ if (isset($_GET['id'])) {
             }
             ?>
             </ul>
-            <p class="absolute right-0 mr-16 mt-6">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
+            <p class="absolute right-0 md:mr-16 mr-5 mt-6">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
             <?php
             if ($status == 'Booked') {
-                echo "<button class='btn text-white bg-red-600 hover:bg-red-700 absolute right-0 mr-16 mt-14 py-1 px-3 rounded-md' disabled>Booked</button>";
+                echo "<button class='btn text-white bg-red-600 hover:bg-red-700 absolute right-0 md:mr-16 mr-5 mt-14 py-1 px-3 rounded-md' disabled>Booked</button>";
             } else {
-                echo "<a href='rooms-booking.php?id=" . urlencode($id_room) . "' class='absolute right-0 mr-16 mt-14 custom-button py-1 px-3 rounded-md'>Book Now</a>";
+                echo "<a href='rooms-booking.php?id=" . urlencode($id_room) . "' class='absolute right-0 md:mr-16 mr-5 mt-14 custom-button py-1 px-3 rounded-md'>Book Now</a>";
             }
             ?>
         </div>
     </div>
     </div>
-    <footer class="fixed bottom-0 left-0 right-0 bg-card text-card-foreground py-4 border-t border-border bg-emerald-700">
+    <footer class="max-md:mt-32 md:fixed bottom-0 left-0 right-0 bg-card text-card-foreground py-4 border-t border-border bg-emerald-700">
     <div class="container mx-auto text-center text-md text-white">
         <p>
         © Copyright Pemuda Inguh, Villas Resort Tegallalang, JL Pantai Gili Trawangan, Gili Indah, Pemenang, Kabupaten Gianyar, Gili Indah, Bali, Indonesia 83352

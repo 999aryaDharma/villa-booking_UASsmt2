@@ -114,6 +114,7 @@ if ($_SESSION['role'] !== 1) {
                                             <path d="M18 15l3 -3" />
                                         </svg> Log Out</a>
                                 </div>
+                            </a>   
                         </li>
                     <?php endif; ?>
                 </ul>

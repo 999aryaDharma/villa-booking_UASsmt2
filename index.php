@@ -95,18 +95,18 @@ while ($row = $result->fetch_assoc()) {
 
 
 	<!-- ROOM CARDS -->
-	<div class="flex flex-wrap justify-center gap-14 pt-16" id="room">
+	<div class="flex flex-wrap justify-center gap-14 pt-16 max-md:px-5" id="room">
 		<?php foreach ($rooms as $room) : ?>
 			<div class="max-w-2xl  max-h-80  dark:bg-zinc-800 rounded-lg shadow-2xl overflow-hidden flex">
 				<?php foreach ($room['photos'] as $photo) : ?>
 				<?php endforeach; ?>
-				<img class="w-2/3 h-auto object-cover" src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Hotel Image" />
+				<img class="w-1/2 md:w-2/3 h-auto object-cover" src="admin-panel/rooms-admin.php/images/<?= trim($photo) ?>" alt="Hotel Image" />
 				<div class="w-1/2 p-6 text-center font-mono font-thin">
-					<h2 class="text-xl font-bold"><?= $room['nama'] ?></h2>
-					<p class="text-md mt-4">Bed: <span class="font-semibold"><?= $room['num_beds'] ?></span></p>
-					<p class="text-md mt-4"><span class="font-semibold">Price perNight : </span></p>
-					<p class="text-md"><span class="font-semibold"> IDR <?= number_format($room['harga'], 2, ',', '.'); ?></span></p>
-					<a href="view-details.php?id=<?= $room["id_room"]; ?>" class="inline-block custom-button px-6 py-2 rounded-md text-center mt-4">View Details</a>
+					<h2 class="text-sm md:text-xl font-bold"><?= $room['nama'] ?></h2>
+					<p class="text-md max-md:text-xs mt-4">Bed: <span class="font-semibold"><?= $room['num_beds'] ?></span></p>
+					<p class="text-md max-md:text-xs mt-4"><span class="font-semibold">Price perNight : </span></p>
+					<p class="text-md max-md:text-xs"><span class="font-semibold"> IDR <?= number_format($room['harga'], 2, ',', '.'); ?></span></p>
+					<a href="view-details.php?id=<?= $room["id_room"]; ?>" class="inline-block custom-button px-3 md:px-6 py-1 md:py-2 rounded-md text-center mt-4 max-md:text-sm">View Details</a>
 				</div>
 			</div>
 		<?php endforeach ?>
@@ -116,8 +116,8 @@ while ($row = $result->fetch_assoc()) {
 
 	<!-- Fasilitas 'what we offer' -->
 	<div class="flex flex-col md:flex-row mt-12" id="fasilitas">
-		<div class="relative w-full max-w-xl ml-16 mr-14 max-h-min pt-16">
-			<div class="carousel-item active z-0">
+		<div class="md:relative md:w-full md:max-w-xl md:ml-16 md:mr-14 md:max-h-min pt-16 max-md:pb-72">
+			<div class="carousel-item active">
 				<img class="w-full h-full object-cover" src="images/room1.jpg" alt="Slide 1" />
 			</div>
 			<div class="carousel-item">
@@ -127,8 +127,8 @@ while ($row = $result->fetch_assoc()) {
 				<img class="w-full h-full object-cover" src="images/room3.jpg" alt="Slide 3" />
 			</div>
 		</div>
-		<div class="md:w-1/2 mb-28 pt-16">
-			<h2 class="text-4xl font-bold mb-4">What we offer</h2>
+		<div class="md:w-1/2 mb-28 pt-16 max-md:px-5">
+			<h2 class="md:text-4xl text-2xl font-bold mb-4">What we offer</h2>
 			<p class="text-zinc-600 mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 			<div class="space-y-6 grid grid-cols-2">
 				<?php

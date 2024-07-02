@@ -11,7 +11,7 @@
 
 <body class="">
 	<!-- Footer -->
-	<footer class="bg-green-700 text-white">
+	<footer class="bg-green-700 text-white w-full">
 		<div class="mx-auto text-center">
 			<!-- Logo and Description -->
 			<div class="mb-4 relative">
@@ -28,7 +28,7 @@
 			<div class="mb-6">
 				<div class="flex justify-center space-x-6 mb-4">
 					<a href="#" class="text-white hover:text-gray-300"><i class="fab fa-facebook-f"></i> </a>
-					<a href="#" class="text-white hover:text-gray-300"><i class="fab fa-instagram"></i> </a>
+					<a href="https://www.instagram.com/gd_krisnaa/" class="text-white hover:text-gray-300"><i class="fab fa-instagram"></i> </a>
 					<a href="#" class="text-white hover:text-gray-300"><i class="fab fa-twitter"></i> </a>
 				</div>
 				<a href="https://maps.app.goo.gl/8YTKxAp4qGzaTHj59" class="custom-underline">

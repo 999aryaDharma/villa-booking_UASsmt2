@@ -19,10 +19,10 @@
 		<title>Register</title>
 	</head>
 	<body class="flex justify-center items-center h-screen bg-cover bg-fixed bg-no-repeat bg-center" style="background-image: url('images/photorealistic-wooden-house-interior-with-timber-decor-furnishings.jpg');">
-		<div class="bg-white w-3/5 rounded-xl shadow-inner">
+		<div class="bg-white md:w-3/5 rounded-xl shadow-inner">
             <div id="sign_up" class="flex p-5">
 
-                <div class="flex flex-wrap w-full">
+                <div class="md:flex flex-wrap w-full">
                     <!-- Left Section -->
                     <div class="w-full md:w-1/2 pr-5">
                         <div class="flex items-center mb-3">
@@ -42,13 +42,13 @@
                                 <input type="text" name="alamat" required placeholder="Alamat" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['alamat']; ?>"> 
                             </div>
                 
-                            <div class="mb-4">
+                            <div class="mb-4 max-md:hidden">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" id="password" autocomplete="current-password" required placeholder="Password" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['password']; ?>">
                             </div>
                     </div>
                     <!-- Right Section -->
-                    <div class="w-full md:w-1/2 mt-24 pr-5">
+                    <div class="w-full md:w-1/2 md:mt-24 pr-5">
                             <div class="mb-4">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email" autocomplete="email" required placeholder="Email Address" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['email']; ?>"> 
@@ -58,6 +58,10 @@
                                 <input type="text" name="no_telepon"  required placeholder="Phone Number" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['no_telepon']; ?>"> 
                             </div>
                             
+                            <div class="mb-4 md:hidden">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" autocomplete="current-password" required placeholder="Password" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['password']; ?>">
+                            </div>
                             <div class="mb-4">
                                 <label for="confirm-password">Confirm Password</label>
                                 <input type="password" name="confirm-password" id="confirm-password" autocomplete="current-password" required placeholder="Confirm Password" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['confirm-password']; ?>">
@@ -86,7 +90,7 @@
                 </div>
                 
                 <!-- Image Section -->
-                <div id="image" class="w-full grid place-items-center mt-10">
+                <div id="image" class="w-full grid place-items-center mt-10 max-md:hidden">
                     <img src="images/swimming-pool-resort.jpg" alt="" class="h-96">
                 </div>
 
