@@ -33,6 +33,22 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 		<link href="../src/loader.css" rel="stylesheet" />
 		<script src="../js/main.js"></script>
 		<script src="../js/loader.js"></script>
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+		<style>
+        p,h1,h2,h3,h4 {
+        font-family: "Inconsolata", monospace;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 100;
+        padding: 10px;
+        }
+    
+    </style>
 	</head>
 	<body class="m-0 p-0">
 		<header>

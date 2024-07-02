@@ -115,3 +115,75 @@ global $conn;
 				$row['deskripsi_fasilitas'] = explode(',', $row['deskripsi_fasilitas']);
 				$rooms[] = $row;
 		}
+
+ <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <div class="relative min-h-screen bg-cover bg-center dark:bg-zinc-900" style="background-image: url('images/room1.jpg')">
+        <div class="absolute right-0 inset-0 bg-black opacity-50"></div>
+        
+        <div class="absolute z-10 p-10 top-32">
+            <h1 class="text-white text-2xl">Welcome <?= $auth_user['username'] ?? " " ?> to Pemuda Inguh Villas</h1>
+            <h2 class="text-zinc-400 text-4xl font-bold mt-4"><?= $nama_kamar ?> Room</h2>
+        </div>
+
+        <div class="absolute top-1/4 right-1/4 transform translate-x-1/2 bg-white p-8 rounded-2xl shadow-lg max-w-sm w-full min-h-64">
+            <h3 class="text-2xl mb-4 font-thin">Book this room</h3>
+            <h2 class="mb-2" id="roomPrice">Harga Kamar: Rp <?= number_format($harga_kamar, 0, ',', '.'); ?></h2>
+            <form method="POST" class="space-y-4" onsubmit="bookNow(event)">
+                <div class="flex space-x-4">
+                    <input type="date" id="checkIn" name="checkIn" placeholder="check-in" class="w-full p-2 border border-zinc-300 rounded bg-zinc-300" />
+                    <input type="date" id="checkOut" name="checkOut" placeholder="check-out" class="w-full p-2 border border-zinc-300 rounded bg-zinc-300" />
+                </div>
+                <h4 id="totalPrice">Total Harga: Rp 0</h4>
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 rounded">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+
+<div class="p-4">
+  <div class="flex justify-between items-center p-4 rounded-md mb-4 bg-white">
+    <div class="flex space-x-2">
+      <button class="bg-white p-2 rounded-md shadow-md flex items-center">
+        <img aria-hidden="true" alt="home-icon" src="images/logo.png" class="h-12 px-2 rounded-md"/>
+      </button>
+    </div>
+  </div>
+
+  <div class="p-4 rounded-md shadow-md bg-white">
+    <h1 class="text-green-600 font-bold font-size-300 mb-4 text-center"><strong><?= $v['nama']?></strong></h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+        <label class="block pl-28"><strong>Select date to order</strong></label>
+        <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:hover:bg-slate-200 shadow-2xl">
+          <form method="POST" class="space-y-4" onsubmit="bookNow(event)">
+            <div class="flex space-x-4">
+              <input type="date" id="checkIn" name="checkIn" placeholder="check-in" class="w-full p-2 border border-zinc-300 rounded bg-zinc-300" />
+              <input type="date" id="checkOut" name="checkOut" placeholder="check-out" class="w-full p-2 border border-zinc-300 rounded bg-zinc-300" />
+            </div>
+            <button type="submit" class="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 rounded">BOOK NOW</button>
+          </form>
+        </div>
+        <h1 class="mb-2 mt-12">This room accommodates up to : 
+          <div class="flex space-x-2">
+            <?php for ($i = 0; $i < $v['num_beds']; $i++) : ?>
+              <div class="flex items-center">
+                <img class="h-6 w-6" aria-hidden="true" alt="guests-icon" src="https://openui.fly.dev/openui/24x24.svg?text=👤"/>
+              </div>
+            <?php endfor; ?>
+          </div>
+          Guest's
+        </h1>
+        <h4 id="totalPrice">Total Harga: Rp 0</h4>
+      </div>
+
+      <div class="col-span-2 grid grid-cols-2 md:grid-cols-2 gap-4">
+        <img class="w-full h-full object-cover rounded-md" src="images/komang-gita-krishna-murti-AHUlvfoUmCY-unsplash.jpg" alt="Room image 1" />
+        <img class="w-full h-full object-cover rounded-md" src="admin-panel/rooms-admin.php/images/<?= $v['foto']?>" alt="Room image 2" />
+        <!-- <img class="w-full h-full object-cover rounded-md" src="images/hutan-tropis.jpg" alt="Room image 3" /> -->
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -37,6 +37,8 @@ if (isset($_GET['id'])) {
     $_SESSION['nama_kamar'] = $room['nama'];
     $nama_kamar = $room['nama'];
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +53,21 @@ if (isset($_GET['id'])) {
     <link href="src/loader.css" rel="stylesheet" />
     <script src="js/loader.js"></script>
 	<script src="js/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+		<style>
+        p,h1,h2,h3,h4 {
+        font-family: "Inconsolata", monospace;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 100;
+        padding: 10px;
+        }
+    
+    </style>
 </head>
 <body class="">
     <!-- Loader -->
@@ -62,12 +79,20 @@ if (isset($_GET['id'])) {
 				<a href="#"><img src="images/logo.png" alt="Logo" class="h-12 px-2 rounded-md" /></a>
 			</div>
 			<div>
-				<ul class="flex gap-10 text-xl">
+                    <?php if(!isset($auth_user)) : ?>
+					<ul class="flex space-x-20 text-xl">
+					<?php else : ?>
+					<ul class="flex space-x-4 text-xl">
+                    <?php endif ?>
 					<li><a href="#room" class="custom-underline">Villas</a></li>
 					<li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
-					<li><a href="auth/register.php" class="custom-underline">Register</a></li>
 					<li>
-					<?php if (!is_null($auth_user)) : ?>
+                    <?php if(!isset($auth_user['username'])) : ?>
+                        <a href="auth/register.php" class="custom-underline">Register</a>
+                    <?php endif ?>
+                    </li>
+					<li>
+					<?php if(!is_null($auth_user)) : ?>
 						<a href="/auth/logout.php" class="custom-underline">Log Out</a>
 					<?php else : ?>
 						<a href="/auth/login.php" class="custom-underline">Sign In</a>
@@ -123,12 +148,14 @@ if (isset($_GET['id'])) {
             ?>
             <?php
             if (!empty($facilities)) {
+                echo "<ul class='grid grid-cols-4'>";
                 foreach ($facilities as $facility) {
-                    echo "<li>" . htmlspecialchars($facility) . "</li>";
+                    echo "<li class='flex items-center justify-left py-2'>" . htmlspecialchars($facility) . "</li>";
                 }
+                echo "</ul>";
             } else {
-                echo "<li>No facilities available.</li>";
-            }
+                echo "<ul class='flex justify-center'><li>No facilities available.</li></ul>";
+            } 
             ?>
             </ul>
             <p class="absolute right-0 mr-16 mt-6">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>

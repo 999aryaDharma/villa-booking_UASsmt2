@@ -30,6 +30,7 @@ while ($row = $result->fetch_assoc()) {
 	$row['photos'] = explode(',', $row['foto']);
 	$rooms[] = $row;
 }
+$fasilitas = showRoom("SELECT * FROM fasilitas");
 
 ?>
 <main class="">
