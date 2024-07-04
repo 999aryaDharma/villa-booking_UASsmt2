@@ -83,6 +83,12 @@ function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $
     return "Username already exists, please use a different username";
   }
 
+  if (strlen($password) > 50) {
+    return "Password is too long";
+  }
+  if ($password != $confirm_password) {
+    return "Password don't match";
+  }
 
   #get password
   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -91,13 +97,7 @@ function registerUser($nama_customer, $alamat, $email, $no_telepon, $password, $
   $stmt->bind_param("ssss", $nama_customer, $alamat, $email, $no_telepon);
   $stmt->execute();
 
-  if (strlen($password) > 50) {
-    return "Password is too long";
-  }
-  if ($password != $confirm_password) {
-    return "Password don't match";
-  }
-
+  
   if ($stmt->affected_rows != 1) {
     return "An error occurred while inserting into customers. Please try again.";
   } else {

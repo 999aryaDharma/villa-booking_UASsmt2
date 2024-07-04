@@ -42,7 +42,7 @@
                                 <input type="text" name="alamat" required placeholder="Alamat" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['alamat']; ?>"> 
                             </div>
                 
-                            <div class="mb-4 max-md:hidden">
+                            <div class="mb-4">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" id="password" autocomplete="current-password" required placeholder="Password" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['password']; ?>">
                             </div>
@@ -58,10 +58,10 @@
                                 <input type="text" name="no_telepon"  required placeholder="Phone Number" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['no_telepon']; ?>"> 
                             </div>
                             
-                            <div class="mb-4 md:hidden">
+                            <!-- <div class="mb-4 md:hidden">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" id="password" autocomplete="current-password" required placeholder="Password" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['password']; ?>">
-                            </div>
+                            </div> -->
                             <div class="mb-4">
                                 <label for="confirm-password">Confirm Password</label>
                                 <input type="password" name="confirm-password" id="confirm-password" autocomplete="current-password" required placeholder="Confirm Password" class="w-full px-3 py-2 border-2 rounded focus:border-1 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-400 focus:z-10 sm:text-sm" value="<?= @$_POST['confirm-password']; ?>">

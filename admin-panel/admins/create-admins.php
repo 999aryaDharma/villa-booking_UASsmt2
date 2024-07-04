@@ -1,5 +1,5 @@
 <?php
-  // include_once "../layout/header.php";
+  include_once "../layout/header.php";
   require_once "function-admin.php";
 
   if(isset($_POST['submit'])) {

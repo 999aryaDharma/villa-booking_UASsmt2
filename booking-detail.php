@@ -55,47 +55,59 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="src/loader.css" rel="stylesheet" />
+    <link href="src/input.css" rel="stylesheet" />
     <script src="js/loader.js"></script>
     <title>Booking Detail</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </head>
-<body class="bg-gray-100 p-4">
+<body class="bg-gray-100 p-4 bg-cover bg-fixed bg-no-repeat bg-center min-h-screen"style="background-image: url('images/blur-bg.png')">
 <!-- Loader -->
 <div id="loader">
     <div class="spinner"></div>
 </div>
-<div class="max-w-lg mx-auto bg-white p-8 rounded shadow-lg">
-    <h1 class="text-2xl font-semibold mb-4">Booking History</h1>
-    <?php if (!empty($id_customer)) : ?>
-        <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-            <p><strong>Nama :</strong> <?= $nama_customer ?></p>
-            <p><strong>Email :</strong> <?= $email ?></p>
-            <p><strong>Alamat :</strong> <?= $alamat ?></p>
-            <p><strong>No Telepon :</strong> <?= $no_telepon ?></p>
-        </div>
-    <?php endif; ?>
 
-    <?php if (!empty($bookings)) : ?>
-        <?php foreach ($bookings as $booking) : ?>
+<div class="max-w-3xl mx-auto md:p-8 max-md:mt-20 ">
+    <div class="flex  mb-6 rounded-md bg-teal-50">
+    <!-- <button class="bg-white p-2 rounded-md shadow-md flex items-center"> -->
+        <a href="index.php"><img aria-hidden="true" alt="home-icon" src="images/logo.png" class="h-12 pl-5 rounded-md"/></a>
+        <h1 class="text-xl font-semibold mb-4 pl-3 mt-3.5 text-emerald-700">Booking History</h1>
+    <!-- </button> -->
+    </div>
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded shadow-lg mt-5">
+        <?php if (!empty($id_customer)) : ?>
             <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-                <p><strong>Check-in Date :</strong> <?= htmlspecialchars($booking['check_in']) ?></p>
-                <p><strong>Check-out Date :</strong> <?= htmlspecialchars($booking['check_out']) ?></p>
-                <p><strong>Total Price :</strong> Rp <?= number_format($booking['total_harga'], 0, ',', '.') ?></p>
-                <p><strong>Nama Kamar :</strong> <?= htmlspecialchars($booking['nama_kamar']) ?></p>
-                <p><strong>Status :</strong> <?= htmlspecialchars($booking['status']) ?></p>
-                <!-- Tombol Cancel Booking -->
-                <button onclick="cancelBooking(<?= $booking['id_booking'] ?>, <?= $booking['id_room'] ?>)" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-4 inline-block">Cancel Booking</button>
+                <p><strong>Nama :</strong> <?= $nama_customer ?></p>
+                <p><strong>Email :</strong> <?= $email ?></p>
+                <p><strong>Alamat :</strong> <?= $alamat ?></p>
+                <p><strong>No Telepon :</strong> <?= $no_telepon ?></p>
             </div>
-        <?php endforeach; ?>
-    <?php else : ?>
-        <p>No booking history.</p>
-    <?php endif; ?>
+        <?php endif; ?>
 
-    <!-- Tombol Back -->
-    <a href="index.php" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4 inline-block mr-2">Back</a>
+        <div class="booking-container">
+        <?php if (!empty($bookings)) : ?>
+            <?php foreach ($bookings as $booking) : ?>
+                <div class="booking-card">
+                    <p><strong>Check-in Date :</strong> <?= htmlspecialchars($booking['check_in']) ?></p>
+                    <p><strong>Check-out Date :</strong> <?= htmlspecialchars($booking['check_out']) ?></p>
+                    <p><strong>Total Price :</strong> Rp <?= number_format($booking['total_harga'], 0, ',', '.') ?></p>
+                    <p><strong>Nama Kamar :</strong> <?= htmlspecialchars($booking['nama_kamar']) ?></p>
+                    <p><strong>Status :</strong> <?= htmlspecialchars($booking['status']) ?></p>
+                    <button onclick="cancelBooking(<?= $booking['id_booking'] ?>, <?= $booking['id_room'] ?>)" class="cancel-button">Cancel Booking</button>
+                </div>
+            <?php endforeach; ?>
+            <?php else : ?>
+                <p>No booking history.</p>
+            <?php endif; ?>
+        </div>
+
+
+
+        <!-- Tombol Back -->
+        <a href="index.php" class="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded mt-8 inline-block mr-2">Back</a>
+    </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 function cancelBooking(id_booking, id_room) {
