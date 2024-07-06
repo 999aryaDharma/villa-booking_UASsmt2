@@ -72,7 +72,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
 
 			<div>
 				<?php if (!isset($auth_user)) : ?>
-					<ul class="flex space-x-20 text-xl">
+					<ul class="flex gap-5 space-x-20 text-xl">
 					<?php else : ?>
 						<ul class="flex space-x-5 text-xl">
 						<?php endif ?>

@@ -19,6 +19,20 @@ if (isset($_GET['logout'])) {
     logoutUser();
 }
 
+if ($auth_user) {
+    
+    $id_customer = $auth_user['id_customer']; 
+
+   
+    $sqli = showRoom("SELECT id_customer FROM customer WHERE id_customer='$id_customer'");
+    
+    foreach ($sqli as $row) {
+        // echo $row['id_customer'] . '<br>'; 
+    }
+} else {
+    // echo "User tidak ditemukan atau tidak ada sesi auth_id."; 
+}
+
 $loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
 $username = $loggedIn ? $_SESSION['username'] : '';
 
@@ -71,6 +85,7 @@ $auth_user = getUserById($_SESSION['auth_id'] ?? null);
                     <li><a href="#room" class="custom-underline">Villas</a></li>
                     <li><a href="#fasilitas" class="custom-underline">Facilities</a></li>
                     <li><a href="auth/register.php" class="custom-underline">Register</a></li>
+                    <li><a href="booking-detail.php" class="custom-underline">My Booking</a></li>
                     <li>
                         <?php if (!is_null($auth_user)) : ?>
                             <a href="/auth/logout.php" class="custom-underline">Log Out</a>

@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
 <main class="pl-56 pt-24 pr-9">
     <div class="border-2 border-inherit shadow-xl w-full p-5">
         <div>
-            <h1 class="font-bold pb-4">Edit Rooms</h1>
+            <h1 class="font-bold pb-4">Edit Status Booking</h1>
         </div>
         <div>
             <form action="" method="post" enctype="multipart/form-data">

@@ -139,7 +139,7 @@ if (isset($_GET['id'])) {
             </ul>
         </div>
     </nav>
-    <div class="md:p-20 bg-card text-card-foreground mt-10 pt-20">
+    <div class="md:p-20 bg-card text-card-foreground mt-3 pt-14">
         <button onclick="window.location.href='index.php#room';" type="button" class="flex items-center justify-center px-3 mb-4 ml-5 text-sm custom-button rounded-lg">
             <svg class="w-8 h-8 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
@@ -163,7 +163,7 @@ if (isset($_GET['id'])) {
     </span>
         <!-- End Status Room -->
         </div>
-        <div class="md:w-2/3  md:pl-6 mt-6 md:mt-0 max-md:px-5">
+        <div class="md:w-2/3  md:pl-6 mt-3 md:mt-0 max-md:px-5">
             <h2 class="text-2xl font-bold"><?= $room['nama'] ?></h2>
             <p class="mt-2 text-muted-foreground"><?= $room['deskripsi'] ?></p>
             <hr class="mt-3">
@@ -197,7 +197,7 @@ if (isset($_GET['id'])) {
             } 
             ?>
             </ul>
-            <p class="absolute right-0 md:mr-16 mr-5 mt-6">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
+            <p class="absolute right-0 md:mr-16 mr-5 mt-5">IDR. <?= number_format($room["harga"], 2, ',', '.'); ?></p>
             <?php
             if ($status == 'Booked') {
                 echo "<button class='btn text-white bg-red-600 hover:bg-red-700 absolute right-0 md:mr-16 mr-5 mt-14 py-1 px-3 rounded-md' disabled>Booked</button>";
@@ -241,7 +241,7 @@ if (isset($_GET['id'])) {
     </div>
     </div>
     
-    <footer class="max-md:mt-32 md:fixed bottom-0 left-0 right-0 bg-card text-card-foreground py-4 border-t border-border bg-emerald-700">
+    <footer class="z-0 max-md:mt-32 md:fixed bottom-0 left-0 right-0 bg-card text-card-foreground py-2 border-t border-border bg-emerald-700">
     <div class="container mx-auto text-center text-md text-white">
         <p>
         © Copyright Pemuda Inguh, Villas Resort Tegallalang, JL Pantai Gili Trawangan, Gili Indah, Pemenang, Kabupaten Gianyar, Gili Indah, Bali, Indonesia 83352
