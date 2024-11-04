@@ -198,14 +198,14 @@ function uploadImage() {
 function getRooms() {
     global $conn;
     $query = "SELECT 
-    room.id_room, 
-    room.nama, 
-    room.harga,
-    room.num_beds, 
-    room.deskripsi, 
-    room.status, 
-    MIN(room_foto.foto) AS foto, 
-    GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas_names 
+        room.id_room, 
+        room.nama, 
+        room.harga,
+        room.num_beds, 
+        room.deskripsi, 
+        room.status, 
+        MIN(room_foto.foto) AS foto, 
+        GROUP_CONCAT(fasilitas.nama_fasilitas) AS fasilitas_names 
     FROM 
         room
     LEFT JOIN 
@@ -225,8 +225,7 @@ function getRooms() {
         room.harga,
         room.num_beds, 
         room.deskripsi, 
-        room.status
-    ";
+        room.status";
     
     $result = mysqli_query($conn, $query);
     $rooms = [];
@@ -346,5 +345,4 @@ function editRoom($data) {
         return false;
     }
 }
-
 ?>

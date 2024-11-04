@@ -65,6 +65,8 @@ if (isset($_GET['id'])) {
     $_SESSION['nama_kamar'] = $room['nama'];
     $nama_kamar = $room['nama'];
 }
+
+
 ?>
 
 <!DOCTYPE html>

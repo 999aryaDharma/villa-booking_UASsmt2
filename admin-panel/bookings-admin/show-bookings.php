@@ -42,6 +42,7 @@ $list = showBooking("SELECT * FROM booking");
                 <td class="border-2 border-inherit p-3">
                     <a href="edit-booking.php?id=<?= $row['id_booking']; ?>" class="inline-block btn bg-yellow-400 hover:bg-orange-600 px-6 py-2 rounded-md text-center pointer-events-auto text-white">Edit</a>
                 </td>
+                <?php $i++ ?>
             <?php endforeach ?>
         </tbody>
     </table>
